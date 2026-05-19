@@ -1,0 +1,874 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Recommended Truck Driver Ergonomic Equipment | ErgoEase</title>
+  <meta
+    name="description"
+    content="Recommended ergonomic equipment for truck drivers to improve comfort, support, visibility, and in-cab fit."
+  />
+  <style>
+    :root {
+      --bg: #f6fbfa;
+      --surface: #ffffff;
+      --surface-soft: #f3f8f7;
+      --text: #17324a;
+      --text-soft: #5f7386;
+      --line: #d9e7ea;
+      --blue: #1f6e8c;
+      --blue-dark: #124b61;
+      --green: #4da05d;
+      --green-dark: #397a46;
+      --shadow: 0 12px 28px rgba(18, 75, 97, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77, 160, 93, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfefd 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(217, 231, 234, 0.8);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    .brand-logo {
+      display: block;
+      width: min(100%, 520px);
+      height: auto;
+      max-height: 56px;
+      object-fit: contain;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      box-shadow: 0 10px 24px rgba(31, 110, 140, 0.18);
+    }
+
+    .btn-secondary {
+      color: var(--blue);
+      background: #fff;
+      border-color: var(--line);
+    }
+
+    .hero {
+      padding: 64px 0 34px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(31, 110, 140, 0.07), rgba(77, 160, 93, 0.08));
+      border: 1px solid rgba(217, 231, 234, 0.95);
+      border-radius: 32px;
+      padding: 42px 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(77, 160, 93, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      color: var(--text);
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 28px;
+    }
+
+    .hero-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--text);
+    }
+
+    .hero-point .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+    }
+
+    .hero-side {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(217, 231, 234, 0.95);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+    }
+
+    .mini-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .score-item {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .score-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue);
+      font-size: 0.98rem;
+    }
+
+    .score-item span {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.12;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .category-top {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid rgba(217, 231, 234, 0.75);
+      background: linear-gradient(180deg, rgba(31, 110, 140, 0.03), rgba(255, 255, 255, 0));
+    }
+
+    .category-kicker {
+      color: var(--text-soft);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .category-top h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .category-top p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .category-body {
+      padding: 18px 22px 22px;
+    }
+
+    .fit-line {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .fit-line strong {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .fit-line span {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .option {
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .option-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .option-top strong {
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .price-range {
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .option p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .option-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .mini-btn.primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      color: #fff;
+      border-color: transparent;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .help-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .help-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .help-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, rgba(31, 110, 140, 0.08), rgba(77, 160, 93, 0.1));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px 28px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+
+    .cta-band p {
+      margin: 0 auto 20px;
+      max-width: 720px;
+      color: var(--text-soft);
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .site-footer {
+      padding: 34px 0 44px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .category-grid,
+      .help-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 32px 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card {
+        border-radius: 24px;
+      }
+
+      .btn,
+      .mini-btn {
+        width: 100%;
+      }
+
+      .cta-actions,
+      .option-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html" aria-label="ErgoEase home">
+        <img class="brand-logo" src="data:image/png;base64,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" alt="ERGOEASE Ergonomic Insight. Healthier Workplaces. Safer Homes." />
+      </a>
+
+      <div class="nav-actions">
+        <a class="btn btn-secondary" href="index.html">Back to Home</a>
+        <a class="btn btn-primary" href="occupations.html">View Available Screens</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <div class="eyebrow">Office Ergonomic Equipment</div>
+
+          <div class="hero-grid">
+            <div>
+              <h1>Recommended tools to improve comfort, alignment, and workstation fit</h1>
+              <p>
+                This page is designed to help you turn ergonomic recommendations into practical action.
+                Explore common office equipment categories, what they help with, and example tools that may support a better setup.
+              </p>
+
+              <div class="hero-points">
+                <div class="hero-point">
+                  <span class="dot"></span>
+                  <div>Better equipment choices based on common office ergonomic risks</div>
+                </div>
+                <div class="hero-point">
+                  <span class="dot"></span>
+                  <div>Simple explanations to help you decide what is worth changing</div>
+                </div>
+                <div class="hero-point">
+                  <span class="dot"></span>
+                  <div>A strong foundation for future personalized recommendations and product links</div>
+                </div>
+              </div>
+
+              <div class="cta-actions">
+                <a class="btn btn-primary" href="#categories">Explore Equipment</a>
+                <a class="btn btn-secondary" href="office-resources.html">Workstation Set Up Guide</a>
+              </div>
+            </div>
+
+            <aside class="hero-side">
+              <div class="mini-label">What this page helps with</div>
+              <div class="score-list">
+                <div class="score-item">
+                  <strong>Neck & Monitor Position</strong>
+                  <span>Useful when screens are too low, off-center, or hard to view comfortably.</span>
+                </div>
+                <div class="score-item">
+                  <strong>Wrists & Mouse/Keyboard Setup</strong>
+                  <span>Helpful when reaching, wrist extension, or poor desk height creates strain.</span>
+                </div>
+                <div class="score-item">
+                  <strong>Chair, Hips & Feet Support</strong>
+                  <span>Important for posture, pressure distribution, and long periods of sitting.</span>
+                </div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="categories">
+      <div class="container">
+        <div class="section-head">
+          <h2>Equipment categories</h2>
+          <p>
+            Start with the category that best matches the problem you are trying to solve. These are example recommendations and can later be replaced with affiliate links, curated products, or retailer-specific options.
+          </p>
+        </div>
+
+        <div class="category-grid">
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 01</div>
+              <h3>Foot Support</h3>
+              <p>Helpful for dangling feet, unsupported legs, low chair height, or static sitting.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users who feel pressure under the thighs, have trouble resting feet flat, or need more lower-body support.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Standard Footrest</strong>
+                    <span class="price-range">$20–$40</span>
+                  </div>
+                  <p>Simple option for improving seated posture and supporting neutral lower-body alignment.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/Foot-Rest-Under-Desk-Footstool/dp/B07PGLBCFG" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=ergonomic+footrest" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Adjustable Foot Platform</strong>
+                    <span class="price-range">$45–$80</span>
+                  </div>
+                  <p>Better for users who need adjustable angle or height support throughout the workday.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/Foot-Rest-Under-Desk-Footrest/dp/B0CN3CYTPX" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=adjustable+foot+platform+under+desk" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 02</div>
+              <h3>Seat Cushions & Hip Support</h3>
+              <p>Useful for discomfort with sitting, pelvic alignment, pressure relief, or chair fit problems.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users who feel pressure through the hips or thighs, need a height boost, or benefit from better seated support.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Ergo Seat Cushion</strong>
+                    <span class="price-range">$20–$35</span>
+                  </div>
+                  <p>Can improve comfort and reduce pressure for users spending long periods seated.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/Seat-Cushion-Office-Chair-Desk/dp/B01EBDV9BU" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=everlasting+comfort+seat+cushion" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Wedge Cushion</strong>
+                    <span class="price-range">$20–$30</span>
+                  </div>
+                  <p>Often used to encourage a more upright seated position and improve hip angle.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=wedge+seat+cushion" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=ergonomic+wedge+cushion+office+chair" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 03</div>
+              <h3>Lumbar & Back Support</h3>
+              <p>Helpful for slouching, poor back support, low-back discomfort, or chairs that do not fit well.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users who need more low-back support or more consistent trunk alignment while sitting.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Lumbar Support Cushion</strong>
+                    <span class="price-range">$18–$35</span>
+                  </div>
+                  <p>A simple add-on for chairs that need more low-back support and structure.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/Samsonite-Ergonomic-Lumbar-Support-Pillow/dp/B0FCXTR736" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=samsonite+lumbar+support" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Ergonomic Chair Upgrade</strong>
+                    <span class="price-range">$150–$350+</span>
+                  </div>
+                  <p>Best when multiple chair-fit issues exist and a cushion alone is not enough.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=ergonomic+office+chair" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=best+ergonomic+office+chair" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 04</div>
+              <h3>Monitor & Screen Positioning</h3>
+              <p>Important when monitors sit too low, too far away, or off to one side.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users with neck strain, frequent downward gaze, or awkward monitor placement.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Monitor Riser</strong>
+                    <span class="price-range">$18–$35</span>
+                  </div>
+                  <p>A good low-cost option for bringing the screen closer to eye level.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=monitor+riser" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=adjustable+monitor+riser" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Monitor Arm</strong>
+                    <span class="price-range">$60–$120</span>
+                  </div>
+                  <p>Better for users who need more positioning flexibility or use multiple screens.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=monitor+arm" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=dual+monitor+arm" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 05</div>
+              <h3>Keyboard & Mouse Positioning</h3>
+              <p>Useful when desk height, reach distance, or wrist angle creates strain through the arms or hands.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users with wrist extension, shoulder elevation, long reach to input devices, or repetitive mouse use.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Keyboard Tray</strong>
+                    <span class="price-range">$70–$100</span>
+                  </div>
+                  <p>Helps reposition keyboard and mouse closer to elbow height when the desk is too high.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=keyboard+tray" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=under+desk+keyboard+tray" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Split Keyboard / Vertical Mouse</strong>
+                    <span class="price-range">$25–$100</span>
+                  </div>
+                  <p>Can support a more neutral wrist and forearm position depending on the user’s needs.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/Logitech-Vertical-Wireless-Mouse-Rechargeable/dp/B07FNJB8TT" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=logitech+mx+vertical" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="category-card">
+            <div class="category-top">
+              <div class="category-kicker">Category 06</div>
+              <h3>Movement & Comfort Tools</h3>
+              <p>Helpful for users who need more variation, less static posture, or better tolerance for long work sessions.</p>
+            </div>
+            <div class="category-body">
+              <div class="fit-line">
+                <strong>Best for:</strong>
+                <span>Users who benefit from reminders, posture variation, sit-stand flexibility, or lower-body movement.</span>
+              </div>
+
+              <div class="option-list">
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Pomodoro Timer / Break Prompt Tool</strong>
+                    <span class="price-range">$10–$20</span>
+                  </div>
+                  <p>Supports microbreak habits and helps break up long periods of static work.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=pomodoro+timer" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=productivity+timer" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+
+                <div class="option">
+                  <div class="option-top">
+                    <strong>Standing Desk Converter</strong>
+                    <span class="price-range">$120–$180</span>
+                  </div>
+                  <p>Allows users to alternate positions without replacing the whole desk setup.</p>
+                  <div class="option-actions">
+                    <a class="mini-btn primary" href="https://www.amazon.com/s?k=standing+desk+converter" target="_blank" rel="noopener noreferrer">View Top Picks</a>
+                    <a class="mini-btn" href="https://www.amazon.com/s?k=sit+stand+desk+converter" target="_blank" rel="noopener noreferrer">Browse Alternatives</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>How to use this page</h2>
+          <p>
+            The goal is not to buy everything. It is to identify the changes most likely to improve comfort, reduce strain, and support a better workstation fit.
+          </p>
+        </div>
+
+        <div class="help-grid">
+          <div class="help-card">
+            <h3>Start with your biggest problem</h3>
+            <p>Choose the category that most closely matches the discomfort or setup issue you are trying to solve first.</p>
+          </div>
+
+          <div class="help-card">
+            <h3>Prioritize high-impact fixes</h3>
+            <p>Monitor position, chair fit, foot support, and keyboard/mouse setup often create the biggest improvements.</p>
+          </div>
+
+          <div class="help-card">
+            <h3>Use your report as the guide</h3>
+            <p>Pair this page with your ErgoEase assessment report to focus on recommendations that are most relevant to you.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="cta-band">
+          <h2>Need a more personalized recommendation?</h2>
+          <p>
+            Take another ErgoEase screen, explore additional office resources, or review options for team screening and broader workplace implementation.
+          </p>
+          <div class="cta-actions">
+            <a class="btn btn-primary" href="occupations.html">Screen Another Role</a>
+            <a class="btn btn-secondary" href="office-resources.html">Workstation Set Up Guide</a>
+            <a class="btn btn-secondary" href="team_screening.html">Team Screening</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>ErgoEase is intended for educational and preventative purposes and does not constitute medical advice.</p>
+    </div>
+  </footer>
+</body>
+</html>
