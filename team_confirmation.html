@@ -1,334 +1,521 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>Team Screening Confirmed | ErgoEase</title>
+<title>ErgoEase Team Confirmation</title>
 
-  <style>
-    :root {
-      --bg: #f6fafb;
-      --surface: rgba(255,255,255,0.94);
-      --text: #17324a;
-      --muted: #5f7386;
-      --line: #d9e7ea;
-      --blue: #0d5f91;
-      --green: #4da05d;
-      --shadow: 0 20px 50px rgba(23,50,74,0.08);
-    }
+<style>
 
-    * { box-sizing: border-box; }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    body {
-      margin: 0;
-      font-family: Inter, Arial, sans-serif;
-      color: var(--text);
-      background:
-        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
-        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
-        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
-    }
+:root{
+  --blue:#0f6fa4;
+  --green:#4db168;
+  --text:#17324d;
+  --muted:#5f7387;
+  --line:#d7e2df;
+}
 
-    a { text-decoration: none; color: inherit; }
+body{
+  font-family:Arial,sans-serif;
 
-    .container {
-      width: min(1120px, calc(100% - 32px));
-      margin: 0 auto;
-    }
+  background:
+    linear-gradient(
+      90deg,
+      #edf4f2 0%,
+      #f7f9f8 50%,
+      #edf4f2 100%
+    );
 
-    .header {
-      padding: 28px 0;
-      background: rgba(255,255,255,0.82);
-      border-bottom: 1px solid var(--line);
-      text-align: center;
-    }
+  color:var(--text);
 
-    .brand {
-      font-size: 1.7rem;
-      font-weight: 900;
-      letter-spacing: -0.04em;
-    }
+  min-height:100vh;
 
-    .brand .blue { color: var(--blue); }
-    .brand .green { color: var(--green); }
+  display:flex;
+  justify-content:center;
+  align-items:flex-start;
 
-    .card {
-      margin: 76px auto;
-      padding: 44px;
-      border-radius: 32px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
+  padding:40px 20px;
+}
 
-    .badge {
-      display: inline-flex;
-      padding: 9px 14px;
-      border-radius: 999px;
-      background: rgba(77,160,93,0.12);
-      color: var(--green);
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
+.container{
+  width:100%;
+  max-width:980px;
+}
 
-    h1 {
-      margin: 0 0 16px;
-      font-size: clamp(2.1rem, 5vw, 3.7rem);
-      line-height: 1;
-      letter-spacing: -0.05em;
-    }
+.header{
+  margin-bottom:28px;
+  text-align:center;
+}
 
-    p {
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1.05rem;
-      margin: 0 auto 22px;
-      max-width: 720px;
-    }
+.brand{
+  font-size:1.9rem;
+  font-weight:900;
+  letter-spacing:-0.04em;
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 18px;
-      margin: 32px 0;
-      text-align: left;
-    }
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
 
-    .step {
-      padding: 22px;
-      border: 1px solid var(--line);
-      border-radius: 22px;
-      background: #f8fcfb;
-      display: flex;
-      flex-direction: column;
-    }
+  gap:6px;
 
-    .step-number {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border-radius: 999px;
-      color: #fff;
-      font-weight: 900;
-      background: linear-gradient(135deg, var(--blue), var(--green));
-      margin-bottom: 12px;
-    }
+  text-decoration:none;
+}
 
-    .step h3 {
-      margin: 0 0 8px;
-      font-size: 1.15rem;
-    }
+.brand .blue{
+  color:var(--blue);
+}
 
-    .step p {
-      margin: 0 0 18px;
-      font-size: 0.96rem;
-      max-width: none;
-    }
+.brand .green{
+  color:var(--green);
+}
 
-    .btn {
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 48px;
-      padding: 0 20px;
-      border-radius: 999px;
-      font-weight: 800;
-      border: 1px solid transparent;
-      width: 100%;
-      text-align: center;
-      cursor: pointer;
-      font-family: inherit;
-      font-size: 1rem;
-      margin-top: auto;
-    }
+.card{
+  background:#ffffffdd;
+  backdrop-filter:blur(10px);
 
-    .btn-primary {
-      color: #fff;
-      background: linear-gradient(135deg, var(--blue), var(--green));
-    }
+  border:1px solid #d9e4e1;
 
-    .btn-secondary {
-      color: var(--blue);
-      background: #fff;
-      border-color: var(--line);
-    }
+  border-radius:34px;
 
-    .small {
-      font-size: 0.9rem;
-      margin-top: 18px;
-    }
+  padding:48px;
 
-    @media (max-width: 980px) {
-      .steps { grid-template-columns: 1fr; }
-      .container { width: min(920px, calc(100% - 32px)); }
-      .card { padding: 30px 22px; margin: 48px auto; }
-    }
-  </style>
+  box-shadow:
+    0 8px 30px rgba(0,0,0,.06);
+}
+
+.badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+
+  padding:12px 24px;
+
+  border-radius:999px;
+
+  background:#e7f2e8;
+
+  color:#43a35c;
+
+  font-size:15px;
+  font-weight:700;
+
+  margin-bottom:28px;
+}
+
+.hero{
+  text-align:center;
+}
+
+.hero h1{
+  font-size:72px;
+  line-height:1.02;
+  font-weight:800;
+
+  margin-bottom:26px;
+
+  letter-spacing:-2px;
+}
+
+.hero p{
+  font-size:18px;
+  line-height:1.7;
+
+  color:var(--muted);
+
+  max-width:760px;
+
+  margin:0 auto 42px;
+}
+
+.steps{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:22px;
+
+  margin-top:20px;
+}
+
+.step{
+  border:1px solid var(--line);
+
+  border-radius:28px;
+
+  padding:28px;
+
+  background:#f9fcfb;
+}
+
+.step-number{
+  width:42px;
+  height:42px;
+
+  border-radius:50%;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--blue),
+      var(--green)
+    );
+
+  color:white;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  font-weight:800;
+
+  margin-bottom:22px;
+}
+
+.step h3{
+  font-size:18px;
+  margin-bottom:14px;
+}
+
+.step p{
+  color:var(--muted);
+  line-height:1.7;
+
+  margin-bottom:24px;
+
+  font-size:15px;
+}
+
+.btn{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  width:100%;
+
+  min-height:56px;
+
+  border-radius:999px;
+
+  text-decoration:none;
+
+  font-weight:800;
+  font-size:17px;
+
+  transition:.2s ease;
+
+  border:none;
+  cursor:pointer;
+}
+
+.btn:hover{
+  transform:translateY(-2px);
+}
+
+.btn-primary,
+.btn-secondary{
+  background:
+    linear-gradient(
+      90deg,
+      var(--blue),
+      var(--green)
+    );
+
+  color:white;
+}
+
+.tip{
+  margin-top:34px;
+
+  text-align:center;
+
+  color:#667d91;
+
+  font-size:15px;
+  line-height:1.7;
+}
+
+@media(max-width:920px){
+
+  .hero h1{
+    font-size:54px;
+  }
+
+  .steps{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:640px){
+
+  body{
+    padding:24px 14px;
+  }
+
+  .card{
+    padding:34px 24px;
+  }
+
+  .hero h1{
+    font-size:44px;
+  }
+
+}
+
+</style>
 </head>
 
 <body>
+
+<div class="container">
+
   <header class="header">
+
     <a class="brand" href="index.html">
-      <span class="blue">ERGO</span> <span class="green">EASE</span>
+      <span class="blue">ERGO</span>
+      <span class="green">EASE</span>
     </a>
+
   </header>
 
-  <main class="container">
-    <section class="card">
-      <div class="badge">Team screening purchase confirmed</div>
+  <div class="card">
 
-      <h1>Your ErgoEase team screening is ready.</h1>
+    <div class="hero">
 
-      <p id="introText">
-        Thank you for your purchase. Complete employer setup first, then copy and share the employee assessment link with your team.
+      <div class="badge">
+        Team screening purchase confirmed
+      </div>
+
+      <h1>
+        Your ErgoEase team screening is ready.
+      </h1>
+
+      <p>
+        Thank you for your purchase. Complete employer setup first, then share the employee assessment link with your team.
       </p>
 
-      <div class="steps">
+    </div>
 
-        <div class="step">
-          <div class="step-number">1</div>
-          <h3>Complete employer setup</h3>
-          <p>
-            Complete the employer setup form to connect employee submissions and generate the employer summary report.
-          </p>
-          <a class="btn btn-primary" id="employerFormBtn" href="#" target="_blank" rel="noopener noreferrer">
-            Open Employer Setup Form
-          </a>
+    <div class="steps">
+
+      <!-- STEP 1 -->
+      <div class="step">
+
+        <div class="step-number">
+          1
         </div>
 
-        <div class="step">
-          <div class="step-number">2</div>
-          <h3>Share employee assessment link</h3>
-          <p>
-            Copy and share this assessment link with employees so they can complete their ergonomic screening.
-          </p>
-          <button class="btn btn-secondary" id="copyEmployeeLinkBtn" type="button">
-            Copy Employee Assessment Link
-          </button>
-        </div>
+        <h3>
+          Complete employer setup
+        </h3>
 
-        <div class="step">
-          <div class="step-number">3</div>
-          <h3>Preview employee assessment</h3>
-          <p>
-            Open the employee assessment to preview the screening experience before sharing it with your team.
-          </p>
-          <a class="btn btn-secondary" id="employeeScreenBtn" href="#" target="_blank" rel="noopener noreferrer">
-            Preview Employee Assessment
-          </a>
-        </div>
+        <p>
+          Complete the employer setup form to connect employee submissions and generate the comprehensive employer report.
+        </p>
+
+        <a
+          class="btn btn-primary"
+          id="employerFormBtn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Open Employer Setup Form
+        </a>
 
       </div>
 
-      <p class="small">
-        Tip: Complete the employer setup form before sending the employee assessment link so reports connect correctly.
-      </p>
-    </section>
-  </main>
+      <!-- STEP 2 -->
+      <div class="step">
 
-  <script>
-    const EMPLOYER_FORM_URL = "PASTE_YOUR_EMPLOYER_GOOGLE_FORM_LINK_HERE";
+        <div class="step-number">
+          2
+        </div>
 
-    const params = new URLSearchParams(window.location.search);
-    const type = params.get("type");
+        <h3>
+          Share employee assessment link
+        </h3>
 
-    const teamScreens = {
-      "office-team-small": {
-        label: "Office Team Screening — Small Team",
-        employeeUrl: "access.html?screen=office"
-      },
-      "office-team-growing": {
-        label: "Office Team Screening — Growing Team",
-        employeeUrl: "access.html?screen=office"
-      },
+        <p>
+          Copy and share this assessment link with employees so they can complete their ergonomic screening.
+        </p>
 
-      "dental-team-small": {
-        label: "Dental Team Screening — Small Team",
-        employeeUrl: "access.html?screen=dental"
-      },
-      "dental-team-growing": {
-        label: "Dental Team Screening — Growing Team",
-        employeeUrl: "access.html?screen=dental"
-      },
+        <button
+          class="btn btn-secondary"
+          id="copyEmployeeLinkBtn"
+          type="button"
+        >
+          Copy Employee Assessment Link
+        </button>
 
-      "warehouse-team-small": {
-        label: "Warehouse Team Screening — Small Team",
-        employeeUrl: "access.html?screen=warehouse"
-      },
-      "warehouse-team-growing": {
-        label: "Warehouse Team Screening — Growing Team",
-        employeeUrl: "access.html?screen=warehouse"
-      },
+      </div>
 
-      "truck-team-small": {
-        label: "Truck Driver Team Screening — Small Team",
-        employeeUrl: "access.html?screen=driving"
-      },
-      "truck-team-growing": {
-        label: "Truck Driver Team Screening — Growing Team",
-        employeeUrl: "access.html?screen=driving"
-      },
+      <!-- STEP 3 -->
+      <div class="step">
 
-      "healthcare-team-small": {
-        label: "Nursing/Healthcare Team Screening — Small Team",
-        employeeUrl: "access.html?screen=healthcare"
-      },
-      "healthcare-team-growing": {
-        label: "Nursing/Healthcare Team Screening — Growing Team",
-        employeeUrl: "access.html?screen=healthcare"
+        <div class="step-number">
+          3
+        </div>
+
+        <h3>
+          Preview employee assessment
+        </h3>
+
+        <p>
+          Open the employee assessment to preview the screening experience before sharing it with your team.
+        </p>
+
+        <a
+          class="btn btn-secondary"
+          id="employeeScreenBtn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Preview Employee Assessment
+        </a>
+
+      </div>
+
+    </div>
+
+    <div class="tip">
+      Tip: Complete the employer setup form before sending the employee assessment link so reports connect correctly.
+    </div>
+
+  </div>
+
+</div>
+
+<script>
+
+const params =
+  new URLSearchParams(window.location.search);
+
+const type =
+  params.get("type");
+
+const employerBtn =
+  document.getElementById("employerFormBtn");
+
+const employeeBtn =
+  document.getElementById("employeeScreenBtn");
+
+const copyBtn =
+  document.getElementById("copyEmployeeLinkBtn");
+
+const teamConfigs = {
+
+  "office-team-small":{
+    employeeUrl:"tools/office/",
+    employerForm:"https://forms.gle/YOUR_OFFICE_FORM"
+  },
+
+  "office-team-growing":{
+    employeeUrl:"tools/office/",
+    employerForm:"https://forms.gle/YOUR_OFFICE_FORM"
+  },
+
+  "dental-team-small":{
+    employeeUrl:"tools/dental/",
+    employerForm:"https://forms.gle/YOUR_DENTAL_FORM"
+  },
+
+  "dental-team-growing":{
+    employeeUrl:"tools/dental/",
+    employerForm:"https://forms.gle/YOUR_DENTAL_FORM"
+  },
+
+  "warehouse-team-small":{
+    employeeUrl:"tools/warehouse/",
+    employerForm:"https://forms.gle/YOUR_WAREHOUSE_FORM"
+  },
+
+  "warehouse-team-growing":{
+    employeeUrl:"tools/warehouse/",
+    employerForm:"https://forms.gle/YOUR_WAREHOUSE_FORM"
+  },
+
+  "truck-team-small":{
+    employeeUrl:"tools/truck-driver/",
+    employerForm:"https://forms.gle/YOUR_TRUCK_FORM"
+  },
+
+  "truck-team-growing":{
+    employeeUrl:"tools/truck-driver/",
+    employerForm:"https://forms.gle/YOUR_TRUCK_FORM"
+  },
+
+  "healthcare-team-small":{
+    employeeUrl:"tools/healthcare/",
+    employerForm:"https://forms.gle/YOUR_HEALTHCARE_FORM"
+  },
+
+  "healthcare-team-growing":{
+    employeeUrl:"tools/healthcare/",
+    employerForm:"https://forms.gle/YOUR_HEALTHCARE_FORM"
+  },
+
+  "home-team-small":{
+    employeeUrl:"tools/home/",
+    employerForm:"https://forms.gle/YOUR_HOME_FORM"
+  }
+
+};
+
+const selected =
+  teamConfigs[type];
+
+if(selected){
+
+  employerBtn.href =
+    selected.employerForm;
+
+  employeeBtn.href =
+    selected.employeeUrl;
+
+  const fullEmployeeUrl =
+    window.location.origin +
+    "/" +
+    selected.employeeUrl;
+
+  copyBtn.addEventListener(
+    "click",
+    async () => {
+
+      try{
+
+        await navigator.clipboard.writeText(
+          fullEmployeeUrl
+        );
+
+        copyBtn.textContent =
+          "Assessment Link Copied";
+
+        setTimeout(() => {
+
+          copyBtn.textContent =
+            "Copy Employee Assessment Link";
+
+        },2500);
+
+      }catch(err){
+
+        alert(fullEmployeeUrl);
+
       }
-    };
 
-    const selected = teamScreens[type];
-
-    const employerBtn = document.getElementById("employerFormBtn");
-    const employeeBtn = document.getElementById("employeeScreenBtn");
-    const copyBtn = document.getElementById("copyEmployeeLinkBtn");
-    const introText = document.getElementById("introText");
-
-    employerBtn.href = EMPLOYER_FORM_URL;
-
-    function buildFullUrl(relativeUrl) {
-      const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, "");
-      return new URL(relativeUrl, baseUrl).href;
     }
+  );
 
-    function setupCopyButton(url) {
-      copyBtn.addEventListener("click", async () => {
-        try {
-          await navigator.clipboard.writeText(url);
+}
 
-          copyBtn.textContent = "Assessment Link Copied";
+</script>
 
-          setTimeout(() => {
-            copyBtn.textContent = "Copy Employee Assessment Link";
-          }, 2500);
-        } catch (err) {
-          window.prompt("Copy this employee assessment link:", url);
-        }
-      });
-    }
-
-    if (selected) {
-      const fullEmployeeUrl = buildFullUrl(selected.employeeUrl);
-
-      introText.textContent =
-        "Thank you for purchasing " + selected.label + ". Complete employer setup first, then copy and share the employee assessment link with your team.";
-
-      employeeBtn.href = selected.employeeUrl;
-      employeeBtn.textContent = "Preview " + selected.label;
-
-      setupCopyButton(fullEmployeeUrl);
-    } else {
-      const fallbackUrl = "access.html";
-
-      employeeBtn.href = fallbackUrl;
-      setupCopyButton(buildFullUrl(fallbackUrl));
-    }
-  </script>
 </body>
 </html>
