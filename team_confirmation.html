@@ -33,7 +33,7 @@
     a { text-decoration: none; color: inherit; }
 
     .container {
-      width: min(920px, calc(100% - 32px));
+      width: min(1120px, calc(100% - 32px));
       margin: 0 auto;
     }
 
@@ -85,12 +85,12 @@
       line-height: 1.7;
       font-size: 1.05rem;
       margin: 0 auto 22px;
-      max-width: 680px;
+      max-width: 720px;
     }
 
     .steps {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 18px;
       margin: 32px 0;
       text-align: left;
@@ -101,6 +101,8 @@
       border: 1px solid var(--line);
       border-radius: 22px;
       background: #f8fcfb;
+      display: flex;
+      flex-direction: column;
     }
 
     .step-number {
@@ -124,6 +126,7 @@
     .step p {
       margin: 0 0 18px;
       font-size: 0.96rem;
+      max-width: none;
     }
 
     .btn {
@@ -137,6 +140,10 @@
       border: 1px solid transparent;
       width: 100%;
       text-align: center;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      margin-top: auto;
     }
 
     .btn-primary {
@@ -155,8 +162,9 @@
       margin-top: 18px;
     }
 
-    @media (max-width: 760px) {
+    @media (max-width: 980px) {
       .steps { grid-template-columns: 1fr; }
+      .container { width: min(920px, calc(100% - 32px)); }
       .card { padding: 30px 22px; margin: 48px auto; }
     }
   </style>
@@ -176,15 +184,16 @@
       <h1>Your ErgoEase team screening is ready.</h1>
 
       <p id="introText">
-        Thank you for your purchase. Complete employer setup first, then share the employee assessment link with your team.
+        Thank you for your purchase. Complete employer setup first, then copy and share the employee assessment link with your team.
       </p>
 
       <div class="steps">
+
         <div class="step">
           <div class="step-number">1</div>
           <h3>Complete employer setup</h3>
           <p>
-            This form collects the employer information needed to connect employee submissions and generate the employer summary PDF.
+            Complete the employer setup form to connect employee submissions and generate the employer summary report.
           </p>
           <a class="btn btn-primary" id="employerFormBtn" href="#" target="_blank" rel="noopener noreferrer">
             Open Employer Setup Form
@@ -193,14 +202,26 @@
 
         <div class="step">
           <div class="step-number">2</div>
-          <h3>Start employee screening</h3>
+          <h3>Share employee assessment link</h3>
           <p>
-            Use this link for employees to complete the matching ergonomic assessment for this team screening.
+            Copy and share this assessment link with employees so they can complete their ergonomic screening.
+          </p>
+          <button class="btn btn-secondary" id="copyEmployeeLinkBtn" type="button">
+            Copy Employee Assessment Link
+          </button>
+        </div>
+
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Preview employee assessment</h3>
+          <p>
+            Open the employee assessment to preview the screening experience before sharing it with your team.
           </p>
           <a class="btn btn-secondary" id="employeeScreenBtn" href="#" target="_blank" rel="noopener noreferrer">
-            Open Employee Assessment
+            Preview Employee Assessment
           </a>
         </div>
+
       </div>
 
       <p class="small">
@@ -250,6 +271,15 @@
       "truck-team-growing": {
         label: "Truck Driver Team Screening — Growing Team",
         employeeUrl: "access.html?screen=driving"
+      },
+
+      "healthcare-team-small": {
+        label: "Nursing/Healthcare Team Screening — Small Team",
+        employeeUrl: "access.html?screen=healthcare"
+      },
+      "healthcare-team-growing": {
+        label: "Nursing/Healthcare Team Screening — Growing Team",
+        employeeUrl: "access.html?screen=healthcare"
       }
     };
 
@@ -257,18 +287,47 @@
 
     const employerBtn = document.getElementById("employerFormBtn");
     const employeeBtn = document.getElementById("employeeScreenBtn");
+    const copyBtn = document.getElementById("copyEmployeeLinkBtn");
     const introText = document.getElementById("introText");
 
     employerBtn.href = EMPLOYER_FORM_URL;
 
+    function buildFullUrl(relativeUrl) {
+      const baseUrl = window.location.origin + window.location.pathname.replace(/[^/]*$/, "");
+      return new URL(relativeUrl, baseUrl).href;
+    }
+
+    function setupCopyButton(url) {
+      copyBtn.addEventListener("click", async () => {
+        try {
+          await navigator.clipboard.writeText(url);
+
+          copyBtn.textContent = "Assessment Link Copied";
+
+          setTimeout(() => {
+            copyBtn.textContent = "Copy Employee Assessment Link";
+          }, 2500);
+        } catch (err) {
+          window.prompt("Copy this employee assessment link:", url);
+        }
+      });
+    }
+
     if (selected) {
+      const fullEmployeeUrl = buildFullUrl(selected.employeeUrl);
+
       introText.textContent =
-        "Thank you for purchasing " + selected.label + ". Complete employer setup first, then share the employee assessment link with your team.";
+        "Thank you for purchasing " + selected.label + ". Complete employer setup first, then copy and share the employee assessment link with your team.";
 
       employeeBtn.href = selected.employeeUrl;
-      employeeBtn.textContent = "Open " + selected.label;
+      employeeBtn.textContent = "Preview " + selected.label;
+
+      setupCopyButton(fullEmployeeUrl);
     } else {
-      employeeBtn.href = "access.html";
+      const fallbackUrl = "access.html";
+
+      employeeBtn.href = fallbackUrl;
+      setupCopyButton(buildFullUrl(fallbackUrl));
     }
   </script>
 </body>
