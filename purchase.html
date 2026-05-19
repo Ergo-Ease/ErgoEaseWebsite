@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ErgoEase | Purchase</title>
+  <style>
+    :root {
+      --bg: #f6fafb;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: #ffffff;
+      --text: #17324a;
+      --muted: #5f7386;
+      --line: #d9e7ea;
+      --blue: #0d5f91;
+      --blue-2: #1485b2;
+      --green: #4da05d;
+      --green-2: #7ac165;
+      --shadow: 0 20px 50px rgba(23, 50, 74, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+      --warn: #c65a2d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(217,231,234,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green-2), #08b0b4 45%, var(--blue));
+      position: relative;
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.34);
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 7px;
+      width: 30px;
+      height: 38px;
+      border: 3px solid rgba(255,255,255,0.85);
+      border-right-color: transparent;
+      border-radius: 999px;
+      transform: rotate(10deg);
+      opacity: 0.92;
+    }
+    .brand-core {
+      position: absolute;
+      left: 19px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 18px 0 0 rgba(255,255,255,0.95);
+    }
+    .brand-leaf {
+      position: absolute;
+      right: 8px;
+      bottom: 10px;
+      width: 18px;
+      height: 28px;
+      background: linear-gradient(180deg, #b4dd7b, var(--green));
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(38deg);
+      opacity: 0.95;
+    }
+    .brand-name { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; }
+    .brand-name .blue { color: var(--blue); }
+    .brand-name .green { color: var(--green); }
+    .brand-tag {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 80px 0 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(77,160,93,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      color: var(--blue);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--green-2), var(--green));
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 11ch;
+    }
+
+    .hero-copy p,
+    .section-head p,
+    .feature-card p,
+    .proof-card p,
+    .summary-list,
+    .small-copy,
+    .tier-description,
+    .tier-footnote {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1.03rem;
+    }
+
+    .hero-copy .lead {
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .microproof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .microproof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 999px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,250,251,0.96));
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -50px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(20,133,178,0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .screen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(77,160,93,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .pricing-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin: 22px 0 18px;
+      padding: 18px 0 22px;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      border-bottom: 1px solid rgba(217,231,234,0.92);
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      color: var(--blue);
+      margin: 6px 0 0;
+    }
+
+    .price-side {
+      text-align: right;
+    }
+
+    .support-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(217,231,234,0.92);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .tier-wrap {
+      margin-top: 6px;
+      margin-bottom: 8px;
+    }
+
+    .tier-heading {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .tier-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tier-card {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 12px;
+      align-items: center;
+      padding: 12px 14px;
+      background: rgba(255,255,255,0.88);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 16px;
+    }
+
+    .tier-card strong {
+      display: block;
+      font-size: 0.98rem;
+      color: var(--text);
+      margin-bottom: 2px;
+    }
+
+    .tier-card span {
+      display: block;
+      color: var(--muted);
+      font-size: 0.9rem;
+      line-height: 1.45;
+    }
+
+    .tier-price {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 1rem;
+      white-space: nowrap;
+    }
+
+    .tier-footnote {
+      margin: 10px 0 0;
+      font-size: 0.9rem;
+    }
+
+    .cta-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .team-actions {
+      margin-top: 24px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+    }
+    .btn-secondary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+      border-color: transparent;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card,
+    .proof-card,
+    .step,
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3,
+    .proof-card h3,
+    .step h3,
+    .summary-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 12px 22px rgba(13,95,145,0.16);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .summary-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .summary-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(13,95,145,0.12), rgba(77,160,93,0.18));
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .alert {
+      display: block;
+      padding: 14px 16px;
+      background: rgba(198,90,45,0.08);
+      border: 1px solid rgba(198,90,45,0.18);
+      color: var(--warn);
+      border-radius: 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    .purchase-includes {
+      margin: 10px 0 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 6px;
+      font-weight: 600;
+    }
+
+    .purchase-includes li {
+      line-height: 1.5;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .split,
+      .feature-grid,
+      .workflow-grid,
+      .proof-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 64px 0; }
+      .nav { flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; }
+      .brand-name { font-size: 1.55rem; }
+      h1 { max-width: none; }
+      .price-side { text-align: left; }
+      .tier-card { grid-template-columns: 1fr; }
+      .tier-price { white-space: normal; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-core"></div>
+          <div class="brand-leaf"></div>
+        </div>
+        <div>
+          <div class="brand-name"><span class="blue">ERGO</span><span class="green">EASE</span></div>
+          <div class="brand-tag">Ergonomic Insight. Healthier Workplaces. Safer Homes.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="occupations.html">Individual</a>
+        <a href="team_screening.html">Team</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#checkout">Proceed to Payment</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span> Team screening purchase</div>
+          <h1 id="heroTitle">Office Team Screening</h1>
+          <p class="lead" id="heroDescription">
+            Identify ergonomic risks early, improve workstation setup, and reduce discomfort before it impacts productivity or leads to injury.
+          </p>
+
+          <div class="microproof">
+            <span>Occupation-specific workflow</span>
+            <span>Personalized PDF reports</span>
+            <span>Automatic employer summary</span>
+          </div>
+        </div>
+
+        <div class="hero-card" id="checkout">
+          <div class="screen-badge" id="screenBadge">Office Team Screening</div>
+          <h2 id="cardTitle">What you’re purchasing</h2>
+          <p class="small-copy" id="cardDescription">
+            A complete team screening workflow with employer setup, employee screening, and automatic reporting.
+          </p>
+
+
+          <div class="tier-wrap">
+            <div class="tier-heading">Team package options</div>
+            <div class="tier-grid" id="tierGrid"></div>
+            <p class="tier-footnote" id="tierFootnote">
+              Final pricing may vary based on workflow setup, reporting needs, and customization.
+            </p>
+          </div>
+
+          <div class="cta-stack team-actions">
+            <a class="btn btn-primary" id="smallTeamBtn" href="#" target="_blank" rel="noopener noreferrer">Proceed with Small Team</a>
+            <a class="btn btn-secondary" id="growingTeamBtn" href="#" target="_blank" rel="noopener noreferrer">Proceed with Growing Team</a>
+            <a class="btn btn-secondary" id="customTeamBtn" href="contact.html?topic=custom">Contact for Large Team / Custom</a>
+            <a class="btn btn-secondary" id="backButton" href="team_screening.html">Back to Team Screening</a>
+          </div>
+
+          <div class="alert">
+            <div>
+              <strong>Your purchase includes:</strong>
+
+              <ul class="purchase-includes">
+                <li>Access to employer setup forms and occupation-specific ergonomic screening tools</li>
+                <li>Employee reports for completed assessments</li>
+                <li>A comprehensive employer summary report with team trends and key findings</li>
+                <li>Easy-to-follow screening and reporting workflow</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What’s included</h2>
+          <p>
+            Everything needed to launch the right team screen and deliver clear, actionable reporting without manual coordination.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6 4h9l3 3v13H6z" stroke="white" stroke-width="2"/>
+                <path d="M15 4v4h4" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Personalized PDF reports</h3>
+            <p id="includedReports">Each completed response generates a clear, personalized PDF report with role-specific recommendations and next steps.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 16l4-4 3 3 7-7" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Automatic employer reporting</h3>
+            <p id="includedEmployer">Once the response threshold is met, the employer summary is generated automatically so you can review trends and priorities faster.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M8 21h8" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Dedicated access page</h3>
+            <p id="includedAccess">After payment, you’ll receive access to a single page with the employer setup form and the matching employee screen link in one place.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <article class="summary-card">
+          <div class="section-head" style="margin-bottom:18px; max-width:none;">
+            <h2 id="summaryTitle">Who this is best for</h2>
+            <p id="summaryDescription">
+              Office teams, remote workers, and administrative roles that want a straightforward workflow with clear reporting.
+            </p>
+          </div>
+          <ul class="summary-list" id="summaryList">
+            <li>Role-matched employee screening</li>
+            <li>Clear setup and reporting flow</li>
+            <li>Faster access to practical recommendations</li>
+            <li>Better visibility into team risk patterns</li>
+          </ul>
+        </article>
+
+        <article class="summary-card">
+          <div class="section-head" style="margin-bottom:18px; max-width:none;">
+            <h2>What happens after payment</h2>
+            <p>
+              The payment step is just the start. Your team workflow continues through a dedicated access page tailored to the screen type you selected.
+            </p>
+          </div>
+          <ul class="summary-list" id="afterPaymentList">
+            <li>Open your dedicated access page</li>
+            <li>Complete the employer setup form</li>
+            <li>Share the matching employee screen</li>
+            <li>Receive reporting automatically as thresholds are met</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple purchase flow</h2>
+          <p>
+            This purchase page is designed to keep the process clear, fast, and easy to follow.
+          </p>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="step">
+            <div class="step-num">01</div>
+            <h3>Review the screen type</h3>
+            <p>Confirm that you’ve selected the right team screen for your role or environment.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num">02</div>
+            <h3>Complete payment</h3>
+            <p>Proceed through checkout using the payment link for this screen type.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num">03</div>
+            <h3>Access your team workflow</h3>
+            <p>Use the post-purchase page to open the employer form and share the correct employee screen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="proof-grid">
+          <article class="proof-card">
+            <h3>No manual coordination</h3>
+            <p>
+              Your purchase unlocks a dedicated flow built to keep employer setup and employee screening organized in one place.
+            </p>
+          </article>
+
+          <article class="proof-card">
+            <h3>Built for clarity</h3>
+            <p>
+              Every screen type uses the same professional structure: setup, screening, individual reports, and automatic summary reporting.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © 2026 ErgoEase. Ergonomic Insight. Healthier Workplaces. Safer Homes.<br>
+        <span style="font-size:0.85rem; color:#7a8f9f;">
+          ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
+        </span>
+      </div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare • Home Safety</div>
+    </div>
+  </footer>
+
+  <script>
+    const purchaseConfig = {
+      office: {
+        label: 'Office Team Screening',
+        title: 'Office Team Screening',
+        heroDescription: 'Identify ergonomic risks early, improve workstation setup, and reduce discomfort before it impacts productivity or leads to injury.',
+        cardDescription: 'A complete office team screening workflow with employer setup, office employee screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small team price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Team', detail: '1–10 employees', price: '$300' },
+          { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
+          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a clear, personalized PDF report with office-specific recommendations to improve comfort, posture, and setup.',
+        employer: 'Once the response threshold is met, the employer summary is generated automatically so you can review trends, flagged risks, and priority improvements faster.',
+        access: 'After payment, you’ll receive access to a single page with the employer setup form and the office employee screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Office teams, remote workers, and administrative roles that want a straightforward workflow with clear reporting.',
+        summaryList: [
+          'Role-matched employee screening',
+          'Clear setup and reporting flow',
+          'Faster access to practical recommendations',
+          'Better visibility into team risk patterns'
+        ],
+        paymentLinks: {
+          small: 'https://buy.stripe.com/test_eVq00c7ZI1Uc7FKcL83AY06',
+          growing: 'https://buy.stripe.com/test_7sY6oA2Fo7ew0di4eC3AY07',
+          custom: 'contact.html?topic=custom'
+        }
+      },
+      dental: {
+        label: 'Dental Team Screening',
+        title: 'Dental Team Screening',
+        heroDescription: 'Identify high-risk postures and repetitive strain patterns before they lead to pain, fatigue, or career-limiting injuries.',
+        cardDescription: 'A complete dental team screening workflow with employer setup, clinical employee screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small team price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Team', detail: '1–10 employees', price: '$300' },
+          { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
+          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a personalized PDF report with dental-specific recommendations tied to operatory setup, seated posture, and repetitive demands.',
+        employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify shared clinical risks and prioritize improvements.',
+        access: 'After payment, you’ll receive access to a single page with the employer setup form and the dental employee screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Dentists, hygienists, assistants, and clinical support teams working in high-repetition, precision-based environments.',
+        summaryList: [
+          'Screening matched to real clinical workflow',
+          'Reports that feel relevant to dental work',
+          'Supports setup and equipment decisions',
+          'Clear visibility into team-wide patterns'
+        ],
+        paymentLinks: {
+          small: 'https://buy.stripe.com/test_00w00cfsagP65xC3ay3AY0d',
+          growing: 'https://buy.stripe.com/test_00w5kwdk26as1hmfXk3AY0c',
+          custom: 'contact.html?topic=custom'
+        }
+      },
+      warehouse: {
+        label: 'Warehouse Team Screening',
+        title: 'Warehouse Team Screening',
+        heroDescription: 'Reduce injury risk by identifying unsafe movement patterns, lifting demands, and repetitive strain before they become costly problems.',
+        cardDescription: 'A warehouse-focused team screening workflow with employer setup, employee screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small team price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Team', detail: '1–10 employees', price: '$300' },
+          { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
+          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a personalized PDF report with practical recommendations for safer lifting, movement, and workstation fit.',
+        employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify where movement, reach, or workflow changes matter most.',
+        access: 'After payment, you’ll receive access to a single page with the employer setup form and the warehouse employee screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Warehouses, distribution centers, and industrial teams focused on safety, efficiency, and injury prevention.',
+        summaryList: [
+          'Task-flow aligned employee screening',
+          'Practical recommendations for real environments',
+          'Clearer injury-prevention priorities',
+          'Better visibility into physical risk exposure'
+        ],
+        paymentLinks: {
+          small: 'https://buy.stripe.com/test_7sYcMYbbU6as9NS3ay3AY08',
+          growing: 'https://buy.stripe.com/test_aFa5kwbbUcyQ7FK6mK3AY09',
+          custom: 'contact.html?topic=custom'
+        }
+      },
+      driving: {
+        label: 'Driving / Fleet Team Screening',
+        title: 'Driving / Fleet Team Screening',
+        heroDescription: 'Identify risks from prolonged sitting, poor vehicle setup, and repetitive driving demands before they lead to chronic pain or fatigue.',
+        cardDescription: 'A fleet-focused team screening workflow with employer setup, driving employee screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small team price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Team', detail: '1–10 employees', price: '$300' },
+          { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
+          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a personalized PDF report with driving-specific recommendations to improve comfort, setup, and long-term tolerance.',
+        employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify common fleet-related strain patterns and priorities.',
+        access: 'After payment, you’ll receive access to a single page with the employer setup form and the driving employee screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Delivery drivers, fleet operators, and transportation teams with high daily driving exposure.',
+        summaryList: [
+          'Cab- and driving-matched screening',
+          'Reports that support setup improvements',
+          'Automatic visibility into team-wide trends',
+          'Less manual coordination for screening rollout'
+        ],
+        paymentLinks: {
+          small: 'https://buy.stripe.com/test_3cI00c3JscyQ0di12q3AY0a',
+          growing: 'https://buy.stripe.com/test_9B6cMYeo66as8JO26u3AY0b',
+          custom: 'contact.html?topic=custom'
+        }
+      },
+      healthcare: {
+        label: 'Healthcare Team Screening',
+        title: 'Healthcare Team Screening',
+        heroDescription: 'Reduce physical strain and injury risk from patient handling, movement demands, and long shifts.',
+        cardDescription: 'A healthcare-focused team screening workflow with employer setup, employee screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small team price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Team', detail: '1–10 employees', price: '$300' },
+          { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
+          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a personalized PDF report with practical recommendations tied to movement demands, patient handling, and strain reduction.',
+        employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify high-demand patterns and prioritize team support strategies.',
+        access: 'After payment, you’ll receive access to a single page with the employer setup form and the healthcare employee screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Nurses, patient care teams, and healthcare staff working in physically demanding environments.',
+        summaryList: [
+          'Movement- and care-matched screening',
+          'Reports aligned with real healthcare demands',
+          'Supports better team safety decisions',
+          'Clear, faster reporting without extra tracking'
+        ],
+        paymentLinks: {
+          small: 'https://buy.stripe.com/test_eVq00cfsa0Q87FKdPc3AY0e',
+          growing: 'https://buy.stripe.com/test_6oU14ggwe2Yg4ty7qO3AY0f',
+          custom: 'contact.html?topic=custom'
+        }
+      },
+      home: {
+        label: 'Home Safety Team Screening',
+        title: 'Home Safety / Aging in Place Team Screening',
+        heroDescription: 'Identify safety risks early, support independent living, and provide clear, actionable recommendations for safer home environments without complex assessments.',
+        cardDescription: 'A home safety screening workflow with coordinator setup, participant screening, and automatic reporting.',
+        price: '$300',
+        priceNote: 'Fixed small group price',
+        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tiers: [
+          { name: 'Small Group', detail: '1–10 participants', price: '$300' },
+          { name: 'Growing Program', detail: '11–25 participants', price: '$500' },
+          { name: 'Larger Program / Custom', detail: '26+ participants or custom workflows', price: 'Contact us' }
+        ],
+        reports: 'Each completed response generates a personalized PDF report with clear recommendations to improve safety, accessibility, and independence at home.',
+        employer: 'Once the response threshold is met, the summary is generated automatically so you can identify shared safety concerns and prioritize next steps with more confidence.',
+        access: 'After payment, you’ll receive access to a single page with the coordinator setup form and the home safety screening link in one place.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Caregivers, home health teams, senior programs, and organizations supporting aging in place.',
+        summaryList: [
+          'Home safety and daily-living focused screening',
+          'Reports designed to support independence',
+          'Clearer visibility into fall and environment risks',
+          'A simpler way to guide safer home decisions'
+        ],
+        paymentLinks: {
+          small: 'PASTE_SMALL_TEAM_STRIPE_LINK_HERE',
+          growing: 'PASTE_GROWING_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=custom'
+        }
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const screenKey = params.get('screen') || 'office';
+    const cfg = purchaseConfig[screenKey] || purchaseConfig.office;
+
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDescription = document.getElementById('heroDescription');
+    const screenBadge = document.getElementById('screenBadge');
+    const cardDescription = document.getElementById('cardDescription');
+    const includedReports = document.getElementById('includedReports');
+    const includedEmployer = document.getElementById('includedEmployer');
+    const includedAccess = document.getElementById('includedAccess');
+    const summaryTitle = document.getElementById('summaryTitle');
+    const summaryDescription = document.getElementById('summaryDescription');
+    const summaryList = document.getElementById('summaryList');
+    const smallTeamBtn = document.getElementById('smallTeamBtn');
+    const growingTeamBtn = document.getElementById('growingTeamBtn');
+    const customTeamBtn = document.getElementById('customTeamBtn');
+    const tierGrid = document.getElementById('tierGrid');
+    const tierFootnote = document.getElementById('tierFootnote');
+
+    heroTitle.textContent = cfg.title;
+    heroDescription.textContent = cfg.heroDescription;
+    screenBadge.textContent = cfg.label;
+    cardDescription.textContent = cfg.cardDescription;
+    includedReports.textContent = cfg.reports;
+    includedEmployer.textContent = cfg.employer;
+    includedAccess.textContent = cfg.access;
+    summaryTitle.textContent = cfg.summaryTitle;
+    summaryDescription.textContent = cfg.summaryDescription;
+    tierFootnote.textContent = cfg.tierFootnote || 'Final pricing may vary based on workflow setup, reporting needs, and customization.';
+
+    const teamButtonLabelMap = {
+      office: 'Office Team',
+      dental: 'Dental Team',
+      warehouse: 'Warehouse Team',
+      driving: 'Driving / Fleet Team',
+      healthcare: 'Healthcare Team',
+      home: 'Home Safety Group'
+    };
+
+    const teamLabel = teamButtonLabelMap[screenKey] || 'Team';
+
+    smallTeamBtn.href = cfg.paymentLinks?.small || '#';
+    growingTeamBtn.href = cfg.paymentLinks?.growing || '#';
+    customTeamBtn.href = cfg.paymentLinks?.custom || 'contact.html?topic=custom';
+
+    smallTeamBtn.textContent = `Proceed with Small ${teamLabel}`;
+    growingTeamBtn.textContent = `Proceed with Growing ${teamLabel}`;
+
+    summaryList.innerHTML = '';
+    cfg.summaryList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      summaryList.appendChild(li);
+    });
+
+    tierGrid.innerHTML = '';
+    (cfg.tiers || []).forEach(tier => {
+      const div = document.createElement('div');
+      div.className = 'tier-card';
+      div.innerHTML = `
+        <div>
+          <strong>${tier.name}</strong>
+          <span>${tier.detail}</span>
+        </div>
+        <div class="tier-price">${tier.price}</div>
+      `;
+      tierGrid.appendChild(div);
+    });
+  </script>
+</body>
+</html>
+

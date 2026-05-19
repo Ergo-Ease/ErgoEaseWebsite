@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ErgoEase | Individual Screening</title>
+  <style>
+    :root {
+      --bg: #f6fafb;
+      --surface: rgba(255, 255, 255, 0.9);
+      --text: #17324a;
+      --muted: #5f7386;
+      --line: #d9e7ea;
+      --blue: #0d5f91;
+      --blue-2: #1485b2;
+      --green: #4da05d;
+      --green-2: #7ac165;
+      --shadow: 0 20px 50px rgba(23, 50, 74, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(217,231,234,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green-2), #08b0b4 45%, var(--blue));
+      position: relative;
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.34);
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 7px;
+      width: 30px;
+      height: 38px;
+      border: 3px solid rgba(255,255,255,0.85);
+      border-right-color: transparent;
+      border-radius: 999px;
+      transform: rotate(10deg);
+      opacity: 0.92;
+    }
+    .brand-core {
+      position: absolute;
+      left: 19px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 18px 0 0 rgba(255,255,255,0.95);
+    }
+    .brand-leaf {
+      position: absolute;
+      right: 8px;
+      bottom: 10px;
+      width: 18px;
+      height: 28px;
+      background: linear-gradient(180deg, #b4dd7b, var(--green));
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(38deg);
+      opacity: 0.95;
+    }
+    .brand-name { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; }
+    .brand-name .blue { color: var(--blue); }
+    .brand-name .green { color: var(--green); }
+    .brand-tag {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+    }
+
+    .hero {
+      padding: 78px 0 34px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(77,160,93,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      color: var(--blue);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--green-2), var(--green));
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.6rem, 5vw, 4.5rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 11ch;
+    }
+
+    .hero p, .section-head p, .role-copy p, .card p {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1.03rem;
+    }
+
+    .hero-panel {
+      background: linear-gradient(180deg, rgba(255,255,255,0.97), rgba(245,251,252,0.95));
+      border: 1px solid rgba(217,231,234,0.95);
+      border-radius: 30px;
+      box-shadow: var(--shadow);
+      padding: 26px;
+    }
+
+    .hero-panel h3 {
+      margin: 0 0 14px;
+      font-size: 1.2rem;
+    }
+
+    .mini-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .mini-item {
+      border: 1px solid var(--line);
+      background: #fbfefe;
+      border-radius: 18px;
+      padding: 14px 16px;
+    }
+
+    .mini-item strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: 1rem;
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 26px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.92);
+      color: var(--blue);
+      border-color: rgba(13,95,145,0.16);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(217,231,234,0.9);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 12px 22px rgba(13,95,145,0.16);
+    }
+
+    .card h3 { margin: 0 0 10px; font-size: 1.2rem; }
+    .card .btn-secondary { margin-top: 16px; }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .split-panel {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .bullets {
+      display: grid;
+      gap: 14px;
+      margin-top: 8px;
+    }
+
+    .bullets div {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--muted);
+      line-height: 1.62;
+    }
+
+    .check {
+      width: 22px;
+      height: 22px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      position: relative;
+    }
+    .check::after {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 4px;
+      width: 7px;
+      height: 4px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .role-stack {
+      display: grid;
+      gap: 22px;
+    }
+
+    .role-feature {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 24px;
+      align-items: center;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 30px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .role-visual {
+      min-height: 220px;
+      border-radius: 24px;
+      border: 1px solid var(--line);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,0.96), rgba(244,250,251,0.92)),
+        radial-gradient(circle at top right, rgba(20,133,178,0.08), transparent 32%);
+      display: grid;
+      place-items: center;
+      padding: 22px;
+    }
+
+    .role-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(77,160,93,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .role-copy h3 {
+      margin: 0 0 10px;
+      font-size: 1.6rem;
+    }
+
+    .role-list {
+      display: grid;
+      gap: 10px;
+      margin: 18px 0 22px;
+      color: var(--muted);
+    }
+
+    .role-list div {
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.58;
+    }
+    .role-list div::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .cta-banner {
+      text-align: center;
+      padding: 38px 26px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(13,95,145,0.98), rgba(77,160,93,0.92));
+      color: white;
+      box-shadow: 0 22px 55px rgba(23,50,74,0.16);
+    }
+    .cta-banner h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+    .cta-banner p {
+      margin: 0 auto;
+      max-width: 62ch;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .why-grid,
+      .role-feature { grid-template-columns: 1fr; }
+      .card-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 64px 0; }
+      .nav { flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; }
+      .card-grid { grid-template-columns: 1fr; }
+      .brand-name { font-size: 1.55rem; }
+      h1 { max-width: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-core"></div>
+          <div class="brand-leaf"></div>
+        </div>
+        <div>
+          <div class="brand-name"><span class="blue">ERGO</span><span class="green">EASE</span></div>
+          <div class="brand-tag">Ergonomic Insight. Healthier Workplaces. Safer Homes.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="occupations.html" class="active">Individual</a>
+        <a href="team_screening.html">Team</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#supported-roles">Get Started</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Role-specific and home safety screening</div>
+          <h1>Get your personalized ergonomic or home safety report</h1>
+          <p>
+            Choose a screening based on your role or environment and receive clear, actionable recommendations tailored to you — in minutes.
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#supported-roles">View Supported Screens</a>
+            <a class="btn btn-secondary" href="#custom-tools">Explore Custom Options</a>
+          </div>
+        </div>
+
+        <div class="hero-panel">
+          <h3>Standard Screens</h3>
+          <div class="mini-list">
+            <div class="mini-item">
+              <strong>Occupations and environments we support</strong>
+              <span>Office, Dental, Warehouse, Driving / Fleet, Healthcare / Nursing, and Home Safety / Aging in Place.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Role-specific output</strong>
+              <span>Each screen is paired with recommendations, equipment guidance, and reports that reflect the demands of that environment.</span>
+            </div>
+            <div class="mini-item">
+              <strong>Need something else?</strong>
+              <span>We can build custom screening solutions for specialized roles, departments, home safety use cases, or unique environments.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="what-you-get">
+      <div class="container">
+        <div class="section-head">
+          <h2>What you’ll get from a screen</h2>
+          <p>
+            ErgoEase is designed to keep the process simple while giving individuals and teams something practical to use right away.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3v18M3 12h18" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>5-minute assessment</h3>
+            <p>A fast, role-specific or home safety screen built around real work demands, movement patterns, setup conditions, or daily activities.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6 4h9l3 3v13H6z" stroke="white" stroke-width="2"/>
+                <path d="M15 4v4h4" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Customized PDF report</h3>
+            <p>Each completed screen generates a customized PDF with personal recommendations, clear risk insights, and practical next steps tailored to the user’s work or home environment.</p>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 16l4-4 3 3 7-7" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Actionable guidance</h3>
+            <p>Recommendations, equipment ideas, and planning-level cost guidance that make it easier to decide what to improve first.</p>
+          </article>
+        </div>
+
+        <div class="split-panel" style="margin-top:24px;">
+          <p style="margin:0; color:var(--text); font-weight:700;">No setup required. No training needed. Start screening immediately.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="supported-roles">
+      <div class="container">
+        <div class="section-head">
+          <h2>Available screening options</h2>
+          <p>
+            Start with a standard screen or use these examples as a guide for what ErgoEase can support across workplace and home environments.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M3 10H21" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Office</h3>
+            <p>Desk setup, seated posture, screen position, keyboard and mouse alignment.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=office">Start Office Screen</a>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3C8 3 5 6 5 10c0 5 3 11 7 11s7-6 7-11c0-4-3-7-7-7z" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Dental</h3>
+            <p>Operatory layout, patient positioning, seated support, instrument access and reach.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=dental">Start Dental Screen</a>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="7" width="18" height="13" stroke="white" stroke-width="2"/>
+                <path d="M3 7l9-4 9 4" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Warehouse</h3>
+            <p>Lifting patterns, reach demands, repetitive movement, workstation fit and task flow.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=warehouse">Start Warehouse Screen</a>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="8" width="14" height="8" stroke="white" stroke-width="2"/>
+                <circle cx="7" cy="18" r="2" fill="white"/>
+                <circle cx="17" cy="18" r="2" fill="white"/>
+              </svg>
+            </div>
+            <h3>Driving / Fleet</h3>
+            <p>Seat support, prolonged sitting, cab setup, neck posture, and repeated entry/exit demands.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=driving">Start Driving Screen</a>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Healthcare / Nursing</h3>
+            <p>Patient handling, dynamic movement, standing tolerance, reach and shift-based strain.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=healthcare">Start Healthcare Screen</a>
+          </article>
+
+          <article class="card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M3 10.5L12 3l9 7.5" stroke="white" stroke-width="2"/>
+                <path d="M5 10v10h14V10" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Home Safety / Aging in Place</h3>
+            <p>Mobility, daily activities, and home setup to support safe, independent living and reduce fall and injury risk.</p>
+            <a class="btn btn-secondary" href="individual_purchase.html?screen=home">Start Home Safety Screen</a>
+          </article>
+
+          <article class="card" id="custom-tools">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/>
+                <path d="M19 12a7 7 0 0 0-.1-1l2-1-2-4-2 1a7 7 0 0 0-2-1l-1-2h-4l-1 2a7 7 0 0 0-2 1l-2-1-2 4 2 1a7 7 0 0 0 0 2l-2 1 2 4 2-1a7 7 0 0 0 2 1l1 2h4l1-2a7 7 0 0 0 2-1l2 1 2-4-2-1c.07-.33.1-.66.1-1z" stroke="white" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Custom Screening Solutions</h3>
+            <p>Need a different role or environment? ErgoEase can be adapted to your workflow, role demands, home safety needs, and environment.</p>
+            <a class="btn btn-secondary" href="index.html#contact">Explore Custom Options</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="why-ergoease-different">
+      <div class="container">
+        <div class="section-head">
+          <h2>Why ErgoEase is different</h2>
+          <p>
+            ErgoEase does more than identify risk. It connects the screen to clear reports, practical recommendations, and equipment guidance people can actually use.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <h3>Not a generic checklist</h3>
+            <p>Each screen is built to reflect real work demands or home safety needs instead of applying the same questions to every role or environment.</p>
+          </article>
+          <article class="card">
+            <h3>Built for real workflows</h3>
+            <p>Recommendations are grounded in how work and daily activities are actually performed, not just broad ergonomic theory.</p>
+          </article>
+          <article class="card">
+            <h3>Clear output you can use</h3>
+            <p>ErgoEase turns risk into reports, recommendations, and equipment guidance that support better decisions.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container why-grid">
+        <div class="split-panel">
+          <div class="section-head" style="margin-bottom:0;">
+            <h2>Why role- and environment-specific screening matters</h2>
+            <p>
+              Generic ergonomic checklists miss the real setup, movement, and daily demands of different roles and environments. ErgoEase is built to reflect how work and everyday activities are actually performed.
+            </p>
+          </div>
+        </div>
+
+        <div class="split-panel">
+          <div class="bullets">
+            <div><span class="check"></span><span>Office work involves different risks than clinical, industrial, driving, or home environments.</span></div>
+            <div><span class="check"></span><span>More relevant questions lead to more useful recommendations and cleaner reports.</span></div>
+            <div><span class="check"></span><span>Individuals and teams can prioritize better when the screen reflects the environment instead of a generic model.</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="featured-screens">
+      <div class="container">
+        <div class="split-panel" style="margin-bottom:28px; text-align:center;">
+          <p style="margin:0 0 14px; color:var(--text); font-weight:700;">Find the right screen for your role or environment and get started in minutes.</p>
+          <a class="btn btn-primary" href="#supported-roles">Choose Your Screen</a>
+        </div>
+
+        <div class="section-head">
+          <h2>Featured screens</h2>
+          <p>
+            These examples show how ErgoEase adapts the screen, report language, and recommendations to the role or environment.
+          </p>
+        </div>
+
+        <div class="role-stack">
+          <article class="role-feature">
+            <div class="role-visual">
+              <div style="width:100%; max-width:280px;">
+                <div class="role-badge">Office</div>
+                <div style="display:grid; gap:10px;">
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Monitor height and distance</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Keyboard and mouse position</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Seated posture and support</div>
+                </div>
+              </div>
+            </div>
+            <div class="role-copy">
+              <div class="role-badge">Office Screen</div>
+              <h3>Designed for desk-based work</h3>
+              <p>
+                The office screen focuses on workstation fit, seated posture, screen setup, and repetitive keyboard and mouse demands.
+              </p>
+              <div class="role-list">
+                <div>Best for office staff, remote teams, and admin-heavy roles</div>
+                <div>Supports setup adjustments and equipment decisions</div>
+                <div>Produces clear individual reports and team summaries</div>
+              </div>
+              <a class="btn btn-primary" href="individual_purchase.html?screen=office">Start Office Screen</a>
+            </div>
+          </article>
+
+          <article class="role-feature">
+            <div class="role-visual">
+              <div style="width:100%; max-width:280px;">
+                <div class="role-badge">Dental</div>
+                <div style="display:grid; gap:10px;">
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Operatory positioning</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Stool support and seated alignment</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Instrument reach and patient access</div>
+                </div>
+              </div>
+            </div>
+            <div class="role-copy">
+              <div class="role-badge">Dental Screen</div>
+              <h3>Built for clinical workflow and positioning</h3>
+              <p>
+                The dental screen reflects operator setup, patient positioning, seated support, and repetitive hand demands during clinical care.
+              </p>
+              <div class="role-list">
+                <div>Best for dentists, hygienists, assistants, and clinical support staff</div>
+                <div>Supports operatory adjustments and equipment planning</div>
+                <div>Produces reports that feel relevant to real dental work</div>
+              </div>
+              <a class="btn btn-primary" href="individual_purchase.html?screen=dental">Start Dental Screen</a>
+            </div>
+          </article>
+
+          <article class="role-feature">
+            <div class="role-visual">
+              <div style="width:100%; max-width:280px;">
+                <div class="role-badge">Warehouse</div>
+                <div style="display:grid; gap:10px;">
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Lifting and reach demands</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Repetitive movement</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Task flow and workstation fit</div>
+                </div>
+              </div>
+            </div>
+            <div class="role-copy">
+              <div class="role-badge">Warehouse Screen</div>
+              <h3>Adapted for physical task flow</h3>
+              <p>
+                The warehouse screen focuses on repetitive movement, lifting exposure, reach demands, and how the work area supports safe task performance.
+              </p>
+              <div class="role-list">
+                <div>Best for warehouse teams, distribution roles, and material handling environments</div>
+                <div>Supports practical recommendations tied to real task demands</div>
+                <div>Helps identify where setup or workflow changes may reduce strain</div>
+              </div>
+              <a class="btn btn-primary" href="individual_purchase.html?screen=warehouse">Start Warehouse Screen</a>
+            </div>
+          </article>
+
+          <article class="role-feature">
+            <div class="role-visual">
+              <div style="width:100%; max-width:280px;">
+                <div class="role-badge">Home Safety</div>
+                <div style="display:grid; gap:10px;">
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Mobility and transfers</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Everyday tasks and reaching</div>
+                  <div style="border:1px solid var(--line); border-radius:16px; padding:14px; background:#fbfefe; color:var(--muted);">Home setup and fall prevention</div>
+                </div>
+              </div>
+            </div>
+            <div class="role-copy">
+              <div class="role-badge">Home Safety / Aging in Place</div>
+              <h3>Designed to support safe, independent living</h3>
+              <p>
+                The home safety screen focuses on mobility, daily activities, home setup, and practical changes that may reduce fall and injury risk.
+              </p>
+              <div class="role-list">
+                <div>Best for aging in place, caregivers, and home safety planning</div>
+                <div>Supports practical recommendations for safer daily function</div>
+                <div>Produces clear reports to guide next steps at home</div>
+              </div>
+              <a class="btn btn-primary" href="individual_purchase.html?screen=home">Start Home Safety Screen</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="testimonials">
+      <div class="container">
+        <div class="section-head">
+          <h2>User testimonials</h2>
+          <p>
+            Used by clinicians, workplace teams, and individuals to identify ergonomic risk and improve setup decisions.
+          </p>
+        </div>
+
+        <div class="card-grid">
+          <article class="card">
+            <p style="font-size:1.05rem; color:var(--text); line-height:1.75; margin:0 0 18px;">“The screening was simple to complete, and the report made it easy to understand where our biggest ergonomic issues were.”</p>
+            <strong style="display:block; margin-bottom:4px;">Practice Manager</strong>
+            <span style="color:var(--muted);">Dental clinic</span>
+          </article>
+
+          <article class="card">
+            <p style="font-size:1.05rem; color:var(--text); line-height:1.75; margin:0 0 18px;">“What stood out was how practical the recommendations were. It didn’t feel generic — it felt tied to the actual work.”</p>
+            <strong style="display:block; margin-bottom:4px;">Operations Lead</strong>
+            <span style="color:var(--muted);">Warehouse team</span>
+          </article>
+
+          <article class="card">
+            <p style="font-size:1.05rem; color:var(--text); line-height:1.75; margin:0 0 18px;">“The report gave us a clearer way to think about risk and what changes would make daily activities feel safer and easier.”</p>
+            <strong style="display:block; margin-bottom:4px;">Family Caregiver</strong>
+            <span style="color:var(--muted);">Home safety screen</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="custom-callout">
+      <div class="container">
+        <div class="cta-banner">
+          <h2>Need a screen that isn’t listed?</h2>
+          <p>
+            ErgoEase can be adapted into a custom screening solution for unique workflows, specialized roles, and environments not covered by the standard menu.
+          </p>
+          <div class="cta-row" style="justify-content:center;">
+            <a class="btn btn-primary" href="contact.html">Explore Custom Screening Options</a>
+            <a class="btn btn-secondary" href="#supported-roles" style="background:rgba(255,255,255,0.16); color:white; border-color:rgba(255,255,255,0.28);">View Standard Screens</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © 2026 ErgoEase. Ergonomic Insight. Healthier Workplaces. Safer Homes.<br>
+        <span style="font-size:0.85rem; color:#7a8f9f;">
+          ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
+        </span>
+      </div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare • Home Safety</div>
+    </div>
+  </footer>
+</body>
+</html>

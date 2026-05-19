@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Payment Confirmed | ErgoEase</title>
+
+  <style>
+    :root {
+      --bg: #f6fafb;
+      --surface: rgba(255,255,255,0.92);
+      --text: #17324a;
+      --muted: #5f7386;
+      --line: #d9e7ea;
+      --blue: #0d5f91;
+      --green: #4da05d;
+      --shadow: 0 20px 50px rgba(23,50,74,0.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: Inter, Arial, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
+    }
+
+    a { text-decoration: none; color: inherit; }
+
+    .container {
+      width: min(900px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      padding: 26px 0;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255,255,255,0.82);
+      backdrop-filter: blur(14px);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.6rem;
+    }
+
+    .brand .blue { color: var(--blue); }
+    .brand .green { color: var(--green); }
+
+    .card {
+      margin: 80px auto;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 44px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(77,160,93,0.12);
+      color: var(--green);
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -0.05em;
+    }
+
+    p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.05rem;
+      margin: 0 auto 22px;
+      max-width: 680px;
+    }
+
+    .next-box {
+      margin: 28px auto;
+      padding: 22px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: #f8fcfb;
+      text-align: left;
+      max-width: 640px;
+    }
+
+    .next-box strong {
+      display: block;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .btn-row {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 48px;
+      padding: 0 22px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+    }
+
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+    }
+
+    .btn-secondary {
+      color: var(--blue);
+      background: white;
+      border-color: var(--line);
+    }
+
+    .small {
+      font-size: 0.9rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 640px) {
+      .card { padding: 30px 22px; margin: 48px auto; }
+      .btn { width: 100%; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="header">
+    <div class="container">
+      <a class="brand" href="index.html">
+        <span class="blue">ERGO</span><span class="green">EASE</span>
+      </a>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <div class="badge">Payment received</div>
+
+      <h1>Your ErgoEase assessment is ready.</h1>
+
+      <p id="introText">
+        Thank you for your purchase. Use the button below to continue to your assessment.
+      </p>
+
+      <div class="next-box">
+        <strong>Next step</strong>
+        <span id="nextText">
+          Select the assessment you purchased and complete the screening. After completion, your report will be generated based on your responses.
+        </span>
+      </div>
+
+      <div class="btn-row">
+        <a class="btn btn-primary" id="startAssessmentBtn" href="individual_access.html">
+          Continue to Assessment
+        </a>
+
+        <a class="btn btn-secondary" href="index.html">
+          Back to Home
+        </a>
+      </div>
+
+      <p class="small">
+        If you have any trouble accessing your assessment, contact ErgoEase for support.
+      </p>
+    </section>
+  </main>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const type = params.get("type");
+
+    const screens = {
+      office: {
+        label: "Office Ergonomic Assessment",
+        url: "individual_access.html?screen=office"
+      },
+      dental: {
+        label: "Dental Ergonomic Assessment",
+        url: "individual_access.html?screen=dental"
+      },
+      warehouse: {
+        label: "Warehouse Ergonomic Assessment",
+        url: "individual_access.html?screen=warehouse"
+      },
+      truck: {
+        label: "Truck Driver Ergonomic Assessment",
+        url: "individual_access.html?screen=driving"
+      },
+      healthcare: {
+        label: "Nursing & Healthcare Ergonomic Assessment",
+        url: "individual_access.html?screen=healthcare"
+      },
+      home: {
+        label: "Home Office Ergonomic Assessment",
+        url: "individual_access.html?screen=home"
+      },
+      homesafety: {
+        label: "Home Safety Assessment",
+        url: "individual_access.html?screen=home-safety"
+      }
+    };
+
+    if (type && screens[type]) {
+      document.getElementById("introText").textContent =
+        "Thank you for purchasing the " + screens[type].label + ".";
+
+      document.getElementById("nextText").textContent =
+        "Continue below to begin your " + screens[type].label + ". Complete the screening and follow the prompts to receive your personalized report.";
+
+      document.getElementById("startAssessmentBtn").href = screens[type].url;
+      document.getElementById("startAssessmentBtn").textContent =
+        "Start " + screens[type].label;
+    }
+  </script>
+</body>
+</html>

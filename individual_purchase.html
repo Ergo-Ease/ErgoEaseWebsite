@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ErgoEase | Individual Purchase</title>
+  <style>
+    :root {
+      --bg: #f6fafb;
+      --surface: rgba(255, 255, 255, 0.92);
+      --surface-strong: #ffffff;
+      --text: #17324a;
+      --muted: #5f7386;
+      --line: #d9e7ea;
+      --blue: #0d5f91;
+      --blue-2: #1485b2;
+      --green: #4da05d;
+      --green-2: #7ac165;
+      --shadow: 0 20px 50px rgba(23, 50, 74, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+      --warn: #c65a2d;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.82);
+      border-bottom: 1px solid rgba(217,231,234,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green-2), #08b0b4 45%, var(--blue));
+      position: relative;
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.34);
+    }
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 7px;
+      width: 30px;
+      height: 38px;
+      border: 3px solid rgba(255,255,255,0.85);
+      border-right-color: transparent;
+      border-radius: 999px;
+      transform: rotate(10deg);
+      opacity: 0.92;
+    }
+    .brand-core {
+      position: absolute;
+      left: 19px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 18px 0 0 rgba(255,255,255,0.95);
+    }
+    .brand-leaf {
+      position: absolute;
+      right: 8px;
+      bottom: 10px;
+      width: 18px;
+      height: 28px;
+      background: linear-gradient(180deg, #b4dd7b, var(--green));
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(38deg);
+      opacity: 0.95;
+    }
+    .brand-name { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; }
+    .brand-name .blue { color: var(--blue); }
+    .brand-name .green { color: var(--green); }
+    .brand-tag {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--blue); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.08fr 0.92fr;
+      gap: 28px;
+      align-items: stretch;
+      padding: 80px 0 28px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(77,160,93,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      color: var(--blue);
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--green-2), var(--green));
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 0 0 16px;
+      font-size: clamp(2.5rem, 5vw, 4.4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 11ch;
+    }
+
+    .hero-copy p,
+    .section-head p,
+    .feature-card p,
+    .proof-card p,
+    .summary-list,
+    .small-copy {
+      color: var(--muted);
+      line-height: 1.72;
+      font-size: 1.03rem;
+    }
+
+    .hero-copy .lead {
+      max-width: 62ch;
+      margin: 0;
+    }
+
+    .microproof {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .microproof span {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 999px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,250,251,0.96));
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      right: -40px;
+      top: -50px;
+      width: 180px;
+      height: 180px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(20,133,178,0.12), transparent 68%);
+      pointer-events: none;
+    }
+
+    .screen-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(77,160,93,0.12);
+      color: var(--green);
+      font-weight: 800;
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-card h2 {
+      margin: 0 0 10px;
+      font-size: 1.75rem;
+      letter-spacing: -0.03em;
+    }
+
+    .pricing-box {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 18px;
+      align-items: end;
+      margin: 22px 0;
+      padding: 18px 0 22px;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      border-bottom: 1px solid rgba(217,231,234,0.92);
+    }
+
+    .price-label {
+      font-size: 0.9rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-weight: 700;
+    }
+
+    .price {
+      font-size: clamp(2.6rem, 4vw, 4rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      color: var(--blue);
+      margin: 6px 0 0;
+    }
+
+    .price-side {
+      text-align: right;
+    }
+
+    .support-note {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      border-radius: 14px;
+      background: rgba(255,255,255,0.85);
+      border: 1px solid rgba(217,231,234,0.92);
+      color: var(--muted);
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .cta-stack {
+      display: grid;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.92);
+      color: var(--blue);
+      border-color: rgba(13,95,145,0.16);
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .feature-card,
+    .proof-card,
+    .step,
+    .summary-card {
+      background: var(--surface);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .feature-card h3,
+    .proof-card h3,
+    .step h3,
+    .summary-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.15rem;
+    }
+
+    .icon-circle {
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 12px 22px rgba(13,95,145,0.16);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .summary-list {
+      display: grid;
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .summary-list li {
+      position: relative;
+      padding-left: 18px;
+    }
+
+    .summary-list li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .workflow-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      margin-bottom: 14px;
+      background: linear-gradient(135deg, rgba(13,95,145,0.12), rgba(77,160,93,0.18));
+      color: var(--blue);
+      font-weight: 800;
+    }
+
+    .proof-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .alert {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 12px;
+      background: rgba(198,90,45,0.08);
+      border: 1px solid rgba(198,90,45,0.18);
+      color: var(--warn);
+      border-radius: 14px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-top: 18px;
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .split,
+      .feature-grid,
+      .workflow-grid,
+      .proof-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 64px 0; }
+      .nav { flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; }
+      .brand-name { font-size: 1.55rem; }
+      h1 { max-width: none; }
+      .pricing-box { grid-template-columns: 1fr; }
+      .price-side { text-align: left; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="index.html">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-core"></div>
+          <div class="brand-leaf"></div>
+        </div>
+        <div>
+          <div class="brand-name"><span class="blue">ERGO</span><span class="green">EASE</span></div>
+          <div class="brand-tag">Ergonomic Insight. Healthier Workplaces. Safer Homes.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="occupations.html" class="active">Individual</a>
+        <a href="team-screening.html">Team</a>
+        <a href="index.html#how-it-works">How It Works</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="index.html#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#checkout">Proceed to Payment</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="dot"></span> Individual screening purchase</div>
+          <h1 id="heroTitle">Office Individual Screening</h1>
+          <p class="lead" id="heroDescription">
+            Get a clear, personalized report that helps you identify ergonomic risks, improve setup, and take practical next steps in minutes.
+          </p>
+
+          <div class="microproof">
+            <span>Takes about 5 minutes</span>
+            <span>Personalized PDF report</span>
+            <span>Clear recommendations</span>
+          </div>
+        </div>
+
+        <div class="hero-card" id="checkout">
+          <div class="screen-badge" id="screenBadge">Office Individual Screening</div>
+          <h2 id="cardTitle">What you’re purchasing</h2>
+          <p class="small-copy" id="cardDescription">
+            A role-specific individual screen that delivers a personalized report with practical recommendations and next steps.
+          </p>
+
+          <div class="pricing-box">
+            <div>
+              <div class="price-label">Price</div>
+              <div class="price" id="screenPrice">$39</div>
+            </div>
+            <div class="price-side">
+              <div class="support-note" id="priceNote">Per individual screen</div>
+            </div>
+          </div>
+
+          <div class="cta-stack">
+            <a class="btn btn-primary" id="paymentButton" href="#" target="_blank" rel="noreferrer">Proceed to Payment</a>
+            <a class="btn btn-secondary" id="backButton" href="occupations.html">Back to Individual Screening</a>
+          </div>
+
+          <div class="alert">
+  <div>
+    <strong>Your purchase includes:</strong>
+
+    <ul class="purchase-includes">
+      <li>Access to the occupation-specific ergonomic assessment</li>
+      <li>A personalized report based on assessment responses</li>
+      <li>Equipment recommendations tailored to identified needs</li>
+      <li>Easy access to assessment results and next steps</li>
+    </ul>
+  </div>
+</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>What’s included</h2>
+          <p>
+            Everything you need to complete the right screen and walk away with something practical and useful.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M6 4h9l3 3v13H6z" stroke="white" stroke-width="2"/>
+                <path d="M15 4v4h4" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Personalized PDF report</h3>
+            <p id="includedReports">You’ll receive a clear, personalized PDF report with identified risk areas, recommendations, and next steps based on your responses.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M4 16l4-4 3 3 7-7" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Practical guidance</h3>
+            <p id="includedGuidance">Recommendations are built to help you make practical adjustments, improve setup, and prioritize what to change first.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="5" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M8 21h8" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Immediate access</h3>
+            <p id="includedAccess">After payment, you’ll be directed to the correct screen so you can complete it right away and access your report without extra steps.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container split">
+        <article class="summary-card">
+          <div class="section-head" style="margin-bottom:18px; max-width:none;">
+            <h2 id="summaryTitle">Who this is best for</h2>
+            <p id="summaryDescription">
+              Individuals who want a fast, clear ergonomic screen that leads to a practical report they can use immediately.
+            </p>
+          </div>
+          <ul class="summary-list" id="summaryList">
+            <li>Fast and easy to complete</li>
+            <li>Clear, personalized output</li>
+            <li>Practical recommendations</li>
+            <li>Useful for real work or home conditions</li>
+          </ul>
+        </article>
+
+        <article class="summary-card">
+          <div class="section-head" style="margin-bottom:18px; max-width:none;">
+            <h2>What happens after payment</h2>
+            <p>
+              The payment step simply unlocks the right individual screen for you. From there, the process is fast and straightforward.
+            </p>
+          </div>
+          <ul class="summary-list" id="afterPaymentList">
+            <li>Open the matching individual screen</li>
+            <li>Complete the short assessment</li>
+            <li>Receive your personalized PDF report</li>
+            <li>Use the recommendations to take action</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-head">
+          <h2>Simple purchase flow</h2>
+          <p>
+            This page is designed to keep the process fast, clear, and low-friction.
+          </p>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="step">
+            <div class="step-num">01</div>
+            <h3>Review the screen type</h3>
+            <p>Confirm that you’ve selected the screening option that best fits your role or environment.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num">02</div>
+            <h3>Complete payment</h3>
+            <p>Proceed through checkout using the payment link for this screen type.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-num">03</div>
+            <h3>Complete your screen</h3>
+            <p>Open the matching screen, complete the assessment, and receive your personalized report.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="proof-grid">
+          <article class="proof-card">
+            <h3>Built for clarity</h3>
+            <p>
+              Each individual screen is designed to translate your responses into a report that’s easy to understand and act on.
+            </p>
+          </article>
+
+          <article class="proof-card">
+            <h3>Focused on action</h3>
+            <p>
+              The goal is not just to score risk — it’s to help you make better ergonomic or home safety decisions with confidence.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © 2026 ErgoEase. Ergonomic Insight. Healthier Workplaces. Safer Homes.<br>
+        <span style="font-size:0.85rem; color:#7a8f9f;">
+          ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
+        </span>
+      </div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare • Home Safety</div>
+    </div>
+  </footer>
+
+  <script>
+    const purchaseConfig = {
+      office: {
+        label: 'Office Individual Screening',
+        title: 'Office Individual Screening',
+        heroDescription: 'Get a clear, personalized report that helps you identify ergonomic risks, improve setup, and take practical next steps in minutes.',
+        cardDescription: 'An office-specific individual screen that delivers a personalized report with practical recommendations and next steps.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a clear, personalized PDF report with identified risk areas, setup recommendations, and next steps based on your responses.',
+        guidance: 'Recommendations are designed to help you improve posture, workstation fit, and day-to-day habits that may contribute to discomfort or strain.',
+        access: 'After payment, you’ll be directed to the office screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Office workers, remote staff, and desk-based roles who want a fast, personalized ergonomic screen.',
+        summaryList: [
+          'Monitor, keyboard, and mouse setup',
+          'Seated posture and workstation fit',
+          'Practical adjustments you can apply immediately',
+          'Useful for office and hybrid work environments'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_28EdR2gwe0Q81hmaD03AY00'
+      },
+      dental: {
+        label: 'Dental Individual Screening',
+        title: 'Dental Individual Screening',
+        heroDescription: 'Identify posture and setup risks common in clinical work and get targeted recommendations that support comfort, efficiency, and long-term durability.',
+        cardDescription: 'A dental-specific individual screen with practical reporting tied to operatory workflow, positioning, and clinical demands.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a personalized PDF report with identified strain patterns, posture-related risk areas, and targeted recommendations for clinical work.',
+        guidance: 'Recommendations are built around real dental workflow, including seated support, operatory setup, patient positioning, and repetitive hand demands.',
+        access: 'After payment, you’ll be directed to the dental screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Dentists, hygienists, assistants, and clinical support staff working in repetitive, precision-based environments.',
+        summaryList: [
+          'Operatory positioning and patient access',
+          'Seated posture and stool support',
+          'Clinical movement and reach demands',
+          'Recommendations that feel relevant to dental work'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_3cI7sEcfY6asf8cbH43AY01'
+      },
+      warehouse: {
+        label: 'Warehouse Individual Screening',
+        title: 'Warehouse Individual Screening',
+        heroDescription: 'Identify lifting, reaching, and repetitive movement risks early and get clear recommendations for safer, more efficient task performance.',
+        cardDescription: 'A warehouse-specific individual screen that translates physical job demands into a practical personalized report.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a personalized PDF report with identified risk areas related to lifting, movement, repetition, and workstation fit.',
+        guidance: 'Recommendations are built to help you improve movement patterns, reduce strain exposure, and identify practical opportunities for safer task flow.',
+        access: 'After payment, you’ll be directed to the warehouse screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Warehouse workers, material handlers, and industrial roles with repeated physical task demands.',
+        summaryList: [
+          'Lifting and reaching demands',
+          'Repetitive movement patterns',
+          'Task-flow and workstation fit',
+          'Actionable recommendations for safer movement'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_6oUfZa5RAcyQ8JOaD03AY03'
+      },
+      driving: {
+        label: 'Driving / Fleet Individual Screening',
+        title: 'Driving / Fleet Individual Screening',
+        heroDescription: 'Understand how seating, cab setup, and prolonged driving may be affecting comfort and risk — then get practical next steps to improve both.',
+        cardDescription: 'A driving-specific individual screen focused on sitting tolerance, cab setup, and repeated driving-related strain.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a personalized PDF report with identified risk areas related to seating position, cab setup, posture, and long-duration driving.',
+        guidance: 'Recommendations are built to help improve comfort, reduce long-term strain, and make better setup decisions for driving-heavy work.',
+        access: 'After payment, you’ll be directed to the driving screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Drivers, fleet operators, delivery staff, and anyone with high daily driving exposure.',
+        summaryList: [
+          'Cab setup and seating position',
+          'Prolonged sitting tolerance',
+          'Posture and repeated driving demands',
+          'Practical guidance for better comfort and support'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_4gM4gsdk2cyQ1hmaD03AY02'
+      },
+      healthcare: {
+        label: 'Healthcare Individual Screening',
+        title: 'Healthcare / Nursing Individual Screening',
+        heroDescription: 'Identify movement and strain risks tied to patient care, long shifts, and demanding physical work — then get practical recommendations to reduce them.',
+        cardDescription: 'A healthcare-specific individual screen designed around patient handling, movement demands, and physical strain exposure.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a personalized PDF report with identified risk areas related to movement, transfers, standing tolerance, and physical care demands.',
+        guidance: 'Recommendations are built to support safer movement, reduce unnecessary strain, and improve day-to-day physical tolerance in healthcare settings.',
+        access: 'After payment, you’ll be directed to the healthcare screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Nurses, patient care staff, healthcare workers, and physically demanding care roles.',
+        summaryList: [
+          'Patient handling and transfer-related strain',
+          'Dynamic movement and standing exposure',
+          'Practical support for safer physical work',
+          'Recommendations tailored to healthcare demands'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_6oU9AM0xggP62lqfXk3AY04'
+      },
+      home: {
+        label: 'Home Safety Individual Screening',
+        title: 'Home Safety / Aging in Place Individual Screening',
+        heroDescription: 'Identify fall risks, mobility concerns, and home setup issues early so you can support safer, more independent living with confidence.',
+        cardDescription: 'A home safety screen that delivers a personalized report with clear recommendations to improve safety, accessibility, and daily function.',
+        price: '$39',
+        priceNote: 'Per individual screen',
+        reports: 'You’ll receive a personalized PDF report with identified safety concerns, accessibility issues, and clear next steps to support safer home living.',
+        guidance: 'Recommendations are built around mobility, daily tasks, and the home environment to help reduce fall risk and improve confidence at home.',
+        access: 'After payment, you’ll be directed to the home safety screen so you can complete it right away and access your report without extra steps.',
+        summaryTitle: 'Who this is best for',
+        summaryDescription: 'Individuals, caregivers, and families who want clearer insight into home safety and aging in place risks.',
+        summaryList: [
+          'Mobility and fall-risk related concerns',
+          'Home setup and accessibility issues',
+          'Recommendations that support independence',
+          'Useful for aging in place and safer living decisions'
+        ],
+        paymentLink: 'https://buy.stripe.com/test_fZudR293M6as4tyaD03AY05'
+      }
+    };
+
+    const params = new URLSearchParams(window.location.search);
+    const screenKey = params.get('screen') || 'office';
+    const cfg = purchaseConfig[screenKey] || purchaseConfig.office;
+
+    const heroTitle = document.getElementById('heroTitle');
+    const heroDescription = document.getElementById('heroDescription');
+    const screenBadge = document.getElementById('screenBadge');
+    const cardDescription = document.getElementById('cardDescription');
+    const screenPrice = document.getElementById('screenPrice');
+    const priceNote = document.getElementById('priceNote');
+    const includedReports = document.getElementById('includedReports');
+    const includedGuidance = document.getElementById('includedGuidance');
+    const includedAccess = document.getElementById('includedAccess');
+    const summaryTitle = document.getElementById('summaryTitle');
+    const summaryDescription = document.getElementById('summaryDescription');
+    const summaryList = document.getElementById('summaryList');
+    const paymentButton = document.getElementById('paymentButton');
+
+    heroTitle.textContent = cfg.title;
+    heroDescription.textContent = cfg.heroDescription;
+    screenBadge.textContent = cfg.label;
+    cardDescription.textContent = cfg.cardDescription;
+    screenPrice.textContent = cfg.price;
+    priceNote.textContent = cfg.priceNote;
+    includedReports.textContent = cfg.reports;
+    includedGuidance.textContent = cfg.guidance;
+    includedAccess.textContent = cfg.access;
+    summaryTitle.textContent = cfg.summaryTitle;
+    summaryDescription.textContent = cfg.summaryDescription;
+    paymentButton.href = cfg.paymentLink;
+
+    const buttonTextMap = {
+      office: 'Proceed to Office Payment',
+      dental: 'Proceed to Dental Payment',
+      warehouse: 'Proceed to Warehouse Payment',
+      driving: 'Proceed to Driving Payment',
+      healthcare: 'Proceed to Healthcare Payment',
+      home: 'Proceed to Home Safety Payment'
+    };
+    paymentButton.textContent = buttonTextMap[screenKey] || 'Proceed to Payment';
+
+    summaryList.innerHTML = '';
+    cfg.summaryList.forEach(item => {
+      const li = document.createElement('li');
+      li.textContent = item;
+      summaryList.appendChild(li);
+    });
+  </script>
+</body>
+</html>

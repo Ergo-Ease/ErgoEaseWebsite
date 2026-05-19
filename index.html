@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ErgoEase</title>
+  <style>
+    :root {
+      --bg: #f6fafb;
+      --surface: rgba(255, 255, 255, 0.88);
+      --surface-strong: #ffffff;
+      --text: #17324a;
+      --muted: #5f7386;
+      --line: #d9e7ea;
+      --blue: #0d5f91;
+      --blue-2: #1485b2;
+      --green: #4da05d;
+      --green-2: #7ac165;
+      --shadow: 0 20px 50px rgba(23, 50, 74, 0.08);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(77,160,93,0.16), transparent 30%),
+        radial-gradient(circle at top right, rgba(20,133,178,0.14), transparent 28%),
+        linear-gradient(180deg, #fbfeff 0%, var(--bg) 100%);
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { max-width: 100%; display: block; }
+
+    .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
+    .section { padding: 84px 0; }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.8);
+      border-bottom: 1px solid rgba(217,231,234,0.9);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 0;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand-mark {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      background: linear-gradient(135deg, var(--green-2), #08b0b4 45%, var(--blue));
+      position: relative;
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+      overflow: hidden;
+      flex: 0 0 auto;
+    }
+
+    .brand-mark::before {
+      content: "";
+      position: absolute;
+      inset: 7px;
+      border-radius: 15px;
+      border: 1px solid rgba(255,255,255,0.34);
+    }
+
+    .brand-mark::after {
+      content: "";
+      position: absolute;
+      left: 10px;
+      top: 7px;
+      width: 30px;
+      height: 38px;
+      border: 3px solid rgba(255,255,255,0.85);
+      border-right-color: transparent;
+      border-radius: 999px;
+      transform: rotate(10deg);
+      opacity: 0.92;
+    }
+
+    .brand-core {
+      position: absolute;
+      left: 19px;
+      top: 10px;
+      width: 12px;
+      height: 12px;
+      background: rgba(255,255,255,0.95);
+      border-radius: 999px;
+      box-shadow: 0 18px 0 0 rgba(255,255,255,0.95);
+    }
+
+    .brand-leaf {
+      position: absolute;
+      right: 8px;
+      bottom: 10px;
+      width: 18px;
+      height: 28px;
+      background: linear-gradient(180deg, #b4dd7b, var(--green));
+      border-radius: 50% 0 50% 50%;
+      transform: rotate(38deg);
+      opacity: 0.95;
+    }
+
+    .brand-text { line-height: 1; }
+    .brand-name { font-size: 1.9rem; font-weight: 800; letter-spacing: -0.04em; }
+    .brand-name .blue { color: var(--blue); }
+    .brand-name .green { color: var(--green); }
+    .brand-tag {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 0.84rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover { color: var(--blue); }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border-radius: 999px;
+      color: white;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 10px 30px rgba(13,95,145,0.18);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 40px;
+      align-items: center;
+      padding: 54px 0 26px;
+      min-height: 100vh;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border: 1px solid rgba(77,160,93,0.22);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.75);
+      color: var(--blue);
+      font-size: 0.92rem;
+      font-weight: 700;
+    }
+
+    .eyebrow .dot {
+      width: 8px;
+      height: 8px;
+      background: linear-gradient(180deg, var(--green-2), var(--green));
+      border-radius: 999px;
+    }
+
+    h1 {
+      margin: 18px 0 16px;
+      font-size: clamp(2.6rem, 5vw, 4.7rem);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      max-width: 12ch;
+    }
+
+    .hero p {
+      margin: 0;
+      max-width: 62ch;
+      font-size: 1.12rem;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .cta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 999px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform 0.15s ease, box-shadow 0.15s ease, border-color 0.15s ease;
+    }
+    .btn:hover { transform: translateY(-1px); }
+    .btn-primary {
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      box-shadow: 0 14px 34px rgba(13,95,145,0.18);
+    }
+    .btn-secondary {
+      background: rgba(255,255,255,0.92);
+      color: var(--blue);
+      border-color: rgba(13,95,145,0.16);
+    }
+
+    .hero-side {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hero-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(245,251,252,0.95));
+      border: 1px solid rgba(217,231,234,0.9);
+      border-radius: 32px;
+      box-shadow: var(--shadow);
+      padding: 22px;
+      width: min(100%, 520px);
+      min-height: 560px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::before {
+      content: "";
+      position: absolute;
+      inset: auto -10% -34% auto;
+      width: 240px;
+      height: 240px;
+      border-radius: 999px;
+      background: radial-gradient(circle, rgba(122,193,101,0.18), transparent 68%);
+      pointer-events: none;
+    }
+
+    .report-slider {
+      width: 100%;
+      position: relative;
+      min-height: 500px;
+    }
+
+    .report-slide {
+      position: absolute;
+      inset: 0;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(8px);
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    }
+
+    .report-slide.active {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .slide-label {
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #5f7386;
+      margin-bottom: 10px;
+    }
+
+    .report-title {
+      margin: 0 0 16px;
+      font-size: 1.35rem;
+    }
+
+    .score-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+
+    .score-value {
+      font-size: 1.7rem;
+      font-weight: 800;
+      color: var(--blue);
+      line-height: 1;
+    }
+
+    .score-status {
+      margin-top: 4px;
+      color: #c0392b;
+      font-weight: 800;
+    }
+
+    .panel {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 14px;
+      background: #fbfefe;
+      margin-bottom: 14px;
+    }
+
+    .panel-title { font-weight: 800; margin-bottom: 10px; }
+
+    .bars { display: grid; gap: 12px; }
+    .bar-row span {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 700;
+      color: #51687b;
+      font-size: 0.95rem;
+    }
+    .bar {
+      height: 10px;
+      background: #e8f0f2;
+      border-radius: 999px;
+      overflow: hidden;
+    }
+    .bar i {
+      display: block;
+      height: 100%;
+      background: linear-gradient(90deg, var(--green-2), var(--blue-2));
+      border-radius: 999px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      padding: 10px;
+      border-radius: 12px;
+      text-align: center;
+      background: #fbfefe;
+    }
+
+    .stat strong { color: var(--blue); font-size: 1.15rem; }
+    .muted-list, .muted-list li, .small-copy { color: var(--muted); }
+    .muted-list { margin: 0; padding-left: 18px; line-height: 1.55; }
+    .small-copy { font-size: 0.95rem; line-height: 1.6; }
+
+    .slider-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      width: min(100%, 520px);
+    }
+
+    .slider-dots { display: flex; gap: 8px; }
+    .dot-btn {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      border: 0;
+      background: #d4e2e6;
+      cursor: pointer;
+      padding: 0;
+    }
+    .dot-btn.active { background: linear-gradient(135deg, var(--blue), var(--green)); }
+
+    .slider-btn {
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,0.9);
+      color: var(--blue);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .section-head {
+      max-width: 720px;
+      margin-bottom: 34px;
+    }
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(2rem, 3vw, 3rem);
+      letter-spacing: -0.04em;
+    }
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1.02rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .card {
+      background: var(--surface);
+      border: 1px solid rgba(217,231,234,0.9);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    .occupation-card h3,
+    .price-card h3,
+    .feature-card h3 { margin: 0 0 10px; font-size: 1.15rem; }
+
+    .occupation-card p,
+    .price-card p,
+    .feature-card p,
+    .step p,
+    .split-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .icon-circle {
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 16px;
+      color: white;
+      background: linear-gradient(135deg, var(--blue), var(--green));
+      font-weight: 800;
+      box-shadow: 0 12px 22px rgba(13,95,145,0.16);
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .step {
+      padding: 24px;
+      border-radius: var(--radius);
+      border: 1px solid rgba(217,231,234,0.9);
+      background: rgba(255,255,255,0.88);
+      box-shadow: var(--shadow);
+    }
+
+    .step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, rgba(13,95,145,0.12), rgba(77,160,93,0.18));
+      color: var(--blue);
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .step h3 { margin: 0 0 10px; font-size: 1.08rem; }
+
+    .checklist {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+    }
+
+    .check-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.86);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 20px;
+      padding: 18px;
+      box-shadow: var(--shadow);
+    }
+
+    .check {
+      width: 24px;
+      height: 24px;
+      border-radius: 999px;
+      flex: 0 0 auto;
+      margin-top: 2px;
+      background: linear-gradient(135deg, var(--green), var(--green-2));
+      position: relative;
+    }
+
+    .check::after {
+      content: "";
+      position: absolute;
+      left: 7px;
+      top: 5px;
+      width: 8px;
+      height: 4px;
+      border-left: 2px solid #fff;
+      border-bottom: 2px solid #fff;
+      transform: rotate(-45deg);
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .split-panel {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(217,231,234,0.92);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+    }
+
+    .industry-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+    .industry-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(217,231,234,0.88);
+      color: var(--muted);
+    }
+    .industry-list strong { color: var(--text); }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .price-card { position: relative; padding: 28px; }
+    .price-card.featured {
+      background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(238,247,248,0.96));
+      border-color: rgba(20,133,178,0.24);
+      transform: translateY(-6px);
+    }
+
+    .badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      background: rgba(77,160,93,0.13);
+      color: var(--green);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .price {
+      margin: 10px 0 2px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .price-sub { color: var(--muted); margin-bottom: 18px !important; }
+
+    .price-list {
+      display: grid;
+      gap: 12px;
+      margin: 20px 0 26px;
+    }
+    .price-list div {
+      color: var(--muted);
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.55;
+    }
+    .price-list div::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-weight: 800;
+    }
+
+    .cta-banner {
+      text-align: center;
+      padding: 38px 26px;
+      border-radius: 34px;
+      background: linear-gradient(135deg, rgba(13,95,145,0.98), rgba(77,160,93,0.92));
+      color: white;
+      box-shadow: 0 22px 55px rgba(23,50,74,0.16);
+    }
+    .cta-banner h2 {
+      margin: 0 0 12px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -0.05em;
+    }
+    .cta-banner p {
+      margin: 0 auto;
+      max-width: 62ch;
+      color: rgba(255,255,255,0.88);
+      line-height: 1.7;
+    }
+    .cta-banner .cta-row { justify-content: center; }
+    .cta-banner .btn-secondary {
+      background: rgba(255,255,255,0.16);
+      color: white;
+      border-color: rgba(255,255,255,0.28);
+    }
+
+    footer {
+      padding: 34px 0 50px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      align-items: center;
+      border-top: 1px solid rgba(217,231,234,0.92);
+      padding-top: 22px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1024px) {
+      .hero,
+      .split { grid-template-columns: 1fr; min-height: auto; }
+      .card-grid,
+      .pricing-grid { grid-template-columns: repeat(2, 1fr); }
+      .steps { grid-template-columns: repeat(2, 1fr); }
+      .checklist { grid-template-columns: 1fr; }
+      .hero-side { align-items: stretch; }
+      .slider-controls, .hero-card { width: 100%; }
+    }
+
+    @media (max-width: 760px) {
+      .section { padding: 64px 0; }
+      .nav { flex-wrap: wrap; }
+      .nav-links { order: 3; width: 100%; justify-content: center; flex-wrap: wrap; gap: 14px 18px; }
+      .card-grid,
+      .pricing-grid,
+      .steps,
+      .stats,
+      .two-col { grid-template-columns: 1fr; }
+      .brand-name { font-size: 1.55rem; }
+      h1 { max-width: none; }
+      .hero-card { min-height: 580px; }
+      .slider-controls { flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="container nav">
+      <a class="brand" href="#top">
+        <div class="brand-mark" aria-hidden="true">
+          <div class="brand-core"></div>
+          <div class="brand-leaf"></div>
+        </div>
+        <div class="brand-text">
+          <div class="brand-name"><span class="blue">ERGO</span><span class="green">EASE</span></div>
+          <div class="brand-tag">Ergonomic Insight. Healthier Workplaces. Safer Homes.</div>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+<a href="occupations.html">Individual</a>
+<a href="team_screening.html">Team</a>
+<a href="#how-it-works">How It Works</a>
+<a href="#pricing">Pricing</a>
+<a href="contact.html">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#pricing">Get Started</a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="section">
+      <div class="container hero">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> Occupation-specific ergonomic screening</div>
+          <h1>Find the risk.<br>Fix the problem.<br>Future-proof your costs.</h1>
+          <p>
+            A simple ergonomic screening that generates clear reports, actionable recommendations, and equipment guidance.<br>
+            <em>Designed to help individuals, teams, and families make better ergonomic and safe decisions to support both work and home environments.</em>
+          </p>
+          <div class="cta-row">
+            <a class="btn btn-primary" href="#pricing">Get Your Ergonomic Score</a>
+            <a class="btn btn-secondary" href="#contact">Run a Team Screening</a>
+          </div>
+        </div>
+
+        <div class="hero-side">
+          <div class="hero-card">
+            <div class="report-slider" id="reportSlider">
+              <section class="report-slide active">
+                <div class="slide-label">Example Individual Report</div>
+                <div class="score-row">
+                  <div>
+                    <h3 class="report-title">ErgoEase Ergonomic Assessment</h3>
+                    <div class="small-copy">Ergonomic Score Overview</div>
+                  </div>
+                  <div style="text-align:right;">
+                    <div class="score-value">61 / 100</div>
+                    <div class="score-status">Needs Attention</div>
+                  </div>
+                </div>
+
+                <div class="panel">
+                  <div class="panel-title">Risk Overview</div>
+                  <div class="bars">
+                    <div class="bar-row">
+                      <span>Operator Positioning</span>
+                      <div class="bar"><i style="width:72%"></i></div>
+                    </div>
+                    <div class="bar-row">
+                      <span>Seated Support</span>
+                      <div class="bar"><i style="width:55%"></i></div>
+                    </div>
+                    <div class="bar-row">
+                      <span>Wrists &amp; Hands</span>
+                      <div class="bar"><i style="width:64%"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="stats">
+                  <div class="stat"><strong>5 min</strong><div>Simple screening</div></div>
+                  <div class="stat"><strong>PDF</strong><div>Professional report</div></div>
+                  <div class="stat"><strong>Clear</strong><div>Actionable guidance</div></div>
+                </div>
+              </section>
+
+              <section class="report-slide">
+                <div class="slide-label">Clinical Findings</div>
+                <h3 class="report-title">Key Risk Areas</h3>
+                <div class="two-col">
+                  <div class="panel">
+                    <div class="panel-title">Flagged Domains</div>
+                    <ul class="muted-list">
+                      <li>Workstation setup</li>
+                      <li>Seated support</li>
+                      <li>Wrist &amp; hand strain</li>
+                    </ul>
+                  </div>
+                  <div class="panel">
+                    <div class="panel-title">Interpretation</div>
+                    <div class="small-copy">
+                      Findings suggest positioning, support, and repetitive hand demands that may contribute to strain over time if left unaddressed.
+                    </div>
+                  </div>
+                </div>
+              </section>
+
+              <section class="report-slide">
+                <div class="slide-label">Recommended Actions</div>
+                <h3 class="report-title">Priority Adjustments</h3>
+                <div class="panel">
+                  <ul class="muted-list">
+                    <li>Adjust workstation positioning to reduce forward leaning</li>
+                    <li>Position tools and materials within close reach to reduce overreaching</li>
+                    <li>Incorporate posture resets throughout the workday to reduce static loading</li>
+                  </ul>
+                </div>
+              </section>
+
+              <section class="report-slide">
+                <div class="slide-label">Equipment Ideas &amp; Cost</div>
+                <h3 class="report-title">Suggested Equipment</h3>
+                <div class="panel">
+                  <div style="display:grid; gap:10px; color:var(--muted);">
+                    <div>• Adjustable support equipment</div>
+                    <div>• Reach-improving workstation accessory</div>
+                    <div>• Seated posture support option</div>
+                  </div>
+                </div>
+                <div class="panel" style="margin-bottom:0;">
+                  <div class="panel-title">Estimated Cost</div>
+                  <div class="score-value" style="font-size:1.4rem;">$360–$1060</div>
+                  <div class="small-copy">Planning-level equipment guidance for faster decision-making.</div>
+                </div>
+              </section>
+            </div>
+          </div>
+
+          <div class="slider-controls">
+            <button class="slider-btn" id="prevSlide" type="button">← Previous</button>
+            <div class="slider-dots" id="sliderDots">
+              <button class="dot-btn active" type="button" aria-label="Slide 1"></button>
+              <button class="dot-btn" type="button" aria-label="Slide 2"></button>
+              <button class="dot-btn" type="button" aria-label="Slide 3"></button>
+              <button class="dot-btn" type="button" aria-label="Slide 4"></button>
+            </div>
+            <button class="slider-btn" id="nextSlide" type="button">Next →</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="occupations">
+      <div class="container">
+        <div class="section-head">
+          <h2>Built for real work and home environments</h2>
+          <p>
+  Each ErgoEase screen is tailored to the physical demands, tools, and workflow of the role, so recommendations feel relevant and actionable. Home safety assessments extend this approach to everyday living, helping support safe, independent environments.
+</p>        
+</div>
+
+        <div class="card-grid">
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="4" width="18" height="14" rx="2" stroke="white" stroke-width="2"/>
+                <path d="M3 10H21" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Office</h3>
+            <p>Desk setup, seated posture, screen position, keyboard and mouse alignment.</p>
+          </article>
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 3C8 3 5 6 5 10c0 5 3 11 7 11s7-6 7-11c0-4-3-7-7-7z" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Dental</h3>
+            <p>Operatory layout, patient positioning, seated support, instrument access and reach.</p>
+          </article>
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="3" y="7" width="18" height="13" stroke="white" stroke-width="2"/>
+                <path d="M3 7l9-4 9 4" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Warehouse</h3>
+            <p>Lifting patterns, reach demands, repetitive movement, workstation fit and task flow.</p>
+          </article>
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <rect x="2" y="8" width="14" height="8" stroke="white" stroke-width="2"/>
+                <circle cx="7" cy="18" r="2" fill="white"/>
+                <circle cx="17" cy="18" r="2" fill="white"/>
+              </svg>
+            </div>
+            <h3>Driving / Fleet</h3>
+            <p>Seat support, prolonged sitting, cab setup, neck posture, and repeated entry/exit demands.</p>
+          </article>
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 5v14M5 12h14" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            <h3>Healthcare / Nursing</h3>
+            <p>Patient handling, dynamic movement, standing tolerance, reach and shift-based strain.</p>
+          </article>
+          <article class="card occupation-card">
+            <div class="icon-circle" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="3" stroke="white" stroke-width="2"/>
+                <path d="M19 12a7 7 0 0 0-.1-1l2-1-2-4-2 1a7 7 0 0 0-2-1l-1-2h-4l-1 2a7 7 0 0 0-2 1l-2-1-2 4 2 1a7 7 0 0 0 0 2l-2 1 2 4 2-1a7 7 0 0 0 2 1l1 2h4l1-2a7 7 0 0 0 2-1l2 1 2-4-2-1c.07-.33.1-.66.1-1z" stroke="white" stroke-width="1.5"/>
+              </svg>
+            </div>
+            <h3>Custom Roles</h3>
+            <p>Need a different occupation? ErgoEase can be adapted to your workflow and physical demands.</p>
+          </article>
+<article class="card">
+  <div class="icon-circle">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+      <path d="M3 10.5L12 3l9 7.5" stroke="white" stroke-width="2"/>
+      <path d="M5 10v10h14V10" stroke="white" stroke-width="2"/>
+    </svg>
+  </div>
+  <h3>Home Safety / Aging in Place</h3>
+  <p>
+    Screens focused on mobility, daily tasks, and home setup to support safe, independent living and reduce fall and injury risk.
+  </p>
+</article>
+        </div>
+      </div>
+    </section>
+
+   <section class="section" id="how-it-works">
+  <div class="container">
+    <div class="section-head">
+      <h2>How ErgoEase works</h2>
+      <p>
+        A simple process designed for fast screening, clear reports, and practical next steps — across workplace roles and home environments.
+      </p>
+    </div>
+
+    <div class="steps">
+      <article class="step">
+        <div class="step-num">01</div>
+        <h3>Choose the right screen</h3>
+        <p>Select an occupation-specific or home safety screening based on the role, environment, or daily activities.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-num">02</div>
+        <h3>Complete a short assessment</h3>
+        <p>Employees or individuals complete a quick assessment built around real work demands or everyday activities.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-num">03</div>
+        <h3>Generate professional reports</h3>
+        <p>ErgoEase produces a customized PDF report with clear risk insights and practical recommendations. For teams, a summary highlights key trends.</p>
+      </article>
+
+      <article class="step">
+        <div class="step-num">04</div>
+        <h3>Prioritize improvements</h3>
+        <p>Use recommendations and cost guidance to take action — whether improving workplace setup or supporting safer living at home.</p>
+      </article>
+    </div>
+  </div>
+</section>
+    <section class="section">
+  <div class="container">
+    <div class="section-head">
+      <h2>What you get</h2>
+      <p>
+        Clear, actionable outputs for individuals and organizations — across workplace roles and home environments — without adding complexity to the process.
+      </p>
+    </div>
+
+    <div class="checklist">
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Customized PDF reports with personal risk insights and recommendations</div>
+      </div>
+
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Employer summary reports for teams, clinics, and organizations</div>
+      </div>
+
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Top risk areas across individuals, employees, or environments</div>
+      </div>
+
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Prioritized recommendations with practical next steps</div>
+      </div>
+
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Equipment suggestions with planning-level cost estimates</div>
+      </div>
+
+      <div class="check-item">
+        <span class="check"></span>
+        <div>Role- and environment-specific screening logic (workplace and home)</div>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="section">
+  <div class="container split">
+    <div class="split-panel split-copy">
+      <div class="section-head" style="margin-bottom: 0;">
+        <h2>Not all ergonomic risk looks the same</h2>
+        <p>
+          Different roles, environments, and daily activities place different physical demands on the body. ErgoEase screens are built to reflect real-world conditions — not generic checklists — across workplaces and everyday living environments.
+        </p>
+      </div>
+    </div>
+
+    <div class="split-panel">
+      <div style="font-size:0.82rem; font-weight:800; letter-spacing:0.08em; text-transform:uppercase; color:var(--muted); margin-bottom:16px;">
+        Example environments
+      </div>
+
+      <div class="industry-list">
+        <div>
+          <strong>Office</strong>
+          <span>Monitor position, seated posture, keyboard and mouse setup</span>
+        </div>
+
+        <div>
+          <strong>Dental</strong>
+          <span>Patient access, stool support, operatory layout and instrument reach</span>
+        </div>
+
+        <div>
+          <strong>Warehouse</strong>
+          <span>Lifting, reach demands, repetitive handling and standing exposure</span>
+        </div>
+
+        <div>
+          <strong>Driving</strong>
+          <span>Cab setup, prolonged sitting, vibration and seat support</span>
+        </div>
+
+        <div>
+          <strong>Home / Everyday</strong>
+          <span>Mobility, daily activities, and home setup to support safe, independent living</span>
+        </div>
+
+        <div>
+          <strong>And more…</strong>
+          <span>Custom and role-specific screens can be developed for additional environments</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+    <section class="section" id="pricing">
+  <div class="container">
+    <div class="section-head">
+      <h2>Simple pricing for individuals, teams, and home use</h2>
+      <p>
+        Run an individual screen, try it with your team, or explore custom screening options — across workplace roles and home environments.
+      </p>
+    </div>
+
+    <div class="pricing-grid">
+
+      <!-- INDIVIDUAL -->
+      <article class="card price-card">
+        <h3>Individual</h3>
+        <div class="price">$39</div>
+        <p class="price-sub">Per screen</p>
+        <div class="price-list">
+          <div>Customized PDF report with personal recommendations</div>
+          <div>Identified ergonomic risk areas</div>
+          <div>Practical adjustments and next steps</div>
+          <div>Equipment suggestions with cost guidance</div>
+          <div>Applies to workplace or home environments</div>
+        </div>
+<a class="btn btn-secondary" href="occupations.html#supported-roles">View Available Screens</a>
+      </article>
+
+      <!-- TEAM -->
+      <article class="card price-card featured">
+        <div class="badge">Most Popular</div>
+        <h3>Team / Workplace</h3>
+        <div class="price">Starting at $300</div>
+        <p class="price-sub">For teams and organizations</p>
+        <div class="price-list">
+          <div>Individual employee reports</div>
+          <div>Employer summary report with key insights</div>
+          <div>Risk prioritization across roles or departments</div>
+          <div>Equipment planning and cost guidance</div>
+        </div>
+        <a class="btn btn-primary" href="team_screening.html">Start Team Screening</a>
+      </article>
+
+      <!-- CUSTOM -->
+      <article class="card price-card">
+        <h3>Custom Screening Solutions</h3>
+        <p>For tailored ergonomic screening configurations</p>
+
+        <ul>
+          <li>Customized screening based on roles, environments, or home use cases</li>
+          <li>Adjusted questions and scoring aligned to your workflow</li>
+          <li>Role- and environment-specific recommendations</li>
+          <li>Equipment guidance and implementation support</li>
+        </ul>
+
+        <p>
+          Ideal for organizations with unique workflows, specialized roles, or environments not covered by standard screens.
+        </p>
+
+        <a href="contact.html?topic=custom" class="btn btn-secondary">
+  Explore Custom Options
+</a>      </article>
+
+    </div>
+  </div>
+</section>
+  <section class="section" id="contact">
+  <div class="container">
+    <div class="cta-banner">
+      <h2>Start identifying ergonomic risk today</h2>
+      <p>
+        Run an individual screen, try it with your team, or explore custom screening options for your workplace or home environment.
+      </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="occupations.html">Start Screening</a>
+        <a class="btn btn-secondary" href="team_screening.html">Start Team Screening</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+  <footer>
+    <div class="container footer-row">
+      <div>
+        © 2026 ErgoEase. Ergonomic insight for healthier workplaces and homes.<br>
+        <span style="font-size:0.85rem; color:#7a8f9f;">
+          <p>
+  ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain or injury. If you believe you are experiencing a medical emergency, call emergency services immediately.
+</p>        
+</span>
+      </div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare • Home</div>
+    </div>
+  </footer>
+
+  <script>
+    const slides = Array.from(document.querySelectorAll('.report-slide'));
+    const dots = Array.from(document.querySelectorAll('.dot-btn'));
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    let currentSlide = 0;
+
+    function renderSlide(index) {
+      slides.forEach((slide, i) => slide.classList.toggle('active', i === index));
+      dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+      currentSlide = index;
+    }
+
+    prevBtn.addEventListener('click', () => {
+      const nextIndex = currentSlide === 0 ? slides.length - 1 : currentSlide - 1;
+      renderSlide(nextIndex);
+    });
+
+    nextBtn.addEventListener('click', () => {
+      const nextIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+      renderSlide(nextIndex);
+    });
+
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => renderSlide(index));
+    });
+
+    // 🔁 Auto slide rotation ONLY (no occupation switching)
+    setInterval(() => {
+      const nextIndex = currentSlide === slides.length - 1 ? 0 : currentSlide + 1;
+      renderSlide(nextIndex);
+    }, 4500);
+  </script>
+</body>
+</html>
