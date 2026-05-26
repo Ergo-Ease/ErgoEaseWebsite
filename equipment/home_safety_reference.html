@@ -1,0 +1,895 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Recommended Home Safety Equipment | ErgoEase</title>
+<meta content="Recommended home safety equipment to improve accessibility, reduce tripping hazards, support bathroom safety, and make everyday movement safer at home." name="description"/>
+<style>
+    :root {
+      --bg: #f6fbfa;
+      --surface: #ffffff;
+      --surface-soft: #f3f8f7;
+      --text: #17324a;
+      --text-soft: #5f7386;
+      --line: #d9e7ea;
+      --blue: #1f6e8c;
+      --blue-dark: #124b61;
+      --green: #4da05d;
+      --green-dark: #397a46;
+      --shadow: 0 12px 28px rgba(18, 75, 97, 0.08);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 14px;
+      --radius-pill: 999px;
+      --max: 1160px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(77, 160, 93, 0.08), transparent 28%),
+        linear-gradient(180deg, #fbfefd 0%, var(--bg) 100%);
+      color: var(--text);
+      line-height: 1.55;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.88);
+      border-bottom: 1px solid rgba(217, 231, 234, 0.8);
+    }
+
+    .nav {
+      min-height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .brand-logo {
+      display: block;
+      width: min(420px, 64vw);
+      height: auto;
+    }
+
+    .brand {
+      line-height: 0;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: var(--radius-pill);
+      font-weight: 700;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      box-shadow: 0 10px 24px rgba(31, 110, 140, 0.18);
+    }
+
+    .btn-secondary {
+      color: var(--blue);
+      background: #fff;
+      border-color: var(--line);
+    }
+
+    .hero {
+      padding: 64px 0 34px;
+    }
+
+    .hero-card {
+      background: linear-gradient(135deg, rgba(31, 110, 140, 0.07), rgba(77, 160, 93, 0.08));
+      border: 1px solid rgba(217, 231, 234, 0.95);
+      border-radius: 32px;
+      padding: 42px 34px;
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-card::after {
+      content: "";
+      position: absolute;
+      right: -80px;
+      top: -80px;
+      width: 220px;
+      height: 220px;
+      background: radial-gradient(circle, rgba(77, 160, 93, 0.16), transparent 68%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: var(--radius-pill);
+      background: rgba(255, 255, 255, 0.75);
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero h1 {
+      margin: 0 0 14px;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      line-height: 1.08;
+      color: var(--text);
+    }
+
+    .hero p {
+      margin: 0 0 18px;
+      color: var(--text-soft);
+      font-size: 1.02rem;
+      max-width: 720px;
+    }
+
+    .hero-points {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 28px;
+    }
+
+    .hero-point {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: var(--text);
+    }
+
+    .hero-point .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex: 0 0 auto;
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+    }
+
+    .hero-side {
+      background: rgba(255, 255, 255, 0.82);
+      border: 1px solid rgba(217, 231, 234, 0.95);
+      border-radius: var(--radius-xl);
+      padding: 24px;
+    }
+
+    .mini-label {
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--text-soft);
+      margin-bottom: 12px;
+    }
+
+    .score-list {
+      display: grid;
+      gap: 12px;
+    }
+
+    .score-item {
+      background: var(--surface-soft);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-md);
+      padding: 14px;
+    }
+
+    .score-item strong {
+      display: block;
+      margin-bottom: 4px;
+      color: var(--blue);
+      font-size: 0.98rem;
+    }
+
+    .score-item span {
+      color: var(--text-soft);
+      font-size: 0.94rem;
+    }
+
+    .section {
+      padding: 34px 0;
+    }
+
+    .section-head {
+      max-width: 760px;
+      margin-bottom: 24px;
+    }
+
+    .section-head h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      line-height: 1.12;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 1rem;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .category-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .category-top {
+      padding: 22px 22px 16px;
+      border-bottom: 1px solid rgba(217, 231, 234, 0.75);
+      background: linear-gradient(180deg, rgba(31, 110, 140, 0.03), rgba(255, 255, 255, 0));
+    }
+
+    .category-kicker {
+      color: var(--text-soft);
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .category-top h3 {
+      margin: 0 0 8px;
+      font-size: 1.25rem;
+      color: var(--text);
+    }
+
+    .category-top p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.96rem;
+    }
+
+    .category-body {
+      padding: 18px 22px 22px;
+    }
+
+    .fit-line {
+      display: grid;
+      gap: 6px;
+      margin-bottom: 16px;
+    }
+
+    .fit-line strong {
+      color: var(--text);
+      font-size: 0.95rem;
+    }
+
+    .fit-line span {
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .option-list {
+      display: grid;
+      gap: 12px;
+      margin-top: 12px;
+    }
+
+    .option {
+      border: 1px solid var(--line);
+      background: var(--surface-soft);
+      border-radius: 16px;
+      padding: 14px;
+    }
+
+    .option-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 6px;
+    }
+
+    .option-top strong {
+      color: var(--text);
+      font-size: 0.98rem;
+    }
+
+    .price-range {
+      color: var(--green-dark);
+      font-size: 0.9rem;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+
+    .option p {
+      margin: 0 0 12px;
+      color: var(--text-soft);
+      font-size: 0.92rem;
+    }
+
+    .option-actions {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 38px;
+      padding: 0 14px;
+      border-radius: 999px;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--blue);
+    }
+
+    .mini-btn.primary {
+      background: linear-gradient(135deg, var(--blue) 0%, var(--green) 100%);
+      color: #fff;
+      border-color: transparent;
+    }
+
+
+
+    .option-label {
+      display: inline-flex;
+      color: var(--blue-dark);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .option {
+      background: linear-gradient(180deg, #ffffff 0%, var(--surface-soft) 100%);
+    }
+
+    .option p {
+      margin-bottom: 14px;
+    }
+
+    .help-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .help-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .help-card h3 {
+      margin: 0 0 10px;
+      font-size: 1.08rem;
+    }
+
+    .help-card p {
+      margin: 0;
+      color: var(--text-soft);
+      font-size: 0.95rem;
+    }
+
+    .cta-band {
+      background: linear-gradient(135deg, rgba(31, 110, 140, 0.08), rgba(77, 160, 93, 0.1));
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 34px 28px;
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+
+    .cta-band h2 {
+      margin: 0 0 10px;
+      font-size: clamp(1.7rem, 3vw, 2.2rem);
+    }
+
+    .cta-band p {
+      margin: 0 auto 20px;
+      max-width: 720px;
+      color: var(--text-soft);
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .site-footer {
+      padding: 34px 0 44px;
+      color: var(--text-soft);
+      text-align: center;
+      font-size: 0.92rem;
+    }
+
+    .site-footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 980px) {
+      .hero-grid,
+      .category-grid,
+      .help-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card {
+        padding: 32px 22px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav {
+        min-height: auto;
+        padding: 14px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .brand-tag {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 42px;
+      }
+
+      .hero-card {
+        border-radius: 24px;
+      }
+
+      .btn,
+      .mini-btn {
+        width: 100%;
+      }
+
+      .cta-actions,
+      .option-actions {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+<header class="site-header">
+<div class="container nav">
+<a class="brand" href="index.html">
+<img alt="ErgoEase — Ergonomic Insight, Healthier Workplaces, Safer Homes" class="brand-logo" src="logo-slogan.png"/>
+</a>
+<div class="nav-actions">
+<a class="btn btn-secondary" href="index.html">Back to Home</a>
+<a class="btn btn-primary" href="occupations.html">View Available Screens</a>
+</div>
+</div>
+</header>
+<main>
+<section class="hero">
+<div class="container">
+<div class="hero-card">
+<div class="eyebrow">Home Safety Equipment</div>
+<div class="hero-grid">
+<div>
+<h1>Recommended tools to support safer movement and independence at home</h1>
+<p>
+                This reference page helps turn home safety screening results into practical next steps.
+                Explore common home areas, what each category helps with, and example equipment that may reduce tripping hazards, improve accessibility, and support daily routines.
+              </p>
+<div class="hero-points">
+<div class="hero-point"><span class="dot"></span><div>Targeted recommendations for entrances, hallways, living areas, kitchens, bedrooms, bathrooms, and emergency access</div></div>
+<div class="hero-point"><span class="dot"></span><div>Simple explanations to help prioritize the most useful changes first</div></div>
+<div class="hero-point"><span class="dot"></span><div>A strong foundation for future personalized home safety reports and product links</div></div>
+</div>
+<div class="cta-actions">
+<a class="btn btn-primary" href="#categories">Explore Equipment</a>
+<a class="btn btn-secondary" href="occupations.html">View Screening Options</a>
+</div>
+</div>
+<aside class="hero-side">
+<div class="mini-label">What this page helps with</div>
+<div class="score-list">
+<div class="score-item"><strong>Falls &amp; Trip Hazards</strong><span>Useful when entrances, hallways, rugs, cords, or nighttime paths create tripping risks.</span></div>
+<div class="score-item"><strong>Transfers &amp; Daily Mobility</strong><span>Helpful when getting in and out of bed, chairs, showers, or bathrooms feels difficult.</span></div>
+<div class="score-item"><strong>Lighting &amp; Emergency Access</strong><span>Important for visibility, independence, and quicker access to help during urgent situations.</span></div>
+</div>
+</aside>
+</div>
+</div>
+</div>
+</section>
+<section class="section" id="categories">
+<div class="container">
+<div class="section-head">
+<h2>Home safety equipment categories</h2>
+<p>Start with the area that best matches the safety concern you are trying to solve. Each card below follows the same reference-page layout: category summary, best-fit use case, and product recommendation cards with cost ranges and product links.</p>
+</div>
+<div class="category-grid">
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 01</div>
+<h3>Entrance</h3>
+<p>Reduce tripping hazards and improve stability when entering or leaving the home.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>uneven thresholds, outdoor steps, porch entries, or entryways where balance feels uncertain.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Threshold Ramp</strong>
+<span class="price-range">$30–$150</span>
+</div>
+<p>Smooths small height changes at doors and thresholds so walkers, wheelchairs, and foot traffic can move more safely.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=threshold+ramp" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+threshold+ramp" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Exterior Stair Handrails</strong>
+<span class="price-range">$60–$200</span>
+</div>
+<p>Adds a stable grip point for entry steps where existing rails are missing, loose, or difficult to use.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=exterior+stair+handrails" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+exterior+stair+handrails" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 02</div>
+<h3>Hallway</h3>
+<p>Keep walking paths clear, visible, and easier to navigate during the day and at night.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>loose cords, cluttered walking paths, dim hallways, and nighttime movement.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Cord Covers</strong>
+<span class="price-range">$10–$30</span>
+</div>
+<p>Helps secure loose cords along walking routes to reduce trip hazards and keep hallways cleaner.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=cord+covers" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+cord+covers" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Motion Sensor Night Lights</strong>
+<span class="price-range">$15–$50</span>
+</div>
+<p>Improves visibility automatically during nighttime trips through hallways or between rooms.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=motion+sensor+night+lights" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+motion+sensor+night+lights" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 03</div>
+<h3>Living Areas</h3>
+<p>Support safer movement through furniture layout, stable seating, and reduced floor hazards.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>loose rugs, narrow paths, unstable chairs, or difficulty standing from seated positions.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Non-Slip Rug Pads</strong>
+<span class="price-range">$10–$40</span>
+</div>
+<p>Helps keep area rugs from sliding or bunching in common walking areas.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=non-slip+rug+pads" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+non-slip+rug+pads" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Stable Chairs with Armrests</strong>
+<span class="price-range">$150–$800</span>
+</div>
+<p>Provides sturdy support when sitting and standing, especially for people who push through the arms to rise.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=stable+chairs+with+armrests" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+stable+chairs+with+armrests" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Chair Risers or Lift Chair</strong>
+<span class="price-range">$30–$800</span>
+</div>
+<p>Raises seat height or assists sit-to-stand movement when low seating creates difficulty.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=chair+risers+or+lift+chair" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+chair+risers+or+lift+chair" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 04</div>
+<h3>Kitchen</h3>
+<p>Make common kitchen tasks easier without climbing, overreaching, or working in poor lighting.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>high cabinets, shadowed prep areas, and frequently used items stored out of reach.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Pull-Down Shelf Organizer</strong>
+<span class="price-range">$40–$150</span>
+</div>
+<p>Brings upper-cabinet items closer to reach level so climbing and overhead reaching are reduced.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=pull-down+shelf+organizer" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+pull-down+shelf+organizer" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Under-Cabinet Lighting</strong>
+<span class="price-range">$20–$60</span>
+</div>
+<p>Adds focused light to counters and work areas to reduce leaning, squinting, and missed hazards.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=under-cabinet+lighting" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+under-cabinet+lighting" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 05</div>
+<h3>Bedroom</h3>
+<p>Improve nighttime mobility and make bed transfers safer and easier.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>getting in and out of bed, dark routes to the bathroom, or unstable nighttime walking.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Bed Assist Rail</strong>
+<span class="price-range">$40–$120</span>
+</div>
+<p>Provides a stable handhold for getting in and out of bed with more control.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=bed+assist+rail" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+bed+assist+rail" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Night Lights</strong>
+<span class="price-range">$15–$50</span>
+</div>
+<p>Keeps the path from bed to bathroom more visible without needing to turn on bright overhead lights.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=night+lights" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+night+lights" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 06</div>
+<h3>Bathroom</h3>
+<p>Address one of the highest-risk home areas with grip support and non-slip bathing surfaces.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>wet floors, shower entry, toilet transfers, or bathing when balance is reduced.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>ADA Grab Bars</strong>
+<span class="price-range">$40–$120</span>
+</div>
+<p>Adds secure support near the toilet, tub, or shower for safer transfers and standing balance.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=ada+grab+bars" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+ada+grab+bars" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Non-Slip Bath Mats</strong>
+<span class="price-range">$15–$40</span>
+</div>
+<p>Improves traction on wet bathroom and shower surfaces.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=non-slip+bath+mats" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+non-slip+bath+mats" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Shower Chair</strong>
+<span class="price-range">$50–$150</span>
+</div>
+<p>Allows seated bathing when standing in the shower is tiring, unsafe, or uncomfortable.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=shower+chair" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+shower+chair" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+<article class="category-card">
+<div class="category-top">
+<div class="category-kicker">Category 07</div>
+<h3>Emergency Access</h3>
+<p>Make help easier to reach during urgent situations or after a fall.</p>
+</div>
+<div class="category-body">
+<div class="fit-line">
+<strong>Best for:</strong>
+<span>people living alone, higher fall risk, or areas where a phone is not always nearby.</span>
+</div>
+<div class="option-list">
+<div class="option">
+<div class="option-label">Recommended equipment</div>
+<div class="option-top">
+<strong>Emergency Alert System</strong>
+<span class="price-range">$30–$60</span>
+</div>
+<p>Keeps a call-for-help option accessible in main living areas or when moving through the home.</p>
+<div class="option-actions">
+<a class="mini-btn primary" href="https://www.amazon.com/s?k=emergency+alert+system" rel="noopener noreferrer" target="_blank">View Options</a>
+<a class="mini-btn" href="https://www.amazon.com/s?k=premium+emergency+alert+system" rel="noopener noreferrer" target="_blank">Compare Products</a>
+</div>
+</div>
+</div>
+</div>
+</article>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="section-head">
+<h2>How to use this reference page</h2>
+<p>Use the equipment categories as a practical checklist after a home safety screen. The best first changes are usually the ones that reduce fall risk in the highest-use areas.</p>
+</div>
+<div class="help-grid">
+<div class="help-card"><h3>Start with high-risk areas</h3><p>Bathrooms, entrances, bedroom-to-bathroom paths, and stairs often deserve early attention because a small hazard can have a large impact.</p></div>
+<div class="help-card"><h3>Match equipment to the problem</h3><p>Use grab bars for transfer support, lighting for visibility, cord covers for trip hazards, and reachable storage solutions for overreaching or climbing.</p></div>
+<div class="help-card"><h3>Confirm fit and installation</h3><p>Some items require proper mounting, sizing, or placement. When safety is uncertain, involve a qualified professional or caregiver before relying on the equipment.</p></div>
+</div>
+</div>
+</section>
+<section class="section">
+<div class="container">
+<div class="cta-band">
+<h2>Ready to connect recommendations to a screening?</h2>
+<p>Use this page as the product-reference companion for the Home Safety assessment. It can support report links, follow-up recommendations, and future curated product lists.</p>
+<div class="cta-actions">
+<a class="btn btn-primary" href="occupations.html">View Available Screens</a>
+<a class="btn btn-secondary" href="index.html">Back to Home</a>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<p>© ErgoEase. Educational home safety recommendations only. Not medical advice.</p>
+</div>
+</footer>
+</body>
+</html>
