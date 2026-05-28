@@ -585,16 +585,7 @@
             <p>Patient handling, dynamic movement, standing tolerance, and shift-based physical demands.</p>
           </button>
 
-          <button class="screen-choice" data-screen="home" type="button">
-            <div class="icon-circle" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                <path d="M3 10.5L12 3l9 7.5" stroke="white" stroke-width="2"/>
-                <path d="M5 10v10h14V10" stroke="white" stroke-width="2"/>
-              </svg>
-            </div>
-            <h3>Home Safety / Aging in Place</h3>
-            <p>Mobility, daily tasks, and home setup to support safe, independent living.</p>
-          </button>
+          
         </div>
 
         <div class="role-stack" style="margin-top: 28px;">
@@ -778,15 +769,7 @@
             </div>
           </div>
 
-          <div class="reveal-panel" id="panel-home">
-            <div class="reveal-top">
-              <div>
-                <div class="tag">Home Safety Team Screening</div>
-                <h3>Home Safety / Aging in Place Team Screening</h3>
-                <p style="margin:0; color:var(--muted); max-width:760px;">
-                  Identify safety risks early, support independent living, and provide clear, actionable recommendations for safer home environments without complex assessments.
-                </p>
-              </div>
+
             </div>
 
             <div class="reveal-grid">
@@ -878,20 +861,19 @@
           ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
         </span>
       </div>
-      <div>Office • Dental • Warehouse • Driving • Healthcare • Home Safety</div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare</div>
     </div>
   </footer>
 
   <script>
     const choiceButtons = document.querySelectorAll('.screen-choice');
-    const panels = {
-      office: document.getElementById('panel-office'),
-      dental: document.getElementById('panel-dental'),
-      warehouse: document.getElementById('panel-warehouse'),
-      driving: document.getElementById('panel-driving'),
-      healthcare: document.getElementById('panel-healthcare'),
-      home: document.getElementById('panel-home')
-    };
+ const panels = {
+  office: document.getElementById('panel-office'),
+  dental: document.getElementById('panel-dental'),
+  warehouse: document.getElementById('panel-warehouse'),
+  driving: document.getElementById('panel-driving'),
+  healthcare: document.getElementById('panel-healthcare')
+};
 
     function setScreen(key) {
       choiceButtons.forEach(btn => {
