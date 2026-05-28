@@ -475,14 +475,16 @@ if(selected){
 
   employerBtn.href =
     selected.employerForm;
+Url;
+  employeeBtn.href = fullEmployeeUrl;
 
-  employeeBtn.href =
-    selected.employeeUrl;
+  const basePath =
+  window.location.pathname.includes('/ErgoEaseWebsite/')
+    ? '/ErgoEaseWebsite/'
+    : '/';
 
-  const fullEmployeeUrl =
-    window.location.origin +
-    "/" +
-    selected.employeeUrl;
+const fullEmployeeUrl =
+  window.location.origin + basePath + selected.employeeUrl;
 
   copyBtn.addEventListener(
     "click",
