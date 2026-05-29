@@ -655,44 +655,20 @@ function submitToGoogleForm(results, userInfo) {
       input.value = value == null ? "" : String(value);
       form.appendChild(input);
     });
-document.body.appendChild(form);
 
-iframe.onload = () => {
-  console.log("Google Form iframe load completed.");
+    document.body.appendChild(form);
 
-  setTimeout(() => {
-    form.remove();
-    iframe.remove();
-  }, 1000);
+    iframe.onload = () => {
+      console.log("Google Form iframe load completed.");
+      setTimeout(() => {
+        form.remove();
+        iframe.remove();
+      }, 1000);
+      resolve({ ok: true, method: "hidden-form-post" });
+    };
 
-  resolve({
-    ok: true,
-    method: "hidden-form-post"
-  });
-};
+    form.submit();
 
-console.log("FORM URL:", FORM_URL);
-console.log("PAYLOAD:", payload);
-
-form.submit();
-
-setTimeout(() => {
-  if (document.body.contains(form)) {
-    form.remove();
-  }
-
-  if (document.body.contains(iframe)) {
-    iframe.remove();
-  }
-
-  resolve({
-    ok: true,
-    method: "hidden-form-post-timeout"
-  });
-}, 2500);
-
-    // Google Forms sometimes does not reliably fire iframe.onload.
-    // Resolve anyway so the user is not stuck on the submit screen.
     setTimeout(() => {
       if (document.body.contains(form)) form.remove();
       if (document.body.contains(iframe)) iframe.remove();
@@ -700,7 +676,6 @@ setTimeout(() => {
     }, 2500);
   });
 }
-
 /***********************
  * Submission Modal
  ***********************/
