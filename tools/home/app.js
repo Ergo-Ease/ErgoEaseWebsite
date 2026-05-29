@@ -671,14 +671,12 @@ iframe.onload = () => {
   });
 };
 
-alert("Submitting to Google Form");
 console.log("FORM URL:", FORM_URL);
 console.log("PAYLOAD:", payload);
 
 form.submit();
 
 setTimeout(() => {
-
   if (document.body.contains(form)) {
     form.remove();
   }
@@ -691,7 +689,6 @@ setTimeout(() => {
     ok: true,
     method: "hidden-form-post-timeout"
   });
-
 }, 2500);
 
     // Google Forms sometimes does not reliably fire iframe.onload.
