@@ -666,19 +666,11 @@ function submitToGoogleForm(results, userInfo) {
       }, 1000);
       resolve({ ok: true, method: "hidden-form-post" });
     };
-const submitInput =
-  document.createElement("input");
+document.body.appendChild(form);
 
-submitInput.type =
-  "hidden";
-
-submitInput.name =
-  "submit";
-
-submitInput.value =
-  "Submit";
-
-form.appendChild(submitInput);
+alert("Submitting to Google Form");
+console.log(FORM_URL);
+console.log(payload);
     form.submit();
 
     // Google Forms sometimes does not reliably fire iframe.onload.
