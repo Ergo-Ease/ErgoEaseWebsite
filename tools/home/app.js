@@ -645,7 +645,7 @@ function submitToGoogleForm(results, userInfo) {
   formData.append("entry.1585007199", String(payload.gearItems));
   formData.append("entry.1432334069", String(payload.estCostUSD));
   formData.append("entry.67631206", payload.emailAddress);
-
+formData.append("emailAddress", payload.emailAddress);
   console.log("Submitting Home Safety Google Form payload:", payload);
 
   return fetch(FORM_URL, {
