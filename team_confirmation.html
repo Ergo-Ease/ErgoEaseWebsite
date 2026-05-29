@@ -479,62 +479,62 @@ if(selected){
 
   employerBtn.href =
     selected.employerForm;
-Url;
-  employeeBtn.href = fullEmployeeUrl;
 
   const basePath =
-  window.location.pathname.includes('/ErgoEaseWebsite/')
-    ? '/ErgoEaseWebsite/'
-    : '/';
-
-const fullEmployeeUrl =
-  window.location.origin + basePath + selected.employeeUrl;
+    window.location.pathname.includes('/ErgoEaseWebsite/')
+      ? '/ErgoEaseWebsite/'
+      : '/';
 
   const fullEmployeeUrl =
-  window.location.origin + basePath + selected.employeeUrl;
+    window.location.origin + basePath + selected.employeeUrl;
 
-copyBtn.addEventListener(
-  "click",
-  async () => {
+  employeeBtn.href =
+    fullEmployeeUrl;
 
-    try{
+  copyBtn.addEventListener(
+    "click",
+    async () => {
 
-      await navigator.clipboard.writeText(
-        fullEmployeeUrl
-      );
+      try{
 
-    }catch(err){
+        await navigator.clipboard.writeText(
+          fullEmployeeUrl
+        );
 
-      const tempInput =
-        document.createElement("input");
+      }catch(err){
 
-      tempInput.value =
-        fullEmployeeUrl;
+        const tempInput =
+          document.createElement("input");
 
-      document.body.appendChild(
-        tempInput
-      );
+        tempInput.value =
+          fullEmployeeUrl;
 
-      tempInput.select();
+        document.body.appendChild(
+          tempInput
+        );
 
-      document.execCommand("copy");
+        tempInput.select();
 
-      tempInput.remove();
+        document.execCommand("copy");
 
-    }
+        tempInput.remove();
 
-    copyBtn.textContent =
-      "Link Copied — Paste Into Email or Browser";
-
-    setTimeout(() => {
+      }
 
       copyBtn.textContent =
-        "Copy Employee Assessment Link";
+        "Link Copied — Paste Into Email or Browser";
 
-    },3000);
+      setTimeout(() => {
 
-  }
-);
+        copyBtn.textContent =
+          "Copy Employee Assessment Link";
+
+      },3000);
+
+    }
+  );
+
+}
 
 </script>
 
