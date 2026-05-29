@@ -490,36 +490,48 @@ Url;
 const fullEmployeeUrl =
   window.location.origin + basePath + selected.employeeUrl;
 
-  copyBtn.addEventListener(
-    "click",
-    async () => {
+copyBtn.addEventListener(
+  "click",
+  async () => {
 
-      try{
+    try{
 
-        await navigator.clipboard.writeText(
-          fullEmployeeUrl
-        );
+      await navigator.clipboard.writeText(
+        fullEmployeeUrl
+      );
 
-       copyBtn.textContent =
-  "Link Copied — Paste Into Email or Browser";;
+    }catch(err){
 
-        setTimeout(() => {
+      const tempInput =
+        document.createElement("input");
 
-          copyBtn.textContent =
-            "Copy Employee Assessment Link";
+      tempInput.value =
+        fullEmployeeUrl;
 
-        },2500);
+      document.body.appendChild(
+        tempInput
+      );
 
-      }catch(err){
+      tempInput.select();
 
-        alert(fullEmployeeUrl);
+      document.execCommand("copy");
 
-      }
+      tempInput.remove();
 
     }
-  );
 
-}
+    copyBtn.textContent =
+      "Link Copied — Paste Into Email or Browser";
+
+    setTimeout(() => {
+
+      copyBtn.textContent =
+        "Copy Employee Assessment Link";
+
+    },3000);
+
+  }
+);
 
 </script>
 
