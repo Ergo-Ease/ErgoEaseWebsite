@@ -633,17 +633,18 @@ function submitToGoogleForm(results, userInfo) {
   const formData =
     new URLSearchParams();
 
-  Object.entries(payload).forEach(([key, value]) => {
-    const entryId =
-      FORM_FIELDS[key];
-
-    if (!entryId) return;
-
-    formData.append(
-      entryId,
-      value == null ? "" : String(value)
-    );
-  });
+  formData.append("entry.2047149240", payload.when);
+  formData.append("entry.1943500786", payload.employeeName);
+  formData.append("entry.1677099687", payload.employer);
+  formData.append("entry.2047427559", payload.discipline);
+  formData.append("entry.1382140920", String(payload.score));
+  formData.append("entry.1904022429", payload.status);
+  formData.append("entry.218414928", payload.safeItems);
+  formData.append("entry.1838043351", payload.flaggedItems);
+  formData.append("entry.1048214936", payload.topRecs);
+  formData.append("entry.1585007199", String(payload.gearItems));
+  formData.append("entry.1432334069", String(payload.estCostUSD));
+  formData.append("entry.67631206", payload.emailAddress);
 
   console.log("Submitting Home Safety Google Form payload:", payload);
 
