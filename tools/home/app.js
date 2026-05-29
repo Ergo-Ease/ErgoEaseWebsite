@@ -750,11 +750,11 @@ function showSubmissionModal(results) {
     backdrop.remove();
 window.location.href = "confirmation.html";
     } catch (err) {
-      console.error(err);
-      alert("Submission failed. Please try again.");
-      submitBtn.disabled = false;
-      submitBtn.textContent = "Submit";
-    }
+  console.error("HOME SUBMISSION ERROR:", err);
+  alert(err.message || String(err));
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Submit";
+}
   };
 }
 
