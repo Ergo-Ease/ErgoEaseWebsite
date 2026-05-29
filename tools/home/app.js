@@ -627,53 +627,30 @@ function buildFormPayload(results, userInfo) {
 }
 
 function submitToGoogleForm(results, userInfo) {
-  const payload = buildFormPayload(results, userInfo);
+  const payload =
+    buildFormPayload(results, userInfo);
+
+  const formData =
+    new URLSearchParams();
+
+  Object.entries(payload).forEach(([key, value]) => {
+    const entryId =
+      FORM_FIELDS[key];
+
+    if (!entryId) return;
+
+    formData.append(
+      entryId,
+      value == null ? "" : String(value)
+    );
+  });
 
   console.log("Submitting Home Safety Google Form payload:", payload);
 
-  return new Promise(resolve => {
-    const iframeName = "hidden_google_form_iframe_" + Date.now();
-
-    const iframe = document.createElement("iframe");
-    iframe.name = iframeName;
-    iframe.style.display = "none";
-    document.body.appendChild(iframe);
-
-    const form = document.createElement("form");
-    form.action = FORM_URL;
-    form.method = "POST";
-    form.target = iframeName;
-    form.style.display = "none";
-
-    Object.entries(payload).forEach(([key, value]) => {
-      const entryId = FORM_FIELDS[key];
-      if (!entryId) return;
-
-      const input = document.createElement("input");
-      input.type = "hidden";
-      input.name = entryId;
-      input.value = value == null ? "" : String(value);
-      form.appendChild(input);
-    });
-
-    document.body.appendChild(form);
-
-    iframe.onload = () => {
-      console.log("Google Form iframe load completed.");
-      setTimeout(() => {
-        form.remove();
-        iframe.remove();
-      }, 1000);
-      resolve({ ok: true, method: "hidden-form-post" });
-    };
-
-    form.submit();
-
-    setTimeout(() => {
-      if (document.body.contains(form)) form.remove();
-      if (document.body.contains(iframe)) iframe.remove();
-      resolve({ ok: true, method: "hidden-form-post-timeout" });
-    }, 2500);
+  return fetch(FORM_URL, {
+    method: "POST",
+    mode: "no-cors",
+    body: formData
   });
 }
 /***********************
