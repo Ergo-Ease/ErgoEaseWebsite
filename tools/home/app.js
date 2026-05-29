@@ -459,7 +459,7 @@ function renderQuestion() {
   visualSection.className = "question-visual";
 
   const image = document.createElement("img");
-  image.src = "images/home-safety-visual.png";
+image.src = "home-safety-visual.png";
   image.alt = "Home safety illustration";
   image.className = "question-visual-image";
 
