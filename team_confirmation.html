@@ -425,12 +425,22 @@ const teamConfigs = {
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
 
+  "office-team-large":{
+    employeeUrl:"tools/office/",
+    employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
+  },
+
   "dental-team-small":{
     employeeUrl:"tools/dental/",
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
 
   "dental-team-growing":{
+    employeeUrl:"tools/dental/",
+    employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
+  },
+
+  "dental-team-large":{
     employeeUrl:"tools/dental/",
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
@@ -445,12 +455,22 @@ const teamConfigs = {
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
 
+  "warehouse-team-large":{
+    employeeUrl:"tools/warehouse/",
+    employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
+  },
+
   "truck-team-small":{
     employeeUrl:"tools/truck-driver/",
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
 
   "truck-team-growing":{
+    employeeUrl:"tools/truck-driver/",
+    employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
+  },
+
+  "truck-team-large":{
     employeeUrl:"tools/truck-driver/",
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
@@ -465,9 +485,9 @@ const teamConfigs = {
     employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   },
 
-  "home-team-small":{
-    employeeUrl:"tools/home/",
-    employerForm:"https://forms.gle/YOUR_HOME_FORM"
+  "healthcare-team-large":{
+    employeeUrl:"tools/healthcare/",
+    employerForm:"https://docs.google.com/forms/d/1qF8GiMUr8kNfADDQMolB62A-ogeBwoF8qgY_de5ISEM/preview"
   }
 
 };
@@ -475,7 +495,21 @@ const teamConfigs = {
 const selected =
   teamConfigs[type];
 
-if(selected){
+if(!selected){
+
+  employerBtn.href =
+    "team_screening.html";
+
+  employeeBtn.href =
+    "team_screening.html";
+
+  copyBtn.textContent =
+    "Purchase Type Not Found";
+
+  copyBtn.disabled =
+    true;
+
+}else{
 
   employerBtn.href =
     selected.employerForm;
