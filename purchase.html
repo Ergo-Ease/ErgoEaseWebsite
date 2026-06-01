@@ -612,14 +612,15 @@
             <div class="tier-heading">Team package options</div>
             <div class="tier-grid" id="tierGrid"></div>
             <p class="tier-footnote" id="tierFootnote">
-              Final pricing may vary based on workflow setup, reporting needs, and customization.
+              Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.
             </p>
           </div>
 
           <div class="cta-stack team-actions">
             <a class="btn btn-primary" id="smallTeamBtn" href="#" target="_blank" rel="noopener noreferrer">Proceed with Small Team</a>
             <a class="btn btn-secondary" id="growingTeamBtn" href="#" target="_blank" rel="noopener noreferrer">Proceed with Growing Team</a>
-            <a class="btn btn-secondary" id="customTeamBtn" href="contact.html?topic=custom">Contact for Large Team / Custom</a>
+            <a class="btn btn-secondary" id="largeTeamBtn" href="#" target="_blank" rel="noopener noreferrer">Proceed with Large Team</a>
+            <a class="btn btn-secondary" id="customTeamBtn" href="contact.html?topic=occupation-development">Request Occupation Development</a>
             <a class="btn btn-secondary" id="backButton" href="team_screening.html">Back to Team Screening</a>
           </div>
 
@@ -631,6 +632,7 @@
                 <li>Access to employer setup forms and occupation-specific ergonomic screening tools</li>
                 <li>Employee reports for completed assessments</li>
                 <li>A comprehensive employer summary report with team trends and key findings</li>
+                <li>Fixed team packages for 1–100 employees</li>
                 <li>Easy-to-follow screening and reporting workflow</li>
               </ul>
             </div>
@@ -778,7 +780,7 @@
           ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
         </span>
       </div>
-      <div>Office • Dental • Warehouse • Driving • Healthcare • Home Safety</div>
+      <div>Office • Dental • Warehouse • Driving • Healthcare</div>
     </div>
   </footer>
 
@@ -791,11 +793,12 @@
         cardDescription: 'A complete office team screening workflow with employer setup, office employee screening, and automatic reporting.',
         price: '$300',
         priceNote: 'Fixed small team price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tierFootnote: 'Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.',
         tiers: [
           { name: 'Small Team', detail: '1–10 employees', price: '$300' },
           { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
-          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+          { name: 'Large Team', detail: '26–100 employees', price: '$1,000' },
+          { name: 'Enterprise / Custom', detail: '100+ employees, private workflows, or custom occupation development', price: 'Contact us' }
         ],
         reports: 'Each completed response generates a clear, personalized PDF report with office-specific recommendations to improve comfort, posture, and setup.',
         employer: 'Once the response threshold is met, the employer summary is generated automatically so you can review trends, flagged risks, and priority improvements faster.',
@@ -811,7 +814,8 @@
         paymentLinks: {
           small: 'https://buy.stripe.com/test_eVq00c7ZI1Uc7FKcL83AY06',
           growing: 'https://buy.stripe.com/test_7sY6oA2Fo7ew0di4eC3AY07',
-          custom: 'contact.html?topic=custom'
+          large: 'PASTE_OFFICE_LARGE_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=occupation-development'
         }
       },
       dental: {
@@ -821,11 +825,12 @@
         cardDescription: 'A complete dental team screening workflow with employer setup, clinical employee screening, and automatic reporting.',
         price: '$300',
         priceNote: 'Fixed small team price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tierFootnote: 'Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.',
         tiers: [
           { name: 'Small Team', detail: '1–10 employees', price: '$300' },
           { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
-          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+          { name: 'Large Team', detail: '26–100 employees', price: '$1,000' },
+          { name: 'Enterprise / Custom', detail: '100+ employees, private workflows, or custom occupation development', price: 'Contact us' }
         ],
         reports: 'Each completed response generates a personalized PDF report with dental-specific recommendations tied to operatory setup, seated posture, and repetitive demands.',
         employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify shared clinical risks and prioritize improvements.',
@@ -841,7 +846,8 @@
         paymentLinks: {
           small: 'https://buy.stripe.com/test_00w00cfsagP65xC3ay3AY0d',
           growing: 'https://buy.stripe.com/test_00w5kwdk26as1hmfXk3AY0c',
-          custom: 'contact.html?topic=custom'
+          large: 'PASTE_DENTAL_LARGE_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=occupation-development'
         }
       },
       warehouse: {
@@ -851,11 +857,12 @@
         cardDescription: 'A warehouse-focused team screening workflow with employer setup, employee screening, and automatic reporting.',
         price: '$300',
         priceNote: 'Fixed small team price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tierFootnote: 'Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.',
         tiers: [
           { name: 'Small Team', detail: '1–10 employees', price: '$300' },
           { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
-          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+          { name: 'Large Team', detail: '26–100 employees', price: '$1,000' },
+          { name: 'Enterprise / Custom', detail: '100+ employees, private workflows, or custom occupation development', price: 'Contact us' }
         ],
         reports: 'Each completed response generates a personalized PDF report with practical recommendations for safer lifting, movement, and workstation fit.',
         employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify where movement, reach, or workflow changes matter most.',
@@ -871,7 +878,8 @@
         paymentLinks: {
           small: 'https://buy.stripe.com/test_7sYcMYbbU6as9NS3ay3AY08',
           growing: 'https://buy.stripe.com/test_aFa5kwbbUcyQ7FK6mK3AY09',
-          custom: 'contact.html?topic=custom'
+          large: 'PASTE_WAREHOUSE_LARGE_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=occupation-development'
         }
       },
       driving: {
@@ -881,11 +889,12 @@
         cardDescription: 'A fleet-focused team screening workflow with employer setup, driving employee screening, and automatic reporting.',
         price: '$300',
         priceNote: 'Fixed small team price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tierFootnote: 'Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.',
         tiers: [
           { name: 'Small Team', detail: '1–10 employees', price: '$300' },
           { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
-          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+          { name: 'Large Team', detail: '26–100 employees', price: '$1,000' },
+          { name: 'Enterprise / Custom', detail: '100+ employees, private workflows, or custom occupation development', price: 'Contact us' }
         ],
         reports: 'Each completed response generates a personalized PDF report with driving-specific recommendations to improve comfort, setup, and long-term tolerance.',
         employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify common fleet-related strain patterns and priorities.',
@@ -901,7 +910,8 @@
         paymentLinks: {
           small: 'https://buy.stripe.com/test_eVq6oAgwe56oe487qO3AY0g',
           growing: 'https://buy.stripe.com/test_9B6cMYeo66as8JO26u3AY0b',
-          custom: 'contact.html?topic=custom'
+          large: 'PASTE_DRIVING_LARGE_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=occupation-development'
         }
       },
       healthcare: {
@@ -911,11 +921,12 @@
         cardDescription: 'A healthcare-focused team screening workflow with employer setup, employee screening, and automatic reporting.',
         price: '$300',
         priceNote: 'Fixed small team price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
+        tierFootnote: 'Fixed team packages are available up to 100 employees. Enterprise and occupation-development requests are handled separately.',
         tiers: [
           { name: 'Small Team', detail: '1–10 employees', price: '$300' },
           { name: 'Growing Team', detail: '11–25 employees', price: '$500' },
-          { name: 'Larger Team / Custom', detail: '26+ employees or more complex needs', price: 'Contact us' }
+          { name: 'Large Team', detail: '26–100 employees', price: '$1,000' },
+          { name: 'Enterprise / Custom', detail: '100+ employees, private workflows, or custom occupation development', price: 'Contact us' }
         ],
         reports: 'Each completed response generates a personalized PDF report with practical recommendations tied to movement demands, patient handling, and strain reduction.',
         employer: 'Once the response threshold is met, the employer summary is generated automatically so you can identify high-demand patterns and prioritize team support strategies.',
@@ -931,37 +942,8 @@
         paymentLinks: {
           small: 'https://buy.stripe.com/test_eVq00cfsa0Q87FKdPc3AY0e',
           growing: 'https://buy.stripe.com/test_6oU14ggwe2Yg4ty7qO3AY0f',
-          custom: 'contact.html?topic=custom'
-        }
-      },
-      home: {
-        label: 'Home Safety Team Screening',
-        title: 'Home Safety / Aging in Place Team Screening',
-        heroDescription: 'Identify safety risks early, support independent living, and provide clear, actionable recommendations for safer home environments without complex assessments.',
-        cardDescription: 'A home safety screening workflow with coordinator setup, participant screening, and automatic reporting.',
-        price: '$300',
-        priceNote: 'Fixed small group price',
-        tierFootnote: 'Small and growing team packages have fixed pricing. Larger teams can request custom setup and support.',
-        tiers: [
-          { name: 'Small Group', detail: '1–10 participants', price: '$300' },
-          { name: 'Growing Program', detail: '11–25 participants', price: '$500' },
-          { name: 'Larger Program / Custom', detail: '26+ participants or custom workflows', price: 'Contact us' }
-        ],
-        reports: 'Each completed response generates a personalized PDF report with clear recommendations to improve safety, accessibility, and independence at home.',
-        employer: 'Once the response threshold is met, the summary is generated automatically so you can identify shared safety concerns and prioritize next steps with more confidence.',
-        access: 'After payment, you’ll receive access to a single page with the coordinator setup form and the home safety screening link in one place.',
-        summaryTitle: 'Who this is best for',
-        summaryDescription: 'Caregivers, home health teams, senior programs, and organizations supporting aging in place.',
-        summaryList: [
-          'Home safety and daily-living focused screening',
-          'Reports designed to support independence',
-          'Clearer visibility into fall and environment risks',
-          'A simpler way to guide safer home decisions'
-        ],
-        paymentLinks: {
-          small: 'PASTE_SMALL_TEAM_STRIPE_LINK_HERE',
-          growing: 'PASTE_GROWING_TEAM_STRIPE_LINK_HERE',
-          custom: 'contact.html?topic=custom'
+          large: 'PASTE_HEALTHCARE_LARGE_TEAM_STRIPE_LINK_HERE',
+          custom: 'contact.html?topic=occupation-development'
         }
       }
     };
@@ -982,6 +964,7 @@
     const summaryList = document.getElementById('summaryList');
     const smallTeamBtn = document.getElementById('smallTeamBtn');
     const growingTeamBtn = document.getElementById('growingTeamBtn');
+    const largeTeamBtn = document.getElementById('largeTeamBtn');
     const customTeamBtn = document.getElementById('customTeamBtn');
     const tierGrid = document.getElementById('tierGrid');
     const tierFootnote = document.getElementById('tierFootnote');
@@ -1002,18 +985,19 @@
       dental: 'Dental Team',
       warehouse: 'Warehouse Team',
       driving: 'Driving / Fleet Team',
-      healthcare: 'Healthcare Team',
-      home: 'Home Safety Group'
+      healthcare: 'Healthcare Team'
     };
 
     const teamLabel = teamButtonLabelMap[screenKey] || 'Team';
 
     smallTeamBtn.href = cfg.paymentLinks?.small || '#';
     growingTeamBtn.href = cfg.paymentLinks?.growing || '#';
-    customTeamBtn.href = cfg.paymentLinks?.custom || 'contact.html?topic=custom';
+    largeTeamBtn.href = cfg.paymentLinks?.large || '#';
+    customTeamBtn.href = cfg.paymentLinks?.custom || 'contact.html?topic=occupation-development';
 
     smallTeamBtn.textContent = `Proceed with Small ${teamLabel}`;
     growingTeamBtn.textContent = `Proceed with Growing ${teamLabel}`;
+    largeTeamBtn.textContent = `Proceed with Large ${teamLabel}`;
 
     summaryList.innerHTML = '';
     cfg.summaryList.forEach(item => {
