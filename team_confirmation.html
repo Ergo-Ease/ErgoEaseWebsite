@@ -462,84 +462,35 @@ const employeeBtn =
 const copyBtn =
   document.getElementById("copyEmployeeLinkBtn");
 
+const FORM_URL =
+  "https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview";
+
 const teamConfigs = {
+  "office-team-small": { employeeUrl: "tools/office/", employerForm: FORM_URL },
+  "office-team-growing": { employeeUrl: "tools/office/", employerForm: FORM_URL },
+  "office-team-large": { employeeUrl: "tools/office/", employerForm: FORM_URL },
 
-  "office-team-small":{
-    employeeUrl:"tools/office/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
+  "dental-team-small": { employeeUrl: "tools/dental/", employerForm: FORM_URL },
+  "dental-team-growing": { employeeUrl: "tools/dental/", employerForm: FORM_URL },
+  "dental-team-large": { employeeUrl: "tools/dental/", employerForm: FORM_URL },
 
-  "office-team-growing":{
-    employeeUrl:"tools/office/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
+  "warehouse-team-small": { employeeUrl: "tools/warehouse/", employerForm: FORM_URL },
+  "warehouse-team-growing": { employeeUrl: "tools/warehouse/", employerForm: FORM_URL },
+  "warehouse-team-large": { employeeUrl: "tools/warehouse/", employerForm: FORM_URL },
 
-  "office-team-large":{
-    employeeUrl:"tools/office/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
+  "driving-team-small": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
+  "driving-team-growing": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
+  "driving-team-large": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
 
-  "dental-team-small":{
-    employeeUrl:"tools/dental/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
+  "truck-team-small": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
+  "truck-team-growing": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
+  "truck-team-large": { employeeUrl: "tools/truck-driver/", employerForm: FORM_URL },
 
-  "dental-team-growing":{
-    employeeUrl:"tools/dental/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "dental-team-large":{
-    employeeUrl:"tools/dental/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "warehouse-team-small":{
-    employeeUrl:"tools/warehouse/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "warehouse-team-growing":{
-    employeeUrl:"tools/warehouse/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "warehouse-team-large":{
-    employeeUrl:"tools/warehouse/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "truck-team-small":{
-    employeeUrl:"tools/truck-driver/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "truck-team-growing":{
-    employeeUrl:"tools/truck-driver/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "truck-team-large":{
-    employeeUrl:"tools/truck-driver/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "healthcare-team-small":{
-    employeeUrl:"tools/healthcare/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "healthcare-team-growing":{
-    employeeUrl:"tools/healthcare/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  },
-
-  "healthcare-team-large":{
-    employeeUrl:"tools/healthcare/",
-    employerForm:"https://docs.google.com/forms/d/e/1FAIpQLScfeValq5B2jvVEEziYFeFcDNsovVOV2riprWE_vOvQqqcDHw/viewform?usp=preview"
-  }
-
+  "healthcare-team-small": { employeeUrl: "tools/healthcare/", employerForm: FORM_URL },
+  "healthcare-team-growing": { employeeUrl: "tools/healthcare/", employerForm: FORM_URL },
+  "healthcare-team-large": { employeeUrl: "tools/healthcare/", employerForm: FORM_URL }
 };
+
 
 const selected =
   teamConfigs[type];
