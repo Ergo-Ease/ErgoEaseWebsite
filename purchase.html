@@ -772,17 +772,53 @@
     </section>
   </main>
 
-  <footer>
-    <div class="container footer-row">
-      <div>
-        © 2026 ErgoEase. Ergonomic Insight. Healthier Workplaces. Safer Homes.<br>
-        <span style="font-size:0.85rem; color:#7a8f9f;">
-          ErgoEase is an independent ergonomic screening and educational tool intended for informational purposes only and is not a substitute for professional medical advice, diagnosis, or treatment. Use of this tool does not establish a provider-patient relationship. Always seek the guidance of a qualified healthcare provider with any questions regarding a medical condition or concerns about pain, injury, or safety. If you believe you are experiencing a medical emergency, call emergency services immediately.
-        </span>
-      </div>
-      <div>Office • Dental • Warehouse • Driving • Healthcare</div>
+```html
+<footer>
+  <div class="container footer-row">
+
+    <div>
+      <strong>© 2026 ErgoEase</strong><br>
+      Ergonomic insight for healthier workplaces and safer homes.
+
+      <p style="
+        margin-top:12px;
+        max-width:700px;
+        font-size:0.85rem;
+        color:#7a8f9f;
+        line-height:1.6;
+      ">
+        ErgoEase is an independent ergonomic screening and educational platform
+        intended for informational purposes only. ErgoEase does not provide
+        medical advice, diagnosis, treatment, or healthcare services.
+        Use of this platform does not establish a provider-patient relationship.
+        Always consult a qualified healthcare professional regarding medical
+        concerns, pain, injury, or health conditions. If you believe you are
+        experiencing a medical emergency, call emergency services immediately.
+      </p>
     </div>
-  </footer>
+
+    <div style="text-align:right;">
+      <div style="margin-bottom:12px;">
+        Office • Dental • Warehouse • Driving • Healthcare • Home Safety
+      </div>
+
+      <div style="
+        display:flex;
+        gap:14px;
+        justify-content:flex-end;
+        flex-wrap:wrap;
+        font-size:0.9rem;
+      ">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+
+  </div>
+</footer>
+
 
   <script>
     const purchaseConfig = {
