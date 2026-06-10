@@ -326,7 +326,20 @@ function showDisclaimer() {
 
   const p = document.createElement("p");
   p.textContent =
-    "This app provides educational home-safety guidance only and does not diagnose, treat, or replace advice from a licensed medical professional.";
+  p.innerHTML = `
+This screening is provided for informational and educational purposes only.
+
+It does not provide medical advice, diagnosis, treatment, ergonomic consultation,
+occupational therapy, nursing advice, physical therapy services, or professional
+safety evaluations.
+
+Use of ErgoEase does not create a provider-patient relationship.
+
+If you have concerns regarding pain, injury, mobility limitations, falls, or
+medical conditions, consult a qualified healthcare professional.
+
+If you are experiencing a medical emergency, call emergency services immediately.
+`;
 
   const consent = document.createElement("label");
   consent.className = "consent-row";
