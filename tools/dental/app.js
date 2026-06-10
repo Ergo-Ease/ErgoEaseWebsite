@@ -141,6 +141,7 @@ document.addEventListener("DOMContentLoaded", () => {
 function showSection(id) {
     [
       "heroSection",
+        "disclaimerSection",
       "equipmentSection",
       "screeningSection",
       "photoStep",
