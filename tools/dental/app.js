@@ -162,9 +162,22 @@ function showSection(id) {
 ============================================================ */
 $("startBtn").onclick = () => {
     resetState();
+    showSection("disclaimerSection");
+};
+  const consentCheckbox = $("consentCheckbox");
+const consentBtn = $("consentContinueBtn");
+
+if (consentCheckbox && consentBtn) {
+
+  consentCheckbox.addEventListener("change", () => {
+    consentBtn.disabled = !consentCheckbox.checked;
+  });
+
+  consentBtn.onclick = () => {
     showEquipmentList();
     showSection("equipmentSection");
-};
+  };
+}
 
 /* ============================================================
    PHOTO STEP → GENERATE RESULTS
