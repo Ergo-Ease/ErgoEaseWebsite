@@ -1,10 +1,10 @@
-
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Terms of Service | ErgoEase</title>
+  <title>Disclaimer | ErgoEase</title>
 
   <style>
     :root{
@@ -56,43 +56,39 @@
       gap:20px;
     }
 
-    .brand{
-      display:flex;
-      align-items:center;
-      gap:14px;
-    }
-
     .brand img{
       height:52px;
       width:auto;
     }
 
-.nav-links{
-  display:flex;
-  align-items:center;
-  gap:32px;
-  color:var(--muted);
-  font-weight:700;
-  font-size:.96rem;
-  white-space:nowrap;
-}
+    .nav-links{
+      display:flex;
+      align-items:center;
+      gap:32px;
+      color:var(--muted);
+      font-weight:700;
+      font-size:.96rem;
+      white-space:nowrap;
+    }
 
-    .nav-links a:hover{color:var(--blue);}
+    .nav-links a:hover{
+      color:var(--blue);
+    }
 
-.nav-cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  padding:12px 22px;
-  min-width:122px;
-  min-height:46px;
-  border-radius:999px;
-  color:white;
-  font-weight:800;
-  white-space:nowrap;
-  background:linear-gradient(135deg,var(--blue),var(--green));
-  box-shadow:0 10px 30px rgba(13,95,145,.18);
-}
+    .nav-cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      padding:12px 22px;
+      min-width:122px;
+      min-height:46px;
+      border-radius:999px;
+      color:white;
+      font-weight:800;
+      white-space:nowrap;
+      background:linear-gradient(135deg,var(--blue),var(--green));
+      box-shadow:0 10px 30px rgba(13,95,145,.18);
+    }
 
     .hero{
       padding:78px 0 30px;
@@ -134,11 +130,11 @@
     }
 
     .legal-card{
-      background:rgba(255,255,255,.92);
-      border:1px solid rgba(217,231,234,.95);
+      background:#ffffff;
+      border:1px solid #d9e7ea;
       border-radius:28px;
-      box-shadow:var(--shadow);
-      padding:36px;
+      box-shadow:0 20px 50px rgba(23,50,74,.12);
+      padding:40px;
       margin:20px 0 80px;
     }
 
@@ -148,14 +144,14 @@
       font-size:1.25rem;
     }
 
-    .legal-card h2:first-child{margin-top:0;}
+    .legal-card h2:first-child{
+      margin-top:0;
+    }
 
     .legal-card p{
       margin:0 0 16px;
       color:var(--muted);
     }
-
-    .legal-card strong{color:var(--text);}
 
     footer{
       padding:34px 0 50px;
@@ -178,132 +174,168 @@
       flex-wrap:wrap;
     }
 
-    .footer-links a:hover{color:var(--blue);}
+    @media(max-width:760px){
+      .nav{
+        flex-direction:column;
+        align-items:center;
+      }
 
-  @media(max-width:760px){
-  .nav{
-    flex-direction:column;
-    align-items:center;
-  }
+      .nav-links{
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+        gap:14px;
+        text-align:center;
+      }
 
-  .nav-links{
-    width:100%;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:14px;
-    text-align:center;
-  }
+      .nav-cta{
+        min-width:150px;
+      }
 
-  .nav-cta{
-    width:auto;
-    min-width:150px;
-  }
+      .brand img{
+        height:44px;
+      }
 
-  .brand img{
-    height:44px;
-  }
-
-  .legal-card{
-    padding:24px;
-  }
-}
+      .legal-card{
+        padding:24px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <header class="site-header">
-    <div class="container nav">
-      <a class="brand" href="index.html">
-        <img src="logo-slogan.png" alt="ErgoEase">
-      </a>
 
-      <nav class="nav-links">
-        <a href="occupations.html">Individual</a>
-        <a href="team_screening.html">Team</a>
-        <a href="index.html#how-it-works">How&nbsp;It&nbsp;Works</a>
-        <a href="index.html#pricing">Pricing</a>
-        <a href="contact.html">Contact</a>
-      </nav>
+<header class="site-header">
+  <div class="container nav">
 
-      <a class="nav-cta" href="index.html#pricing">Get Started</a>
+    <a class="brand" href="index.html">
+      <img src="logo-slogan.png" alt="ErgoEase">
+    </a>
+
+    <nav class="nav-links">
+      <a href="occupations.html">Individual</a>
+      <a href="team_screening.html">Team</a>
+      <a href="index.html#how-it-works">How&nbsp;It&nbsp;Works</a>
+      <a href="index.html#pricing">Pricing</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+
+    <a class="nav-cta" href="index.html#pricing">Get Started</a>
+
+  </div>
+</header>
+
+<main>
+
+  <section class="hero">
+    <div class="container">
+
+      <div class="eyebrow">
+        <span class="dot"></span>
+        Important Information
+      </div>
+
+      <h1>Disclaimer</h1>
+
+      <p>
+        Please review the following information regarding the intended use of ErgoEase.
+      </p>
+
     </div>
-  </header>
+  </section>
 
-  <main>
-    <section class="hero">
-      <div class="container">
-        <div class="eyebrow"><span class="dot"></span> Use of ErgoEase</div>
-        <h1>Terms of Service</h1>
-        <p>
-          These terms explain the expectations for using ErgoEase screening tools, reports, and services.
-        </p>
-      </div>
-    </section>
+  <section class="container">
+    <div class="legal-card">
 
-    <section class="container">
-      <div class="legal-card">
-        <h2>Last Updated</h2>
-        <p>June 2026</p>
+      <h2>Last Updated</h2>
+      <p>June 2026</p>
 
-        <h2>Acceptance of Terms</h2>
-        <p>
-          By accessing or using ErgoEase, including completing screenings, purchasing services, submitting forms, or reviewing reports, you agree to these Terms of Service.
-        </p>
+      <h2>Educational and Informational Use Only</h2>
+      <p>
+        ErgoEase provides ergonomic screening tools, workplace wellness information,
+        home safety guidance, equipment recommendations, and educational resources
+        intended to support awareness and decision-making.
+      </p>
 
-        <h2>Purpose of ErgoEase</h2>
-        <p>
-          ErgoEase provides ergonomic screening tools, educational information, equipment guidance, and workplace or home safety recommendations. The platform is intended to support awareness, planning, and decision-making.
-        </p>
+      <p>
+        Information provided through ErgoEase is for educational and informational
+        purposes only and should not be considered medical, healthcare, legal,
+        occupational, rehabilitation, physical therapy, nursing, or safety advice.
+      </p>
 
-        <h2>No Guaranteed Outcomes</h2>
-        <p>
-          ErgoEase does not guarantee injury prevention, medical outcomes, workplace safety results, regulatory compliance, productivity improvement, or reduction in insurance or workers’ compensation claims.
-        </p>
+      <h2>No Medical Advice</h2>
+      <p>
+        ErgoEase does not diagnose, treat, cure, prevent, or manage medical
+        conditions, injuries, illnesses, or disabilities. Reports, scores,
+        recommendations, and equipment suggestions are not medical opinions and
+        should not be relied upon as a substitute for professional healthcare advice.
+      </p>
 
-        <h2>User Responsibility</h2>
-        <p>
-          Users and employers are responsible for reviewing recommendations, making purchasing decisions, implementing changes, maintaining safe environments, and seeking appropriate professional guidance when needed.
-        </p>
+      <h2>No Provider-Patient Relationship</h2>
+      <p>
+        Use of ErgoEase does not establish a provider-patient relationship,
+        therapist-client relationship, employer-consultant relationship, or any
+        other professional services relationship.
+      </p>
 
-        <h2>Payment and Access</h2>
-        <p>
-          Paid screens and team packages provide access to the applicable screening workflow and report generation process. Payment terms, pricing, and available packages may change over time.
-        </p>
+      <h2>Professional Consultation Recommended</h2>
+      <p>
+        Individuals experiencing pain, discomfort, injury, mobility limitations,
+        workplace concerns, or health-related questions should consult an appropriate
+        qualified professional, such as a physician, occupational therapist,
+        physical therapist, ergonomist, safety professional, or other licensed
+        provider.
+      </p>
 
-        <h2>Reports and Recommendations</h2>
-        <p>
-          Reports are generated based on submitted responses and available recommendation logic. Recommendations are informational and planning-level in nature and may not account for all workplace, personal, environmental, medical, or regulatory factors.
-        </p>
+      <h2>Emergency Situations</h2>
+      <p>
+        ErgoEase is not intended for emergency situations. If you believe you are
+        experiencing a medical emergency, contact emergency services immediately or
+        seek urgent medical care.
+      </p>
 
-        <h2>Limitation of Liability</h2>
-        <p>
-          To the maximum extent permitted by law, ErgoEase shall not be liable for damages, losses, injuries, business interruption, purchasing decisions, implementation outcomes, or other claims arising from use of the platform, reports, recommendations, or related materials.
-        </p>
+      <h2>No Guarantees</h2>
+      <p>
+        ErgoEase makes no guarantees regarding injury prevention, workplace safety,
+        regulatory compliance, productivity improvements, health outcomes, reduction
+        of workers' compensation claims, or the effectiveness of any recommendation
+        or equipment suggestion.
+      </p>
 
-        <h2>Changes to These Terms</h2>
-        <p>
-          ErgoEase may update these Terms of Service periodically. Continued use of the platform after updates means you accept the revised terms.
-        </p>
+      <h2>Limitation of Reliance</h2>
+      <p>
+        Users are responsible for evaluating recommendations, making implementation
+        decisions, and determining whether professional consultation is appropriate
+        for their specific circumstances.
+      </p>
 
-        <h2>Contact</h2>
-        <p>
-          Questions about these Terms may be directed to <strong>ergoease.app@gmail.com</strong>.
-        </p>
-      </div>
-    </section>
-  </main>
+      <h2>Contact</h2>
+      <p>
+        Questions regarding this Disclaimer may be directed to
+        <strong>ergoease.app@gmail.com</strong>.
+      </p>
 
-  <footer>
-    <div class="container footer-row">
-      <div>© 2026 ErgoEase. Ergonomic insight for healthier workplaces and safer homes.</div>
-      <div class="footer-links">
-        <a href="privacy.html">Privacy</a>
-        <a href="terms.html">Terms</a>
-        <a href="disclaimer.html">Disclaimer</a>
-        <a href="contact.html">Contact</a>
-      </div>
     </div>
-  </footer>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>
+      © 2026 ErgoEase. Ergonomic insight for healthier workplaces and safer homes.
+    </div>
+
+    <div class="footer-links">
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="disclaimer.html">Disclaimer</a>
+      <a href="contact.html">Contact</a>
+    </div>
+  </div>
+</footer>
+
 </body>
 </html>
 ```
+
