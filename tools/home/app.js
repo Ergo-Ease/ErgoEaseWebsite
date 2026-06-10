@@ -315,72 +315,76 @@ function renderIntro() {
 }
 
 function showDisclaimer() {
-  const backdrop = document.createElement("div");
-  backdrop.className = "modal-backdrop";
+  document.querySelector(".hero")?.classList.add("hidden");
+  app.innerHTML = "";
 
-  const modal = document.createElement("div");
-  modal.className = "modal";
+  const card = document.createElement("div");
+  card.className = "card disclaimer-screen";
 
-  const h2 = document.createElement("h2");
-  h2.textContent = "Health Disclaimer";
+  card.innerHTML = `
+    <h2>Before You Begin</h2>
 
-  const p = document.createElement("p");
-  p.textContent =
-  p.innerHTML = `
-This screening is provided for informational and educational purposes only.
+    <p>
+      ErgoEase provides home safety screening, educational information,
+      and equipment guidance only.
+    </p>
 
-It does not provide medical advice, diagnosis, treatment, ergonomic consultation,
-occupational therapy, nursing advice, physical therapy services, or professional
-safety evaluations.
+    <p>
+      ErgoEase does not provide medical advice, diagnosis, treatment,
+      rehabilitation, occupational therapy, nursing services, physical
+      therapy services, or healthcare services.
+    </p>
 
-Use of ErgoEase does not create a provider-patient relationship.
+    <p>
+      By continuing, you acknowledge that you have reviewed and agree to the:
+    </p>
 
-If you have concerns regarding pain, injury, mobility limitations, falls, or
-medical conditions, consult a qualified healthcare professional.
+    <ul>
+      <li><a href="../../terms.html" target="_blank">Terms of Service</a></li>
+      <li><a href="../../privacy.html" target="_blank">Privacy Policy</a></li>
+      <li><a href="../../disclaimer.html" target="_blank">Disclaimer</a></li>
+    </ul>
 
-If you are experiencing a medical emergency, call emergency services immediately.
-`;
+    <label class="consent-check">
+      <input type="checkbox" id="consentCheckbox">
+      I understand and agree.
+    </label>
 
-  const consent = document.createElement("label");
-  consent.className = "consent-row";
+    <div class="button-row">
+      <button
+        id="consentContinueBtn"
+        class="primary-btn"
+        disabled>
+        Continue
+      </button>
 
-  const checkbox = document.createElement("input");
-  checkbox.type = "checkbox";
+      <button
+        id="consentCancelBtn"
+        class="secondary-btn">
+        Cancel
+      </button>
+    </div>
+  `;
 
-  const consentText = document.createElement("span");
-  consentText.textContent =
-"I understand that ErgoEase provides educational information only and does not replace professional medical, therapy, nursing, or safety advice."
-  consent.append(checkbox, consentText);
+  app.append(card);
 
-  const footer = document.createElement("div");
-  footer.className = "modal-footer";
-
-  const cancel = document.createElement("button");
-  cancel.className = "secondary-btn";
-  cancel.textContent = "Cancel";
-  cancel.onclick = () => backdrop.remove();
-
-  const agree = document.createElement("button");
-  agree.className = "primary-btn";
-  agree.textContent = "Agree & Continue";
-  agree.disabled = true;
-  agree.style.opacity = 0.5;
+  const checkbox = document.getElementById("consentCheckbox");
+  const continueBtn = document.getElementById("consentContinueBtn");
+  const cancelBtn = document.getElementById("consentCancelBtn");
 
   checkbox.onchange = () => {
-    agree.disabled = !checkbox.checked;
-    agree.style.opacity = checkbox.checked ? 1 : 0.5;
+    continueBtn.disabled = !checkbox.checked;
+    continueBtn.style.opacity = checkbox.checked ? 1 : 0.5;
   };
 
-  agree.onclick = () => {
-    backdrop.remove();
+  cancelBtn.onclick = () => {
+    renderIntro();
+  };
+
+  continueBtn.onclick = () => {
     index = 0;
     renderEquipmentScreen();
   };
-
-  footer.append(cancel, agree);
-  modal.append(h2, p, consent, footer);
-  backdrop.append(modal);
-  document.body.append(backdrop);
 }
 
 /***********************
