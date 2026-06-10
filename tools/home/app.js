@@ -349,8 +349,7 @@ If you are experiencing a medical emergency, call emergency services immediately
 
   const consentText = document.createElement("span");
   consentText.textContent =
-    "I understand this is educational guidance and not medical advice.";
-
+"I understand that ErgoEase provides educational information only and does not replace professional medical, therapy, nursing, or safety advice."
   consent.append(checkbox, consentText);
 
   const footer = document.createElement("div");
