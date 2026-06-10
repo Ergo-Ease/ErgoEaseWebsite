@@ -696,4 +696,34 @@ font-weight: 500; /* enhancement included */
 .btn.secondary {
   background: #e5e7eb;
 }
+.consent-check{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  margin:20px 0;
+  font-size:15px;
+}
 
+.consent-check input{
+  transform:scale(1.2);
+  margin-top:3px;
+}
+
+#consentContinueBtn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+#disclaimerSection ul{
+  margin:15px 0;
+  padding-left:20px;
+}
+
+#disclaimerSection li{
+  margin-bottom:8px;
+}
+
+#disclaimerSection a{
+  color:#1e90ff;
+  font-weight:600;
+}
