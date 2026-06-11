@@ -217,20 +217,22 @@ function showEquipmentList() {
     const list = $("equipmentList");
     list.innerHTML = "";
 
-    const equipmentItems = [
-  "Adjustable Sit-Stand Desk",
-  "Monitor Arm",
-  "Laptop Riser",
-  "External Keyboard",
-  "External Mouse",
-  "Ergonomic Mouse",
-  "Seat Depth Adjustable Chair",
-  "Lumbar Support Cushion",
-  "Footrest",
-  "Wrist Rest Set",
-  "Task Lighting (LED)",
-  "Anti-Glare Screen Filter",
-  "Headset"
+ const equipmentItems = [
+    "Monitor Arm",
+    "Laptop Riser",
+    "Headset",
+    "Seat Depth Adjustable Chair",
+    "Ergo Seat Cushion",
+    "Lumbar Support Cushion",
+    "Footrest",
+    "Premium Foot Platform",
+    "Ergonomic Mouse",
+    "External Keyboard",
+    "Wrist Rest Set",
+    "Document Holder",
+    "Anti-Glare Screen Filter",
+    "Task Lighting (LED)",
+    "Adjustable Sit-Stand Desk"
 ];
 
     list.innerHTML = equipmentItems.map(item => `
