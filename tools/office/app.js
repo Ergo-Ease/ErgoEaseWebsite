@@ -423,42 +423,6 @@ function updateGauge(percent) {
 }
 
 
-/* ============================================================
-   DEVICE CATALOG
-============================================================ */
-const GEAR = [
-    { item: "Anti-Glare Screen Filter", cat: "Environment", cost: "$15–$30",
-      budgetLink: "https://www.amazon.com/s?k=anti+glare+screen+filter",
-      premiumLink: "https://www.amazon.com/s?k=premium+anti+glare+filter" },
-
-    { item: "Task Lighting (LED)", cat: "Environment", cost: "$25–$60",
-      budgetLink: "https://www.amazon.com/s?k=desk+lamp+led",
-      premiumLink: "https://www.amazon.com/s?k=premium+desk+lamp+led" },
-
-    { item: "Adjustable Sit-Stand Desk", cat: "Environment", cost: "$160–$300",
-      budgetLink: "https://www.amazon.com/s?k=budget+sit+stand+desk",
-      premiumLink: "https://www.amazon.com/s?k=premium+sit+stand+desk" },
-
-    { item: "Ergo Seat Cushion", cat: "Hips & Thighs", cost: "$20–$35",
-      budgetLink: "https://www.amazon.com/s?k=seat+cushion",
-      premiumLink: "https://www.amazon.com/s?k=memory+foam+seat+cushion" },
-
-    { item: "Seat Depth Adjustable Chair", cat: "Hips & Thighs", cost: "$160–$280",
-      budgetLink: "https://www.amazon.com/s?k=ergonomic+chair",
-      premiumLink: "https://www.amazon.com/s?k=ergonomic+chair+adjustable+seat+depth" },
-
-    { item: "Footrest", cat: "Feet & Other", cost: "$15–$25",
-      budgetLink: "https://www.amazon.com/s?k=footrest",
-      premiumLink: "https://www.amazon.com/s?k=premium+footrest" },
-
-    { item: "Premium Foot Platform", cat: "Feet & Other", cost: "$50–$90",
-      budgetLink: "https://www.amazon.com/s?k=foot+platform",
-      premiumLink: "https://www.amazon.com/s?k=adjustable+foot+platform" },
-
-    { item: "Wrist Rest Set", cat: "Wrists & Hands", cost: "$10–$20",
-      budgetLink: "https://www.amazon.com/s?k=wrist+rest+set",
-      premiumLink: "https://www.amazon.com/s?k=premium+wrist+rest" }
-];
 
 
 /* ============================================================
@@ -480,7 +444,70 @@ function computeRecommendations() {
             )[0]
         ];
     }
+/* ============================================================
+   DEVICE CATALOG
+============================================================ */
+const GEAR = [
+    { item: "Monitor Arm", cat: "Head & Neck", cost: "$45–$120",
+      budgetLink: "https://www.amazon.com/s?k=monitor+arm",
+      premiumLink: "https://www.amazon.com/s?k=premium+monitor+arm" },
 
+    { item: "Laptop Riser", cat: "Head & Neck", cost: "$20–$45",
+      budgetLink: "https://www.amazon.com/s?k=laptop+riser",
+      premiumLink: "https://www.amazon.com/s?k=adjustable+laptop+riser" },
+
+    { item: "Headset", cat: "Head & Neck", cost: "$25–$80",
+      budgetLink: "https://www.amazon.com/s?k=usb+headset",
+      premiumLink: "https://www.amazon.com/s?k=wireless+office+headset" },
+
+    { item: "Seat Depth Adjustable Chair", cat: "Hips & Thighs", cost: "$160–$280",
+      budgetLink: "https://www.amazon.com/s?k=ergonomic+chair",
+      premiumLink: "https://www.amazon.com/s?k=ergonomic+chair+adjustable+seat+depth" },
+
+    { item: "Ergo Seat Cushion", cat: "Hips & Thighs", cost: "$20–$35",
+      budgetLink: "https://www.amazon.com/s?k=seat+cushion",
+      premiumLink: "https://www.amazon.com/s?k=memory+foam+seat+cushion" },
+
+    { item: "Lumbar Support Cushion", cat: "Mid & Low Back", cost: "$20–$35",
+      budgetLink: "https://www.amazon.com/s?k=lumbar+support+cushion",
+      premiumLink: "https://www.amazon.com/s?k=premium+lumbar+support+cushion" },
+
+    { item: "Footrest", cat: "Feet & Other", cost: "$15–$25",
+      budgetLink: "https://www.amazon.com/s?k=footrest",
+      premiumLink: "https://www.amazon.com/s?k=premium+footrest" },
+
+    { item: "Premium Foot Platform", cat: "Feet & Other", cost: "$50–$90",
+      budgetLink: "https://www.amazon.com/s?k=foot+platform",
+      premiumLink: "https://www.amazon.com/s?k=adjustable+foot+platform" },
+
+    { item: "Ergonomic Mouse", cat: "Wrists & Hands", cost: "$20–$45",
+      budgetLink: "https://www.amazon.com/s?k=ergonomic+mouse",
+      premiumLink: "https://www.amazon.com/s?k=premium+ergonomic+mouse" },
+
+    { item: "External Keyboard", cat: "Wrists & Hands", cost: "$20–$60",
+      budgetLink: "https://www.amazon.com/s?k=external+keyboard",
+      premiumLink: "https://www.amazon.com/s?k=ergonomic+keyboard" },
+
+    { item: "Wrist Rest Set", cat: "Wrists & Hands", cost: "$10–$20",
+      budgetLink: "https://www.amazon.com/s?k=wrist+rest+set",
+      premiumLink: "https://www.amazon.com/s?k=premium+wrist+rest" },
+
+    { item: "Document Holder", cat: "Environment", cost: "$15–$35",
+      budgetLink: "https://www.amazon.com/s?k=document+holder",
+      premiumLink: "https://www.amazon.com/s?k=adjustable+document+holder" },
+
+    { item: "Anti-Glare Screen Filter", cat: "Environment", cost: "$15–$30",
+      budgetLink: "https://www.amazon.com/s?k=anti+glare+screen+filter",
+      premiumLink: "https://www.amazon.com/s?k=premium+anti+glare+filter" },
+
+    { item: "Task Lighting (LED)", cat: "Environment", cost: "$25–$60",
+      budgetLink: "https://www.amazon.com/s?k=desk+lamp+led",
+      premiumLink: "https://www.amazon.com/s?k=premium+desk+lamp+led" },
+
+    { item: "Adjustable Sit-Stand Desk", cat: "Work Habits", cost: "$160–$300",
+      budgetLink: "https://www.amazon.com/s?k=budget+sit+stand+desk",
+      premiumLink: "https://www.amazon.com/s?k=premium+sit+stand+desk" }
+];
     // 2. Collect matching gear
     let allMatches = GEAR.filter(g => highRiskCategories.includes(g.cat));
 
