@@ -228,7 +228,6 @@ function showEquipmentList() {
         "Loupes with Headlight",
         "Patient Chair Headrest Support",
         "Mobile Rear-Delivery Cart",
-        "Cordless Lightweight Handpiece",
         "Ergonomic Mirror Handle",
         "Foot Pedal Stabilizer Mat"
     ];
