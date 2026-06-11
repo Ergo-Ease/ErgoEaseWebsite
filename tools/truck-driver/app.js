@@ -222,15 +222,17 @@ function showEquipmentList() {
     list.innerHTML = "";
 
     const equipmentItems = [
-        "Lumbar Support Cushion",
-        "Suspension Seat Cushion",
-        "Steering Wheel Cover Grip",
-        "Clip-On Sun Visor Extender",
-        "Mirror Adjustment Aid",
-        "Portable Seat Wedge",
-        "Cab Step Grip Tape",
-        "Hands-Free Headset"
-    ];
+    "Lumbar Support Cushion",
+    "Suspension Seat Cushion",
+    "Steering Wheel Cover Grip",
+    "Clip-On Sun Visor Extender",
+    "Mirror Adjustment Aid",
+    "Portable Seat Wedge",
+    "Cab Step Grip Tape",
+    "Hands-Free Headset",
+    "Cab Organizer / Reach Zone Organizer",
+    "Seat Belt Shoulder Pad"
+];;
 
     list.innerHTML = equipmentItems.map(item => `
         <label style="display:block; margin:6px 0;">
@@ -426,6 +428,7 @@ function updateGauge(percent) {
    DEVICE CATALOG
 ============================================================ */
 const GEAR = [
+
     { item: "Clip-On Sun Visor Extender", cat: "Cab Environment", cost: "$15–$30",
       budgetLink: "https://www.amazon.com/s?k=truck+sun+visor+extender",
       premiumLink: "https://www.amazon.com/s?k=premium+truck+sun+visor+extender" },
@@ -434,9 +437,9 @@ const GEAR = [
       budgetLink: "https://www.amazon.com/s?k=truck+blind+spot+mirror",
       premiumLink: "https://www.amazon.com/s?k=premium+truck+blind+spot+mirror" },
 
-    { item: "Cab Organizer Caddy", cat: "Cab Environment", cost: "$20–$45",
+    { item: "Cab Organizer / Reach Zone Organizer", cat: "Cab Environment", cost: "$20–$45",
       budgetLink: "https://www.amazon.com/s?k=truck+cab+organizer",
-      premiumLink: "https://www.amazon.com/s?k=premium+truck+cab+organizer" },
+      premiumLink: "https://www.amazon.com/s?k=truck+seat+organizer" },
 
     { item: "Lumbar Support Cushion", cat: "Low Back Support", cost: "$25–$50",
       budgetLink: "https://www.amazon.com/s?k=truck+lumbar+support+cushion",
@@ -470,9 +473,14 @@ const GEAR = [
       budgetLink: "https://www.amazon.com/s?k=car+armrest+support+pad",
       premiumLink: "https://www.amazon.com/s?k=premium+vehicle+armrest+support" },
 
+    { item: "Seat Belt Shoulder Pad", cat: "Shoulders, Arms & Hands", cost: "$10–$20",
+      budgetLink: "https://www.amazon.com/s?k=seat+belt+shoulder+pad",
+      premiumLink: "https://www.amazon.com/s?k=premium+seat+belt+shoulder+pad" },
+
     { item: "Hands-Free Headset", cat: "Driving Habits", cost: "$25–$80",
       budgetLink: "https://www.amazon.com/s?k=trucker+hands+free+headset",
       premiumLink: "https://www.amazon.com/s?k=premium+trucker+bluetooth+headset" }
+
 ];
 
 
