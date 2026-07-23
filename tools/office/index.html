@@ -271,35 +271,44 @@
 <!-- SAVE MODAL -->
 <div id="saveModal" class="modal hidden">
   <div class="modal-box">
-    <h2>Save Report</h2>
+    <h2>Save & Email Your Report</h2>
 
-    <label>Employee Name</label>
-    <input id="employeeName" class="input">
+<label>Employee Name</label>
+<input
+    id="employeeName"
+    class="input"
+    type="text"
+    required
+>
 
-    <label>Employer / Company</label>
-    <input
-      id="employerName"
-      class="input"
-      placeholder="Company or Organization"
-    >
+<label>Employer / Company (Optional)</label>
+<input
+    id="employerName"
+    class="input"
+    type="text"
+    placeholder="Company or Organization"
+>
 
-    <small class="field-hint">
-      Company reports are generated only if an employer is provided.
-    </small>
+<small class="field-hint">
+    Enter your employer if you would like your report customized for your workplace.
+</small>
 
-    <label>Email Address</label>
-    <input
-      id="employeeEmail"
-      class="input"
-      type="email"
-      placeholder="name@example.com"
-      required
-    >
+<label>Email Address</label>
+<input
+    id="employeeEmail"
+    class="input"
+    type="email"
+    placeholder="name@example.com"
+    required
+>
 
-    <label>Evaluator Name (Optional)</label>
-    <input id="evaluatorName" class="input">
-
-    <label>Notes</label>
+<label>Additional Notes (Optional)</label>
+<textarea
+    id="reportNotes"
+    class="textarea"
+    rows="4"
+    placeholder="Add any additional information you'd like included in your report."
+></textarea>
 <!-- REPORT READY SECTION -->
 <section id="resultsSection" class="card hidden">
 
