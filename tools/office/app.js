@@ -178,7 +178,8 @@ if (consentCheckbox && consentBtn) {
    PHOTO STEP → GENERATE RESULTS
 ============================================================ */
 $("generateReportBtn").onclick = () => {
-    computeResults();
+    computeResults();          // still calculates recommendations
+    $("saveModal").classList.remove("hidden");
 };
 function resetState() {
     currentIndex = 0;
@@ -373,7 +374,6 @@ function computeResults() {
     computeRecommendations();
     updateGauge(finalPercent);
 
-    showSection("resultsSection");
 }
 
 
