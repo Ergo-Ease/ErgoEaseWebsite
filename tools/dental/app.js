@@ -184,7 +184,8 @@ if (consentCheckbox && consentBtn) {
 ============================================================ */
 $("generateReportBtn").onclick = () => {
     computeResults();
-};
+    $("saveModal").classList.remove("hidden");
+};;
 function resetState() {
     currentIndex = 0;
     answers = [];
