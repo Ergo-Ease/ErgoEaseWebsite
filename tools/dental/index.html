@@ -1,203 +1,108 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>ErgoEase Dental Office</title>
-<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ErgoEase Dental Office</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
-<!-- HERO SECTION -->
 <section id="heroSection" class="card">
     <div class="hero-layout">
-
         <div class="hero-text">
             <h1>ErgoEase Dental Office</h1>
             <p>Identify posture and operatory setup risks. Implement targeted solutions. Support healthier clinical work habits.</p>
-
-            <button id="startBtn" class="btn primary hero-start-btn">
-                Start Screening
-            </button>
+            <button id="startBtn" class="btn primary hero-start-btn" type="button">Start Screening</button>
         </div>
-
         <div class="hero-image-wrap">
             <img src="office_hero.png" alt="Dental operatory ergonomic illustration" class="hero-image">
         </div>
-
     </div>
 </section>
-    <section id="disclaimerSection" class="card hidden">
 
-  <h2>Before You Begin</h2>
-
-  <p>
-    ErgoEase provides ergonomic screening, educational information,
-    and equipment guidance only.
-  </p>
-
-  <p>
-    ErgoEase does not provide medical advice, diagnosis, treatment,
-    rehabilitation, or healthcare services.
-  </p>
-
-  <p>
-    By continuing, you acknowledge that you have reviewed and agree to the:
-  </p>
-
-  <ul>
-    <li><a href="../../terms.html" target="_blank">Terms of Service</a></li>
-    <li><a href="../../privacy.html" target="_blank">Privacy Policy</a></li>
-    <li><a href="../../disclaimer.html" target="_blank">Disclaimer</a></li>
-  </ul>
-
-  <label class="consent-check">
-    <input type="checkbox" id="consentCheckbox">
-    I understand and agree.
-  </label>
-
-  <div class="center mt-20">
-    <button
-      id="consentContinueBtn"
-      class="btn primary"
-      disabled>
-      Continue
-    </button>
-  </div>
-
-</section>
-
-<!-- EQUIPMENT SELECTION BEFORE SCREENING -->
-<section id="equipmentSection" class="card hidden">
-
-    <h2>Before We Begin</h2>
-    <p>
-        Please select any ergonomic equipment you already use.
-        This helps tailor recommendations so you don’t receive suggestions for items you already have.
-    </p>
-
-    <!-- List populated dynamically -->
-    <div id="equipmentList"></div>
-
+<section id="disclaimerSection" class="card hidden">
+    <h2>Before You Begin</h2>
+    <p>ErgoEase provides ergonomic screening, educational information, and equipment guidance only.</p>
+    <p>ErgoEase does not provide medical advice, diagnosis, treatment, rehabilitation, or healthcare services.</p>
+    <p>By continuing, you acknowledge that you have reviewed and agree to the:</p>
+    <ul>
+        <li><a href="../../terms.html" target="_blank" rel="noopener">Terms of Service</a></li>
+        <li><a href="../../privacy.html" target="_blank" rel="noopener">Privacy Policy</a></li>
+        <li><a href="../../disclaimer.html" target="_blank" rel="noopener">Disclaimer</a></li>
+    </ul>
+    <label class="consent-check">
+        <input type="checkbox" id="consentCheckbox">
+        I understand and agree.
+    </label>
     <div class="center mt-20">
-        <button id="continueBtn" class="btn primary">Continue to Screening</button>
+        <button id="consentContinueBtn" class="btn primary" type="button" disabled>Continue</button>
     </div>
-
 </section>
 
-<!-- SCREENING SECTION -->
-<section id="screeningSection" class="card hidden">
-
-    <h2>Dental Ergonomic Screening</h2>
-
-    <!-- PROGRESS BAR -->
-    <div id="progressBarWrap">
-        <div id="progressBarFill"></div>
+<section id="equipmentSection" class="card hidden">
+    <h2>Before We Begin</h2>
+    <p>Please select any ergonomic equipment you already use. This helps tailor recommendations so you do not receive suggestions for items you already have.</p>
+    <div id="equipmentList"></div>
+    <div class="center mt-20">
+        <button id="continueBtn" class="btn primary" type="button">Continue to Screening</button>
     </div>
+</section>
 
+<section id="screeningSection" class="card hidden">
+    <h2>Dental Ergonomic Screening</h2>
+    <div id="progressBarWrap"><div id="progressBarFill"></div></div>
     <div class="screening-layout">
-
         <div class="screening-illustration">
             <img src="screeningpages.png" alt="Dental ergonomics screening illustration">
         </div>
-
         <div class="tooltip-side-text" id="tooltipSideText"></div>
-
     </div>
-
     <div class="question-box">
-
-        <div class="question-category">
-            <span id="questionCategoryText"></span>
-        </div>
-
+        <div class="question-category"><span id="questionCategoryText"></span></div>
         <div id="questionText" class="question-text"></div>
-
-        <div class="question-count">
-            Question <span id="qNum">1</span> / <span id="qTotal">0</span>
-        </div>
-
-        <!-- MULTI-SELECT EQUIPMENT QUESTION (hidden unless needed) -->
+        <div class="question-count">Question <span id="qNum">1</span> / <span id="qTotal">0</span></div>
         <div id="multiSelectBox" class="multi-select hidden">
             <h4>Select all equipment you currently use:</h4>
             <div id="multiSelectOptions"></div>
-
-            <button id="multiSelectNextBtn" class="btn primary" style="margin-top:18px;">
-                Continue
-            </button>
+            <button id="multiSelectNextBtn" class="btn primary" type="button" style="margin-top:18px;">Continue</button>
         </div>
-
     </div>
-
     <div class="center mt-20">
-        <button id="yesBtn" class="btn screen-btn">Yes</button>
-        <button id="noBtn" class="btn screen-btn">No</button>
+        <button id="yesBtn" class="btn screen-btn" type="button">Yes</button>
+        <button id="noBtn" class="btn screen-btn" type="button">No</button>
     </div>
-
 </section>
-<!-- PHOTO + NEXT STEPS -->
-<!-- PHOTO + NEXT STEPS -->
+
 <section id="photoStep" class="card hidden">
-
-    <h2 class="section-title">
-        Optional: Add a Workstation Photo
-    </h2>
-
-    <p class="section-subtitle">
-        This helps improve the accuracy of your dental ergonomic recommendations.
-    </p>
-
+    <h2 class="section-title">Optional: Add a Workstation Photo</h2>
+    <p class="section-subtitle">This helps improve the accuracy of your dental ergonomic recommendations.</p>
     <ul class="helper-list">
         <li>Optional</li>
         <li>Used only for your personal report</li>
         <li>Not shared publicly</li>
     </ul>
-
     <div class="helper-card">
-
         <h3>What happens next</h3>
-
         <ul>
             <li>Your ergonomic assessment will be completed.</li>
             <li>Your personalized dental ergonomic report will be prepared.</li>
             <li><strong>Your report is not saved automatically.</strong></li>
         </ul>
-
         <h3>Receive Your Personalized Report</h3>
-
         <ol>
             <li>Click <strong>Generate &amp; Email My Report</strong>.</li>
             <li>Enter your name, employer (optional), and email address.</li>
             <li>Your personalized ergonomic report will be emailed to you.</li>
         </ol>
-
     </div>
-
     <div class="photo-upload">
-
-        <label for="photoUpload">
-            <strong>Optional photo upload</strong>
-        </label>
-
-        <input
-            type="file"
-            id="photoUpload"
-            accept="image/*"
-        >
-
-        <img
-            id="photoPreview"
-            class="hidden preview-img"
-            alt="Dental workstation photo preview"
-        >
-
+        <label for="photoUpload"><strong>Optional photo upload</strong></label>
+        <input type="file" id="photoUpload" accept="image/*">
+        <img id="photoPreview" class="hidden preview-img" alt="Dental workstation photo preview">
     </div>
-
     <div class="helper-card photo-tips">
-
         <h3>Photo tips (optional)</h3>
-
         <ul>
             <li>📐 A side or angled view of the dental operatory works best</li>
             <li>🪑 Try to include the operator stool and patient chair</li>
@@ -205,43 +110,21 @@
             <li>🖥️ Include the charting screen if it is part of your setup</li>
             <li>🚫 There is no need to include your face or the patient</li>
         </ul>
-
     </div>
-
-    <p class="section-subtitle">
-        Don’t have a photo right now? You can skip this step.
-    </p>
-
+    <p class="section-subtitle">Don’t have a photo right now? You can skip this step.</p>
     <div class="center mt-20">
-        <button id="generateReportBtn" class="btn primary">
-            Generate &amp; Email My Report
-        </button>
+        <button id="generateReportBtn" class="btn primary" type="button">Generate &amp; Email My Report</button>
     </div>
-
 </section>
 
-
-<!-- REPORT READY SECTION -->
 <section id="resultsSection" class="card hidden">
-
     <div class="results-illustration">
-        <img
-            src="results_page.png"
-            alt="Dental ergonomic report"
-        >
+        <img src="results_page.png" alt="Dental ergonomic report">
     </div>
-
     <h2>Your Dental Ergonomic Assessment Is Complete</h2>
-
-    <p class="section-subtitle">
-        Thank you for completing your ErgoEase Dental ergonomic screening.
-        Your personalized report is ready to be saved.
-    </p>
-
+    <p class="section-subtitle">Thank you for completing your ErgoEase Dental ergonomic screening. Your personalized report is ready to be saved.</p>
     <div class="helper-card">
-
         <h3>Your report includes:</h3>
-
         <ul>
             <li>Your ergonomic assessment summary</li>
             <li>Areas currently working well</li>
@@ -250,162 +133,75 @@
             <li>Estimated equipment costs</li>
             <li>Your operatory photo, if uploaded</li>
         </ul>
-
     </div>
-
     <div class="helper-card">
-
         <h3>Next Step</h3>
-
-        <p>
-            Click <strong>Save &amp; Email Report</strong> below to save your
-            assessment and receive your personalized report by email.
-        </p>
-
-        <p>
-            <strong>
-                Your assessment is not saved until you complete the form.
-            </strong>
-        </p>
-
+        <p>Click <strong>Save &amp; Email Report</strong> below to save your assessment and receive your personalized report by email.</p>
+        <p><strong>Your assessment is not saved until you complete the form.</strong></p>
     </div>
-
     <div class="center mt-20">
-        <button id="saveReportBtn" class="btn primary">
-            Save &amp; Email Report
-        </button>
+        <button id="saveReportBtn" class="btn primary" type="button">Save &amp; Email Report</button>
     </div>
-
-    <!-- Hidden placeholders required by the existing app.js -->
     <div class="hidden" aria-hidden="true">
-
         <div id="ownsEquipmentBadge"></div>
-
         <div id="scoreText"></div>
         <div id="scoreLabel"></div>
-
         <div id="breakdownContainer"></div>
-
         <ul id="strengthList"></ul>
         <ul id="needsList"></ul>
-
         <div id="noDevicesMsg"></div>
         <div id="topRecsContainer"></div>
         <div id="estCostText"></div>
-
-        <button id="toggleAllBtn" type="button">
-            Show All Device Options
-        </button>
-
-        <div id="allDevicesWrapper">
-            <div id="allDevicesContainer"></div>
-        </div>
-
+        <button id="toggleAllBtn" type="button">Show All Device Options</button>
+        <div id="allDevicesWrapper"><div id="allDevicesContainer"></div></div>
         <svg width="1" height="1" aria-hidden="true">
-            <path
-                id="gaugeFill"
-                d="M20 160 A140 140 0 0 1 340 160"
-            ></path>
-
-            <circle
-                id="gaugePtr"
-                cx="20"
-                cy="160"
-                r="8"
-            ></circle>
+            <path id="gaugeFill" d="M20 160 A140 140 0 0 1 340 160"></path>
+            <circle id="gaugePtr" cx="20" cy="160" r="8"></circle>
         </svg>
-
         <section id="actionBar"></section>
-
     </div>
-
 </section>
 
-
-<!-- SAVE MODAL -->
 <div id="saveModal" class="modal hidden">
-
     <div class="modal-box">
-
         <h2>Save &amp; Email Your Report</h2>
-
-        <label for="employeeName">
-            Employee Name
-        </label>
-
-        <input
-            id="employeeName"
-            class="input"
-            type="text"
-            autocomplete="name"
-            required
-        >
-
-        <label for="employerName">
-            Employer / Company (Optional)
-        </label>
-
-        <input
-            id="employerName"
-            class="input"
-            type="text"
-            placeholder="Company or Organization"
-            autocomplete="organization"
-        >
-
-        <small class="field-hint">
-            Enter your employer if you would like your report customized
-            for your workplace.
-        </small>
-
-        <label for="employeeEmail">
-            Email Address
-        </label>
-
-        <input
-            id="employeeEmail"
-            class="input"
-            type="email"
-            placeholder="name@example.com"
-            autocomplete="email"
-            required
-        >
-
-        <label for="reportNotes">
-            Additional Notes (Optional)
-        </label>
-
-        <textarea
-            id="reportNotes"
-            class="textarea"
-            rows="4"
-            placeholder="Add any additional information you would like included in your report."
-        ></textarea>
-
+        <label for="employeeName">Employee Name</label>
+        <input id="employeeName" class="input" type="text" autocomplete="name" required>
+        <label for="employerName">Employer / Company (Optional)</label>
+        <input id="employerName" class="input" type="text" placeholder="Company or Organization" autocomplete="organization">
+        <small class="field-hint">Enter your employer if you would like your report customized for your workplace.</small>
+        <label for="employeeEmail">Email Address</label>
+        <input id="employeeEmail" class="input" type="email" placeholder="name@example.com" autocomplete="email" required>
+        <label for="reportNotes">Additional Notes (Optional)</label>
+        <textarea id="reportNotes" class="textarea" rows="4" placeholder="Add any additional information you would like included in your report."></textarea>
         <div class="modal-actions">
-
-            <button
-                id="confirmSaveBtn"
-                class="btn primary"
-                type="button"
-            >
-                Save &amp; Email Report
-            </button>
-
-            <button
-                id="cancelSaveBtn"
-                class="btn secondary"
-                type="button"
-            >
-                Cancel
-            </button>
-
+            <button id="confirmSaveBtn" class="btn primary" type="button">Save &amp; Email Report</button>
+            <button id="cancelSaveBtn" class="btn secondary" type="button">Cancel</button>
         </div>
-
     </div>
-
 </div>
 
+<section id="logView" class="card hidden">
+    <h2>Saved Reports Log</h2>
+    <table class="log-table">
+        <thead>
+            <tr>
+                <th>When</th><th>Employee Name</th><th>Discipline</th><th>Score</th><th>Status</th>
+                <th>Safe Items</th><th>Flagged Items</th><th># Devices</th><th>Top Devices</th><th>Cost</th>
+                <th>Rec Titles</th><th>Evaluator Notes</th><th>Photo</th>
+            </tr>
+        </thead>
+        <tbody id="logTableBody"></tbody>
+    </table>
+    <button id="backBtn" class="btn secondary mt-20" type="button">Back</button>
+    <button id="clearLogBtn" class="btn danger mt-10" type="button">Clear Log</button>
+</section>
+
+<div class="hidden" aria-hidden="true">
+    <button id="viewLogBtn" type="button">View Log</button>
+    <button id="csvBtn" type="button">Export CSV</button>
+    <button id="retakeBtn" type="button">Retake</button>
+</div>
 
 <script src="app.js"></script>
 </body>
