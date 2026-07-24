@@ -140,19 +140,35 @@ document.addEventListener("DOMContentLoaded", () => {
 ============================================================ */
 function showSection(id) {
     [
-      "heroSection",
+        "heroSection",
         "disclaimerSection",
-      "equipmentSection",
-      "screeningSection",
-      "photoStep",
-      "resultsSection",
-      "logView"
-    ].forEach(sec => $(sec).classList.add("hidden"));
+        "equipmentSection",
+        "screeningSection",
+        "photoStep",
+        "resultsSection",
+        "logView"
+    ].forEach(sec => {
+        const section = $(sec);
 
-    $(id).classList.remove("hidden");
+        if (section) {
+            section.classList.add("hidden");
+        }
+    });
 
-    if (id === "resultsSection") $("actionBar").classList.remove("hidden");
-    else $("actionBar").classList.add("hidden");
+    const targetSection = $(id);
+
+    if (!targetSection) {
+        console.error(`Section not found: ${id}`);
+        return;
+    }
+
+    targetSection.classList.remove("hidden");
+
+    const actionBar = $("actionBar");
+
+    if (actionBar) {
+        actionBar.classList.toggle("hidden", id !== "resultsSection");
+    }
 }
 
 
