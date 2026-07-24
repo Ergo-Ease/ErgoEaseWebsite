@@ -371,7 +371,6 @@ function computeResults() {
     computeRecommendations();
     updateGauge(finalPercent);
 
-    showSection("resultsSection");
 }
 
 
