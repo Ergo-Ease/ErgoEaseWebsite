@@ -562,6 +562,7 @@ $("toggleAllBtn").onclick = () => {
 /* ============================================================
    SAVE / LOG / CSV
 ============================================================ */
+
 $("saveReportBtn").onclick = () =>
   $("saveModal").classList.remove("hidden");
 
@@ -575,6 +576,7 @@ $("confirmSaveBtn").onclick = async () => {
   btn.disabled = true;
 
   try {
+
     // ----------------------------
     // Required fields
     // ----------------------------
@@ -585,7 +587,6 @@ $("confirmSaveBtn").onclick = async () => {
     if (!email) throw new Error("Email required");
 
     const employer = $("employerName").value.trim();
-
     const notes = $("reportNotes").value.trim();
 
     // ----------------------------
@@ -609,13 +610,10 @@ $("confirmSaveBtn").onclick = async () => {
 
     console.log("Submitting payload:", sheetPayload);
 
-    // 🔑 AWAIT submission
     await submitToGoogleForm(sheetPayload);
 
-    // Close modal
     $("saveModal").classList.add("hidden");
 
-    // Redirect
     window.location.href =
       "confirmation.html?email=" +
       encodeURIComponent(email) +
@@ -623,27 +621,39 @@ $("confirmSaveBtn").onclick = async () => {
       encodeURIComponent(employee);
 
   } catch (err) {
+
     alert("Save failed: " + err.message);
     console.error(err);
+
   } finally {
-    // 🔓 ALWAYS reset button
+
     btn.textContent = "Save Report";
     btn.disabled = false;
+
   }
 };
+
 
 // ----------------------------
 // View log
 // ----------------------------
-$("viewLogBtn").onclick = () => {
-  renderLogTable();
-  showSection("logView");
-};
+const viewLogBtn = $("viewLogBtn");
+
+if (viewLogBtn) {
+  viewLogBtn.onclick = () => {
+    renderLogTable();
+    showSection("logView");
+  };
+}
 
 function renderLogTable() {
+
     const log = JSON.parse(localStorage.getItem("ergoLog") || "[]");
 
-    $("logTableBody").innerHTML = log.map(r => `
+    const tableBody = $("logTableBody");
+    if (!tableBody) return;
+
+    tableBody.innerHTML = log.map(r => `
         <tr>
             <td>${r.when}</td>
             <td>${r.employeeName}</td>
@@ -665,53 +675,107 @@ function renderLogTable() {
     `).join("");
 }
 
-$("backBtn").onclick = () => showSection("resultsSection");
 
-$("clearLogBtn").onclick = () => {
-    if (confirm("Clear ALL entries?")) {
-        localStorage.removeItem("ergoLog");
-        renderLogTable();
-    }
-};
+// ----------------------------
+// Back
+// ----------------------------
+const backBtn = $("backBtn");
 
-$("csvBtn").onclick = () => {
-    const log = JSON.parse(localStorage.getItem("ergoLog") || "[]");
-    if (!log.length) return alert("No saved reports.");
+if (backBtn) {
+    backBtn.onclick = () => showSection("resultsSection");
+}
 
-    let csv =
+
+// ----------------------------
+// Clear Log
+// ----------------------------
+const clearLogBtn = $("clearLogBtn");
+
+if (clearLogBtn) {
+
+    clearLogBtn.onclick = () => {
+
+        if (confirm("Clear ALL entries?")) {
+
+            localStorage.removeItem("ergoLog");
+            renderLogTable();
+
+        }
+
+    };
+
+}
+
+
+// ----------------------------
+// Export CSV
+// ----------------------------
+const csvBtn = $("csvBtn");
+
+if (csvBtn) {
+
+    csvBtn.onclick = () => {
+
+        const log = JSON.parse(localStorage.getItem("ergoLog") || "[]");
+
+        if (!log.length)
+            return alert("No saved reports.");
+
+        let csv =
 "WHEN,EmployeeName,Discipline,Score,Status,SafeItems,FlaggedItems,#Devices,EstCostUSD,TopDevices,RecTitles,EvaluatorNotes\n";
 
-    log.forEach(r => {
-        csv += [
-            `"${r.when}"`,
-            `"${r.employeeName}"`,
-            `"${r.discipline}"`,
-            `"${r.score}"`,
-            `"${r.status}"`,
-            `"${r.safeItems}"`,
-            `"${r.flaggedItems}"`,
-            `"${r.gearItems}"`,
-            `"${r.estCostUSD}"`,
-            `"${r.topRecs}"`,
-            `"${r.recTitles}"`,
-            `"${r.evaluatorNotes}"`
-        ].join(",") + "\n";
-    });
+        log.forEach(r => {
 
-    const blob = new Blob([csv], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    link.href = URL.createObjectURL(blob);
-    link.download = "ErgoEase_Nursing_Healthcare_Log.csv";
-    link.click();
-};
+            csv += [
+
+                `"${r.when}"`,
+                `"${r.employeeName}"`,
+                `"${r.discipline}"`,
+                `"${r.score}"`,
+                `"${r.status}"`,
+                `"${r.safeItems}"`,
+                `"${r.flaggedItems}"`,
+                `"${r.gearItems}"`,
+                `"${r.estCostUSD}"`,
+                `"${r.topRecs}"`,
+                `"${r.recTitles}"`,
+                `"${r.evaluatorNotes}"`
+
+            ].join(",") + "\n";
+
+        });
+
+        const blob = new Blob([csv], {
+            type: "text/csv;charset=utf-8;"
+        });
+
+        const link = document.createElement("a");
+        link.href = URL.createObjectURL(blob);
+        link.download = "ErgoEase_Nursing_Healthcare_Log.csv";
+        link.click();
+
+    };
+
+}
+
 
 /* ============================================================
    RETAKE
 ============================================================ */
-$("retakeBtn").onclick = () => {
-    resetState();
-    updateGauge(0);
-    renderQuestion();
-    showSection("screeningSection");
-};
+
+const retakeBtn = $("retakeBtn");
+
+if (retakeBtn) {
+
+    retakeBtn.onclick = () => {
+
+        resetState();
+        updateGauge(0);
+        renderQuestion();
+        showSection("screeningSection");
+
+    };
+
+}
+
 }); // ✅ CLOSE DOMContentLoaded
