@@ -121,20 +121,39 @@ document.addEventListener("DOMContentLoaded", () => {
    SECTION CONTROL
 ============================================================ */
 function showSection(id) {
+
     [
-      "heroSection",
+        "heroSection",
         "disclaimerSection",
-      "equipmentSection",
-      "screeningSection",
-      "photoStep",
-      "resultsSection",
-      "logView"
-    ].forEach(sec => $(sec).classList.add("hidden"));
+        "equipmentSection",
+        "screeningSection",
+        "photoStep",
+        "resultsSection",
+        "logView"
+    ].forEach(sec => {
+        const section = $(sec);
+        if (section) {
+            section.classList.add("hidden");
+        }
+    });
 
-    $(id).classList.remove("hidden");
+    const targetSection = $(id);
 
-    if (id === "resultsSection") $("actionBar").classList.remove("hidden");
-    else $("actionBar").classList.add("hidden");
+    if (!targetSection) {
+        console.error("Missing section:", id);
+        return;
+    }
+
+    targetSection.classList.remove("hidden");
+
+    const actionBar = $("actionBar");
+
+    if (actionBar) {
+        if (id === "resultsSection")
+            actionBar.classList.remove("hidden");
+        else
+            actionBar.classList.add("hidden");
+    }
 }
 
 /* ============================================================
@@ -164,6 +183,7 @@ if (consentCheckbox && consentBtn) {
 ============================================================ */
 $("generateReportBtn").onclick = () => {
     computeResults();
+    $("saveModal").classList.remove("hidden");
 };
 
 function resetState() {
@@ -341,7 +361,6 @@ function computeResults() {
     computeRecommendations();
     updateGauge(finalPercent);
 
-    showSection("resultsSection");
 }
 
 /* ============================================================
